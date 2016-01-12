@@ -9,8 +9,59 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="co.gobd.gofetch.RoutePlanActivity">
 
-    <TextView
+
+    <EditText
+        android:id="@+id/et_from"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+
+        android:hint="@string/from_hint" />
+
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/et_from"
+        android:layout_marginEnd="37dp"
+        android:layout_marginRight="37dp"
+        android:background="@drawable/ic_swap_vertical_circle_light_green_700_18dp" />
+
+    <EditText
+        android:id="@+id/et_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_from"
+
+        android:hint="@string/to_hint"
+
+        />
+
+    <com.google.android.gms.maps.MapView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/et_to" />
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary"
+        android:text="@string/btn_ryde_request"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+
 </RelativeLayout>
+
+
