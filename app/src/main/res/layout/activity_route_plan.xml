@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="co.gobd.gofetch.RoutePlanActivity">
+    tools:context=".route.RoutePlanActivity">
 
 
     <EditText
@@ -51,7 +51,7 @@
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_request_ryde"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -59,7 +59,9 @@
         android:background="@color/colorPrimary"
         android:text="@string/btn_ryde_request"
         android:textColor="@android:color/white"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:onClick="onRequestRydeClicked"
+        />
 
 
 </RelativeLayout>
