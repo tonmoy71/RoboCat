@@ -1,14 +1,15 @@
-package co.gobd.gofetch.route;
+package co.gobd.gofetch.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import co.gobd.gofetch.R;
+import co.gobd.gofetch.route.RoutePlanPresenter;
+import co.gobd.gofetch.route.RoutePlanView;
 
 public class RoutePlanActivity extends AppCompatActivity implements RoutePlanView {
 

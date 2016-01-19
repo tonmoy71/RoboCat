@@ -1,6 +1,8 @@
-package co.gobd.gofetch.route;
+package co.gobd.gofetch.presenter;
 
 import android.util.Log;
+
+import co.gobd.gofetch.route.RoutePlanView;
 
 /**
  * Created by tonmoy on 13-Jan-16.

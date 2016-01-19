@@ -1,4 +1,4 @@
-package co.gobd.gofetch.route;
+package co.gobd.gofetch.view;
 
 import android.widget.EditText;
 
