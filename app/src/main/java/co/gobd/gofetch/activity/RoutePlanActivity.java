@@ -8,8 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import co.gobd.gofetch.R;
-import co.gobd.gofetch.route.RoutePlanPresenter;
-import co.gobd.gofetch.route.RoutePlanView;
+import co.gobd.gofetch.presenter.RoutePlanPresenter;
+import co.gobd.gofetch.view.RoutePlanView;
 
 public class RoutePlanActivity extends AppCompatActivity implements RoutePlanView {
 

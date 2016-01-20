@@ -4,4 +4,5 @@
     <string name="to_hint">Choose your destination</string>
     <string name="btn_ryde_request">Request ryde</string>
     <string name="empty_field_error">Empty location</string>
+    <string name="title_activity_home_page">Supported orders</string>
 </resources>
