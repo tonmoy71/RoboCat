@@ -2,6 +2,7 @@ package co.gobd.gofetch.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -30,9 +31,15 @@ public class SupportedOrderActivity extends AppCompatActivity {
         // Number of columns in the staggered grid view
         final int SPAN_COUNT = 2;
 
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(SPAN_COUNT, StaggeredGridLayoutManager.VERTICAL);
-        rvSupportedOrder.setLayoutManager(staggeredGridLayoutManager);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, SPAN_COUNT, GridLayoutManager.VERTICAL, false);
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return (position % 3 == 0 ? 2 : 1);
+            }
+        });
 
+        rvSupportedOrder.setLayoutManager(layoutManager);
 
         SupportedOrderAdapter supportedOrderAdapter = new SupportedOrderAdapter(SupportedOrderActivity.this);
         rvSupportedOrder.setAdapter(supportedOrderAdapter);

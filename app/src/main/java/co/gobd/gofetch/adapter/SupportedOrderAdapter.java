@@ -64,6 +64,8 @@ public class SupportedOrderAdapter extends RecyclerView.Adapter<SupportedOrderVi
                     .with(context)
                     .load(itemList.get(position).getImage())
                     .into(holder.ivItemImage);
+
+
         }
     }
 
