@@ -11,7 +11,7 @@ public interface TrackerService {
 
     void stopConnection();
 
-    void onReceiveData();
+    void receiveData();
 
 
 }

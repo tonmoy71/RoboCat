@@ -2,8 +2,12 @@ package co.gobd.gofetch.service;
 
 import android.util.Log;
 
+import com.google.gson.JsonElement;
+
 import co.gobd.gofetch.config.SignalRConfig;
 import microsoft.aspnet.signalr.client.Action;
+import microsoft.aspnet.signalr.client.ErrorCallback;
+import microsoft.aspnet.signalr.client.MessageReceivedHandler;
 import microsoft.aspnet.signalr.client.Platform;
 import microsoft.aspnet.signalr.client.http.android.AndroidPlatformComponent;
 import microsoft.aspnet.signalr.client.hubs.HubConnection;
@@ -32,18 +36,45 @@ public class SignalRService implements TrackerService {
         hubConnection.start().done(new Action<Void>() {
             @Override
             public void run(Void aVoid) throws Exception {
-                Log.i(TAG, "run: SignalR connection established");
+                Log.i(TAG, "run: Connecting to SignalR");
+            }
+        });
+
+        hubConnection.connected(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, "run: Connected to SignalR");
             }
         });
     }
 
     @Override
     public void stopConnection() {
+        hubConnection.stop();
 
+        hubConnection.closed(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, "run: Connection to SignalR closed");
+            }
+        });
     }
 
     @Override
-    public void onReceiveData() {
+    public void receiveData() {
+        hubConnection.received(new MessageReceivedHandler() {
+            @Override
+            public void onMessageReceived(JsonElement jsonElement) {
+                Log.i(TAG, "onMessageReceived: " + jsonElement.toString());
+            }
+        });
+
+        hubConnection.error(new ErrorCallback() {
+            @Override
+            public void onError(Throwable throwable) {
+                Log.i(TAG, "onError: Error receiving data " + throwable.getMessage());
+            }
+        });
 
     }
 
