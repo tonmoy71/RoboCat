@@ -1,13 +1,17 @@
 package co.gobd.gofetch.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
+import com.hipmob.android.HipmobCore;
+
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.adapter.SupportedOrderAdapter;
+import co.gobd.gofetch.config.HipmobConfig;
 import co.gobd.gofetch.service.SignalRService;
 import co.gobd.gofetch.service.TrackerService;
 
@@ -46,6 +50,11 @@ public class SupportedOrderActivity extends AppCompatActivity {
         trackerService.setup();
         trackerService.startConnection();
         trackerService.receiveData();
+
+        Intent intent = new Intent(this, HipmobCore.class);
+        intent.putExtra(HipmobCore.KEY_APPID, HipmobConfig.APPID);
+        intent.putExtra(HipmobCore.KEY_USERID, HipmobConfig.USERID);
+        startActivity(intent);
 
     }
 

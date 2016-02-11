@@ -3,6 +3,8 @@
     package="co.gobd.gofetch">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -30,6 +32,13 @@
             </intent-filter>
 
         </activity>
+
+        <!-- Hipmob integration -->
+        <activity
+            android:name="com.hipmob.android.HipmobCore"
+            android:theme="@android:style/Theme.Light" />
+
+
     </application>
 
 </manifest>
