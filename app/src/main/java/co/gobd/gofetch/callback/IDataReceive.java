@@ -7,6 +7,6 @@ import co.gobd.gofetch.model.Order;
 /**
  * Created by tonmoy on 01-Feb-16.
  */
-public interface OnDataReceive {
+public interface IDataReceive {
     void onReceive(List<Order> orders);
 }

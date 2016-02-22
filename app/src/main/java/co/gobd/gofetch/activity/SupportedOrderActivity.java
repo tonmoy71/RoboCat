@@ -8,8 +8,8 @@ import android.support.v7.widget.Toolbar;
 
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.adapter.SupportedOrderAdapter;
+import co.gobd.gofetch.service.ITrackerService;
 import co.gobd.gofetch.service.SignalRService;
-import co.gobd.gofetch.service.TrackerService;
 
 
 public class SupportedOrderActivity extends AppCompatActivity {
@@ -42,7 +42,7 @@ public class SupportedOrderActivity extends AppCompatActivity {
         SupportedOrderAdapter supportedOrderAdapter = new SupportedOrderAdapter(SupportedOrderActivity.this);
         rvSupportedOrder.setAdapter(supportedOrderAdapter);
 
-        TrackerService trackerService = new SignalRService();
+        ITrackerService trackerService = new SignalRService();
         trackerService.setup();
         trackerService.startConnection();
         trackerService.receiveData();

@@ -11,7 +11,7 @@ import retrofit2.http.GET;
 /**
  * Created by tonmoy on 01-Feb-16.
  */
-public interface SupportedOrderApi {
+public interface ISupportedOrderApi extends IBaseApi {
 
     @GET(Url.PATH_SUPPORTED_ORDER)
     Call<List<Order>> getSupportedOrders();

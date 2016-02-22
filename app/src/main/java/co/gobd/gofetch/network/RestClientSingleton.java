@@ -7,19 +7,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by tonmoy on 01-Feb-16.
  */
-public class RestClient {
+public class RestClientSingleton {
 
-    SupportedOrderApi supportedOrderApi;
+    ISupportedOrderApi supportedOrderApi;
 
-    public RestClient() {
+    public RestClientSingleton() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Url.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        supportedOrderApi = retrofit.create(SupportedOrderApi.class);
+        supportedOrderApi = retrofit.create(ISupportedOrderApi.class);
     }
 
-    public SupportedOrderApi getSupportedOrderApi() {
+    public ISupportedOrderApi getSupportedOrderApi() {
         return supportedOrderApi;
     }
 }
