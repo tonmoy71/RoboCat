@@ -7,9 +7,9 @@ import java.util.List;
 import co.gobd.gofetch.callback.OnDataReceive;
 import co.gobd.gofetch.model.Order;
 import co.gobd.gofetch.network.RestClient;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by tonmoy on 01-Feb-16.
@@ -26,17 +26,21 @@ public class SupportedOrderService {
 
     public void loadSupportedOrder() {
         RestClient client = new RestClient();
-        client.getSupportedOrderApi().getSupportedOrders(new Callback<List<Order>>() {
+        Call<List<Order>> call = client.getSupportedOrderApi().getSupportedOrders();
+        call.enqueue(new Callback<List<Order>>() {
             @Override
-            public void success(List<Order> orders, Response response) {
-                onDataReceive.onReceive(orders);
-                Log.i(TAG, orders.toString());
+            public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
+                if (response.isSuccess()) {
+                    onDataReceive.onReceive(response.body());
+                    Log.i(TAG, response.body().toString());
+                }
             }
 
             @Override
-            public void failure(RetrofitError error) {
+            public void onFailure(Call<List<Order>> call, Throwable t) {
 
             }
         });
+
     }
 }
