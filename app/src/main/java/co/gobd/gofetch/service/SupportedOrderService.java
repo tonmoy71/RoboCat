@@ -5,8 +5,10 @@ import android.util.Log;
 import java.util.List;
 
 import co.gobd.gofetch.callback.IDataReceive;
+import co.gobd.gofetch.config.Url;
 import co.gobd.gofetch.model.Order;
-import co.gobd.gofetch.network.RestClientSingleton;
+import co.gobd.gofetch.network.ISupportedOrderApi;
+import co.gobd.gofetch.network.RestClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,8 +27,8 @@ public class SupportedOrderService {
     }
 
     public void loadSupportedOrder() {
-        RestClientSingleton client = new RestClientSingleton();
-        Call<List<Order>> call = client.getSupportedOrderApi().getSupportedOrders();
+        ISupportedOrderApi api = RestClient.getApi(Url.BASE_URL, ISupportedOrderApi.class);
+        Call<List<Order>> call = api.getSupportedOrders();
         call.enqueue(new Callback<List<Order>>() {
             @Override
             public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
