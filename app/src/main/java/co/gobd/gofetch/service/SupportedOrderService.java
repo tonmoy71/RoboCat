@@ -7,7 +7,7 @@ import java.util.List;
 import co.gobd.gofetch.callback.IDataReceive;
 import co.gobd.gofetch.config.Url;
 import co.gobd.gofetch.model.Order;
-import co.gobd.gofetch.network.ISupportedOrderApi;
+import co.gobd.gofetch.network.OrderApi;
 import co.gobd.gofetch.network.RestClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,7 +27,7 @@ public class SupportedOrderService {
     }
 
     public void loadSupportedOrder() {
-        ISupportedOrderApi api = RestClient.getApi(Url.BASE_URL, ISupportedOrderApi.class);
+        OrderApi api = RestClient.getApi(Url.BASE_URL, OrderApi.class);
         Call<List<Order>> call = api.getSupportedOrders();
         call.enqueue(new Callback<List<Order>>() {
             @Override
