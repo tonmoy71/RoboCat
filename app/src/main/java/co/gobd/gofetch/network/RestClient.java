@@ -10,8 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RestClient {
 
-    //TODO Read stuff on Generics, assholes!
     public static <T> T getApi(String baseUrl, final Class<T> apiClass) {
+
 
         // To check request log
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();

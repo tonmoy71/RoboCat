@@ -1,34 +1,29 @@
 package co.gobd.gofetch.model.order;
 
-import java.util.Arrays;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by tonmoy on 29-Feb-16.
  */
 public class RideOrder extends BaseOrder {
 
+    @SerializedName("From")
+    private From from;
 
-    // FIXME Use SerializedName
-    private From From;
-    private To To;
-    private String[] VehiclePreference;
+    @SerializedName("To")
+    private To to;
 
-    @Override
-    public String toString() {
-        return "RideOrder{" +
-                "From=" + From +
-                ", To=" + To +
-                ", VehiclePreference=" + Arrays.toString(VehiclePreference) +
-                '}';
-    }
+    @SerializedName("VehiclePreference")
+    private String[] vehiclePreference;
 
     public RideOrder(String name, String type, From from, To to, String[] vehiclePreference) {
         super(name, type);
 
-        this.From = from;
-        this.To = to;
-        this.VehiclePreference = vehiclePreference;
-
+        this.from = from;
+        this.to = to;
+        this.vehiclePreference = vehiclePreference;
 
     }
+
+
 }

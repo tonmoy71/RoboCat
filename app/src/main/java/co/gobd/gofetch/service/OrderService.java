@@ -4,6 +4,7 @@ import android.util.Log;
 
 import co.gobd.gofetch.config.Url;
 import co.gobd.gofetch.model.order.BaseOrder;
+import co.gobd.gofetch.model.order.RideOrder;
 import co.gobd.gofetch.network.OrderApi;
 import co.gobd.gofetch.network.RestClient;
 import retrofit2.Call;
@@ -27,11 +28,9 @@ public class OrderService {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccess()) {
-                    Log.i(TAG, "POST order successful");
-                }
-                else
-                {
-                    Log.i(TAG, "POST order unsuccessful");
+                    Log.i(TAG, "POST order successful, status code: " + response.code());
+                } else {
+                    Log.i(TAG, "POST order unsuccessful , status code: " + response.code());
                 }
 
             }

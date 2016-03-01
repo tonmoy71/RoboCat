@@ -2,27 +2,38 @@ package co.gobd.gofetch.mock;
 
 import co.gobd.gofetch.model.order.BaseOrder;
 import co.gobd.gofetch.model.order.From;
+import co.gobd.gofetch.model.order.Point;
 import co.gobd.gofetch.model.order.RideOrder;
 import co.gobd.gofetch.model.order.To;
+import co.gobd.gofetch.service.ITrackerService;
 import co.gobd.gofetch.service.OrderService;
+import co.gobd.gofetch.service.SignalRService;
 
 /**
  * Created by tonmoy on 29-Feb-16.
  */
 public class FakeServiceCall {
 
+    // Start SignalR service
+    public static void startSignalR() {
+        ITrackerService trackerService = new SignalRService();
+        trackerService.setup();
+        trackerService.startConnection();
+        trackerService.receiveData();
+    }
+
+
     public static void postOrder() {
         OrderService service = new OrderService();
-        BaseOrder order = createFakeOrder();
+        BaseOrder order =  createFakeOrder();
         service.postOrder(order);
     }
 
     private static BaseOrder createFakeOrder() {
-
         String name = "Fahim";
         String type = "Ride";
-        From from = null;
-        To to = null;
+        From from = new From("Banani", new Point("Point", new String[]{"90", "21"}));
+        To to = new To("Mohammadpur", new Point("Point", new String[]{"90", "21"}));
         String[] vehiclePreference = new String[]{"Rickshaw", "CNG"};
 
         BaseOrder order = new RideOrder(name, type, from, to, vehiclePreference);

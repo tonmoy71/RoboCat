@@ -43,12 +43,7 @@ public class SupportedOrderActivity extends AppCompatActivity {
         SupportedOrderAdapter supportedOrderAdapter = new SupportedOrderAdapter(SupportedOrderActivity.this);
         rvSupportedOrder.setAdapter(supportedOrderAdapter);
 
-        // FIXME Move to proper place
-        // Testing different components
-        ITrackerService trackerService = new SignalRService();
-        trackerService.setup();
-        trackerService.startConnection();
-        trackerService.receiveData();
+
 
         FakeServiceCall.postOrder();
 

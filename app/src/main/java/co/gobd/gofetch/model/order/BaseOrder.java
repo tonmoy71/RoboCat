@@ -1,23 +1,36 @@
 package co.gobd.gofetch.model.order;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by tonmoy on 29-Feb-16.
  */
 public class BaseOrder {
 
+    @SerializedName("Name")
     String name;
-    String Type;
+
+    @SerializedName("Type")
+    String type;
+
+    @SerializedName("PayloadType")
     String payloadType;
+
+    @SerializedName("User")
     String user;
-    String ETA;
-    double ETAMinutes;
+
+    @SerializedName("ETA")
+    String eta;
+
+    @SerializedName("ETAMinutes")
+    double etaMinutes;
 
     public String getName() {
         return name;
     }
 
     public String getType() {
-        return Type;
+        return type;
     }
 
     public String getPayloadType() {
@@ -28,17 +41,17 @@ public class BaseOrder {
         return user;
     }
 
-    public String getETA() {
-        return ETA;
+    public String getEta() {
+        return eta;
     }
 
-    public double getETAMinutes() {
-        return ETAMinutes;
+    public double getEtaMinutes() {
+        return etaMinutes;
     }
 
     public BaseOrder(String name, String type) {
         this.name = name;
-        this.Type = type;
+        this.type = type;
     }
 
 
