@@ -5,4 +5,7 @@
     <string name="btn_ryde_request">Request ryde</string>
     <string name="empty_field_error">Empty location</string>
     <string name="title_activity_home_page">Supported orders</string>
+    <string name="from">FROM</string>
+    <string name="hint_location">Location</string>
+    <string name="hint_info">Note to driver</string>
 </resources>

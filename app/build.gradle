@@ -35,7 +35,7 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
 
     /* Retrofit and dependencies */
-    compile ('com.squareup.retrofit2:retrofit:2.0.0-beta4') {
+    compile('com.squareup.retrofit2:retrofit:2.0.0-beta4') {
         // exclude Retrofit’s OkHttp peer-dependency module and define your own module import
         exclude module: 'okhttp'
     }
@@ -44,4 +44,6 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.0.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
 
+    /* Material EditText */
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
 }
