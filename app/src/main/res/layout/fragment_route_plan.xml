@@ -5,8 +5,11 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+
         app:cardCornerRadius="2dp">
 
         <RelativeLayout
@@ -19,6 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+
                 android:text="@string/from"
                 android:textSize="16sp" />
 
@@ -33,7 +37,7 @@
                 app:met_hideUnderline="true" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/et_to_location"
+                android:id="@+id/et_note_from"
 
                 style="@style/MaterialEditText"
 
@@ -48,5 +52,72 @@
 
 
     </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+
+        android:layout_below="@+id/view"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_title_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/to"
+                android:textSize="16sp" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_to_location"
+
+                style="@style/MaterialEditText"
+
+                android:layout_below="@id/tv_title_to"
+                android:drawableLeft="@drawable/ic_location_on_green_500_18dp"
+                android:drawableStart="@drawable/ic_location_on_green_500_18dp"
+                android:hint="@string/hint_location"
+                app:met_hideUnderline="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_note_to"
+
+                style="@style/MaterialEditText"
+
+                android:layout_below="@id/et_to_location"
+                android:drawableLeft="@drawable/ic_textsms_green_500_18dp"
+                android:drawableStart="@drawable/ic_textsms_green_500_18dp"
+                android:hint="@string/hint_info"
+                app:met_clearButton="true"
+                app:met_hideUnderline="true" />
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:id="@+id/btn_route_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/button_route_plan_next"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+
+         />
 
 </RelativeLayout>
