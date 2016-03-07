@@ -3,7 +3,6 @@ package co.gobd.gofetch.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -15,24 +14,33 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
+import com.google.android.gms.maps.model.LatLng;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import co.gobd.gofetch.R;
+import co.gobd.gofetch.presenter.RoutePlanPresenter;
 import co.gobd.gofetch.view.RoutePlanView;
+
+import static co.gobd.gofetch.utility.Constant.*;
 
 public class RoutePlanFragment extends Fragment implements RoutePlanView {
 
     private static final String TAG = "RoutePlanFragment";
 
     /* Initialize Google Place Picker*/
-    final int FROM_PLACE_PICKER_REQUEST = 1;
-    final int TO_PLACE_PICKER_REQUEST = 2;
     PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
 
-    /* Initialize view */
+    /* Presenter */
+    RoutePlanPresenter routePlanPresenter;
+
+    /* Starting point and destination positions */
+    LatLng startingPoint;
+    LatLng destinationPoint;
+
+    /* Initialize view with ButterKnife */
     @Bind(R.id.cv_from)
     CardView cvFrom;
     @Bind(R.id.tv_title_from)
@@ -50,7 +58,6 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     @Bind(R.id.et_note_to)
     MaterialEditText etNoteTo;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +73,8 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+
+        routePlanPresenter = new RoutePlanPresenter(this);
     }
 
     @Override
@@ -80,8 +89,8 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     }
 
     @OnClick(R.id.btn_route_next)
-    void onBtnRouteNextClick() {
-        //TODO implement
+    void onButtonClick() {
+        routePlanPresenter.onButtonClick();
     }
 
 
@@ -89,29 +98,32 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
-            case FROM_PLACE_PICKER_REQUEST:
+            case REQUEST_CODE_STARTING_POINT:
                 switch (resultCode) {
                     case Activity.RESULT_OK:
                         Place place = PlacePicker.getPlace(getContext(), data);
-                        Log.i(TAG, place.getName().toString());
+                        routePlanPresenter.onPlaceDataReceived(place, REQUEST_CODE_STARTING_POINT);
                         break;
                 }
-            case TO_PLACE_PICKER_REQUEST:
-                switch (resultCode) {
-                    case Activity.RESULT_OK:
-                        Place place = PlacePicker.getPlace(getContext(), data);
-                        Log.i(TAG, place.getName().toString());
-                        break;
-                }
+                break;
 
+            case REQUEST_CODE_DESTINATION_POINT:
+                switch (resultCode) {
+                    case Activity.RESULT_OK:
+                        Place place = PlacePicker.getPlace(getContext(), data);
+                        routePlanPresenter.onPlaceDataReceived(place, REQUEST_CODE_DESTINATION_POINT);
+                        break;
+                }
+                break;
         }
     }
 
     @OnClick(R.id.et_from_location)
     void onFromClick() {
+        // Starts Google Place Picker UI control
         try {
             startActivityForResult(builder.build(getActivity()),
-                    FROM_PLACE_PICKER_REQUEST);
+                    REQUEST_CODE_STARTING_POINT);
         } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
             e.printStackTrace();
         }
@@ -119,9 +131,10 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
 
     @OnClick(R.id.et_to_location)
     void onToClick() {
+        // Starts Google Place Picker UI control
         try {
             startActivityForResult(builder.build(getActivity()),
-                    TO_PLACE_PICKER_REQUEST);
+                    REQUEST_CODE_DESTINATION_POINT);
         } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
             e.printStackTrace();
         }
@@ -138,27 +151,23 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     }
 
     @Override
-    public void getFromPoint() {
-
+    public void setStartingPoint(LatLng latLng) {
+        startingPoint = latLng;
     }
 
     @Override
-    public void getToPoint() {
+    public void setDestinationPoint(LatLng latLng) {
+        destinationPoint = latLng;
+    }
 
+
+    @Override
+    public void setFromEditTextLocation(String placeName) {
+        etFromLocation.setText(placeName);
     }
 
     @Override
-    public void onNextButtonCLick() {
-
-    }
-
-    @Override
-    public void updateFromLocation() {
-
-    }
-
-    @Override
-    public void updateToLocation() {
-
+    public void setToEditTextLocation(String placeName) {
+        etToLocation.setText(placeName);
     }
 }

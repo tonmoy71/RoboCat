@@ -1,6 +1,6 @@
 package co.gobd.gofetch.view;
 
-import android.view.View;
+import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Created by tonmoy on 07-Mar-16.
@@ -12,13 +12,12 @@ public interface RoutePlanView {
 
     void getToLocationAddress();
 
-    void getFromPoint();
+    void setStartingPoint(LatLng latLng);
 
-    void getToPoint();
+    void setDestinationPoint(LatLng latLng);
 
-    void onNextButtonCLick();
 
-    void updateFromLocation();
+    void setFromEditTextLocation(String placeName);
 
-    void updateToLocation();
+    void setToEditTextLocation(String placeName);
 }
