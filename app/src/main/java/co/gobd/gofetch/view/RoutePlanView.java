@@ -1,16 +1,24 @@
 package co.gobd.gofetch.view;
 
-import android.widget.EditText;
+import android.view.View;
 
 /**
- * Created by tonmoy on 13-Jan-16.
+ * Created by tonmoy on 07-Mar-16.
  */
 public interface RoutePlanView {
 
-    String getFromLocation();
 
-    String getToLocation();
+    void getFromLocationAddress();
 
-    void showEmptyFieldError();
+    void getToLocationAddress();
 
+    void getFromPoint();
+
+    void getToPoint();
+
+    void onNextButtonCLick();
+
+    void updateFromLocation();
+
+    void updateToLocation();
 }

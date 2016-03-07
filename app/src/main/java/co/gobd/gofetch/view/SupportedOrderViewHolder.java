@@ -1,5 +1,6 @@
 package co.gobd.gofetch.view;
 
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -31,5 +32,8 @@ public class SupportedOrderViewHolder extends RecyclerView.ViewHolder implements
     public void onClick(View v) {
 
         Toast.makeText(v.getContext(), "Item clicked", Toast.LENGTH_SHORT).show();
+
+        //FIXME Move to proper place
+
     }
 }
