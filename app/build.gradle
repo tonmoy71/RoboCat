@@ -46,4 +46,7 @@ dependencies {
 
     /* Material EditText */
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
+
+    /* ButterKnife */
+    compile 'com.jakewharton:butterknife:7.0.1'
 }
