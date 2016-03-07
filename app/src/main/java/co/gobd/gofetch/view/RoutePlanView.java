@@ -7,7 +7,6 @@ import com.google.android.gms.maps.model.LatLng;
  */
 public interface RoutePlanView {
 
-
     void getFromLocationAddress();
 
     void getToLocationAddress();
@@ -15,7 +14,6 @@ public interface RoutePlanView {
     void setStartingPoint(LatLng latLng);
 
     void setDestinationPoint(LatLng latLng);
-
 
     void setFromEditTextLocation(String placeName);
 
