@@ -47,5 +47,8 @@
         <item name="android:drawablePadding">8dp</item>
     </style>
 
+    <style name="ButtonStyle">
+
+    </style>
 
 </resources>
