@@ -3,6 +3,7 @@ package co.gobd.gofetch.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -19,14 +20,16 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnLongClick;
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.view.RoutePlanView;
 
 public class RoutePlanFragment extends Fragment implements RoutePlanView {
 
+    private static final String TAG = "RoutePlanFragment";
+
     /* Initialize Google Place Picker*/
-    final int PLACE_PICKER_REQUEST = 1;
+    final int FROM_PLACE_PICKER_REQUEST = 1;
+    final int TO_PLACE_PICKER_REQUEST = 2;
     PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
 
     /* Initialize view */
@@ -82,23 +85,33 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     }
 
 
-    // TODO Need to figure out how to handle two EditText references
+    // Google Place Picker returns the result here
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
-            case PLACE_PICKER_REQUEST:
+            case FROM_PLACE_PICKER_REQUEST:
                 switch (resultCode) {
                     case Activity.RESULT_OK:
                         Place place = PlacePicker.getPlace(getContext(), data);
+                        Log.i(TAG, place.getName().toString());
                         break;
                 }
+            case TO_PLACE_PICKER_REQUEST:
+                switch (resultCode) {
+                    case Activity.RESULT_OK:
+                        Place place = PlacePicker.getPlace(getContext(), data);
+                        Log.i(TAG, place.getName().toString());
+                        break;
+                }
+
         }
     }
 
     @OnClick(R.id.et_from_location)
     void onFromClick() {
         try {
-            startActivityForResult(builder.build(getActivity()), PLACE_PICKER_REQUEST);
+            startActivityForResult(builder.build(getActivity()),
+                    FROM_PLACE_PICKER_REQUEST);
         } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
             e.printStackTrace();
         }
@@ -106,7 +119,12 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
 
     @OnClick(R.id.et_to_location)
     void onToClick() {
-        // TODO Call presenter method
+        try {
+            startActivityForResult(builder.build(getActivity()),
+                    TO_PLACE_PICKER_REQUEST);
+        } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
