@@ -2,7 +2,6 @@ package co.gobd.gofetch.presenter;
 
 import com.google.android.gms.location.places.Place;
 
-import co.gobd.gofetch.utility.Constant;
 import co.gobd.gofetch.view.RoutePlanView;
 
 import static co.gobd.gofetch.utility.Constant.REQUEST_CODE_DESTINATION_POINT;
@@ -42,9 +41,20 @@ public class RoutePlanPresenter {
     }
 
 
-    public void onButtonClick()
-    {
+    public void onButtonClick() {
         // TODO Implement the "Next" button click behavior here
+        String startingPointAddress = routePlanView.getStartingPointAddress();
+        if (startingPointAddress.isEmpty()) {
+            routePlanView.showErrorOnEmptyStartingPointAddress();
+            return;
+        }
+
+        String destinationAddress = routePlanView.getDestinationAddress();
+        if (destinationAddress.isEmpty()) {
+            routePlanView.showErrorOnEmptyDestinationAddress();
+            return;
+        }
+
     }
 
 }

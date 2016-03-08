@@ -141,13 +141,13 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     }
 
     @Override
-    public void getFromLocationAddress() {
-
+    public String getStartingPointAddress() {
+        return etFromLocation.getText().toString();
     }
 
     @Override
-    public void getToLocationAddress() {
-
+    public String getDestinationAddress() {
+        return etToLocation.getText().toString();
     }
 
     @Override
@@ -169,5 +169,15 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     @Override
     public void setToEditTextLocation(String placeName) {
         etToLocation.setText(placeName);
+    }
+
+    @Override
+    public void showErrorOnEmptyStartingPointAddress() {
+        //TODO Implement a shake animation on etFromLocation
+    }
+
+    @Override
+    public void showErrorOnEmptyDestinationAddress() {
+        //TODO Implement a shake animation on etToLocation
     }
 }
