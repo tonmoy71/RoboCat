@@ -1,36 +1,50 @@
 package co.gobd.gofetch.presenter;
 
-import android.util.Log;
+import com.google.android.gms.location.places.Place;
 
+import co.gobd.gofetch.utility.Constant;
 import co.gobd.gofetch.view.RoutePlanView;
 
+import static co.gobd.gofetch.utility.Constant.REQUEST_CODE_DESTINATION_POINT;
+import static co.gobd.gofetch.utility.Constant.REQUEST_CODE_STARTING_POINT;
+
 /**
- * Created by tonmoy on 13-Jan-16.
+ * Created by tonmoy on 07-Mar-16.
  */
 public class RoutePlanPresenter {
 
-    private static final String LOG_TAG = RoutePlanPresenter.class.getSimpleName();
-    private RoutePlanView view;
+    private RoutePlanView routePlanView;
 
-    public RoutePlanPresenter(RoutePlanView view) {
-        this.view = view;
+    public RoutePlanPresenter(RoutePlanView routePlanView) {
+        this.routePlanView = routePlanView;
     }
 
-    public void onRequestRydeClicked() {
-        String from = view.getFromLocation();
-        String to = view.getToLocation();
+    /**
+     * Updates the EditText with respective place name, also
+     * sets the starting and destination point.
+     *
+     * @param place       Place received from Google Place Picker
+     * @param requestCode Code to determine which EditText is selected
+     */
+    //FIXME Make requestCode as Enum
+    public void onPlaceDataReceived(Place place, int requestCode) {
+        switch (requestCode) {
+            case REQUEST_CODE_STARTING_POINT:
+                routePlanView.setFromEditTextLocation(place.getName().toString());
+                routePlanView.setStartingPoint(place.getLatLng());
+                break;
 
-        Log.i(LOG_TAG, from + ", " + to);
-
-        if (from.isEmpty()) {
-            view.showEmptyFieldError();
-            return;
+            case REQUEST_CODE_DESTINATION_POINT:
+                routePlanView.setToEditTextLocation(place.getName().toString());
+                routePlanView.setDestinationPoint(place.getLatLng());
+                break;
         }
+    }
 
-        if (to.isEmpty()) {
-            view.showEmptyFieldError();
-            return;
-        }
+
+    public void onButtonClick()
+    {
+        // TODO Implement the "Next" button click behavior here
     }
 
 }

@@ -1,16 +1,21 @@
 package co.gobd.gofetch.view;
 
-import android.widget.EditText;
+import com.google.android.gms.maps.model.LatLng;
 
 /**
- * Created by tonmoy on 13-Jan-16.
+ * Created by tonmoy on 07-Mar-16.
  */
 public interface RoutePlanView {
 
-    String getFromLocation();
+    void getFromLocationAddress();
 
-    String getToLocation();
+    void getToLocationAddress();
 
-    void showEmptyFieldError();
+    void setStartingPoint(LatLng latLng);
 
+    void setDestinationPoint(LatLng latLng);
+
+    void setFromEditTextLocation(String placeName);
+
+    void setToEditTextLocation(String placeName);
 }

@@ -11,10 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activity.RoutePlanActivity">
-
-        </activity>
-
         <!-- Google Maps for Android -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
