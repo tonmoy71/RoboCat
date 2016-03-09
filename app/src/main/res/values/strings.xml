@@ -7,6 +7,7 @@
     <string name="title_activity_home_page">Supported orders</string>
     <string name="from">FROM</string>
     <string name="hint_location">Location</string>
+    <string name="hint_address">Address</string>
     <string name="hint_info">Note to driver</string>
     <string name="to">TO</string>
     <string name="button_route_plan_next">NEXT</string>
