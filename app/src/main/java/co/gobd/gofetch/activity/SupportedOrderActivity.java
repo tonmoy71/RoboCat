@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.adapter.SupportedOrderAdapter;
@@ -29,6 +30,7 @@ public class SupportedOrderActivity extends AppCompatActivity {
 
         RecyclerView rvSupportedOrder = (RecyclerView) findViewById(R.id.recycler_view_supported_order);
         rvSupportedOrder.setHasFixedSize(false);
+        View view = findViewById(R.id.toolbar);
 
         // Number of columns in the staggered grid view
         final int SPAN_COUNT = 2;
