@@ -1,7 +1,12 @@
 package co.gobd.gofetch.presenter;
 
-import com.google.android.gms.location.places.Place;
+import android.os.Bundle;
 
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.maps.model.LatLng;
+
+import co.gobd.gofetch.enums.LocationTypeEnum;
+import co.gobd.gofetch.utility.Constant;
 import co.gobd.gofetch.view.RoutePlanView;
 
 import static co.gobd.gofetch.utility.Constant.REQUEST_CODE_DESTINATION_POINT;
@@ -25,32 +30,54 @@ public class RoutePlanPresenter {
      * @param place       Place received from Google Place Picker
      * @param requestCode Code to determine which EditText is selected
      */
-    //FIXME Make requestCode as Enum
     public void onPlaceDataReceived(Place place, int requestCode) {
-        if (requestCode == REQUEST_CODE_STARTING_POINT) {
-            routePlanView.setFromEditTextLocation(place.getName().toString());
-            routePlanView.setStartingPoint(place.getLatLng());
+        if (place != null) {
+            if (requestCode == REQUEST_CODE_STARTING_POINT) {
+                routePlanView.setFromEditTextLocation(place.getName().toString());
+                routePlanView.setStartingPoint(place.getLatLng());
 
-        } else if (requestCode == REQUEST_CODE_DESTINATION_POINT) {
-            routePlanView.setToEditTextLocation(place.getName().toString());
-            routePlanView.setDestinationPoint(place.getLatLng());
+            } else if (requestCode == REQUEST_CODE_DESTINATION_POINT) {
+                routePlanView.setToEditTextLocation(place.getName().toString());
+                routePlanView.setDestinationPoint(place.getLatLng());
 
+            }
         }
     }
 
 
     public void onButtonClick() {
-        // TODO Implement the "Next" button click behavior here
+
         String startingPointAddress = routePlanView.getStartingPointAddress();
         if (startingPointAddress.isEmpty()) {
-            routePlanView.showErrorOnEmptyStartingPointAddress();
-            return;
+            routePlanView.showErrorOnEmptyAddress(LocationTypeEnum.STARTING_POINT);
         }
 
-        String destinationAddress = routePlanView.getDestinationAddress();
-        if (destinationAddress.isEmpty()) {
-            routePlanView.showErrorOnEmptyDestinationAddress();
-            return;
+        String destinationPointAddress = routePlanView.getDestinationAddress();
+        if (destinationPointAddress.isEmpty()) {
+            routePlanView.showErrorOnEmptyAddress(LocationTypeEnum.DESTINATION_POINT);
+        }
+
+        LatLng startingPoint = routePlanView.getStartingPoint();
+        LatLng destinationPoint = routePlanView.getDestinationPoint();
+
+        String startingPointNote = routePlanView.getStartingPointNote();
+        String destinationPointNote = routePlanView.getDestinationPointNote();
+
+
+        if (startingPoint != null && destinationPoint != null) {
+            Bundle bundle = new Bundle();
+
+            bundle.putParcelable(Constant.KEY_START_LATLNG, startingPoint);
+            bundle.putParcelable(Constant.KEY_DESTINATION_LATLNG, destinationPoint);
+
+            bundle.putString(Constant.KEY_START_ADDRESS, startingPointAddress);
+            bundle.putString(Constant.KEY_DESTINATION_ADDRESS, destinationPointAddress);
+
+            bundle.putString(Constant.KEY_START_NOTE, startingPointNote);
+            bundle.putString(Constant.KEY_DESTINATION_NOTE, destinationPointNote);
+
+            routePlanView.onReceiveRouteData(bundle);
+
         }
 
     }

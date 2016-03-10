@@ -47,7 +47,7 @@
                         android:layout_marginBottom="8dp"/>
 
                     <com.rengwuxian.materialedittext.MaterialEditText
-                        android:id="@+id/et_from_location"
+                        android:id="@+id/et_start_location"
 
                         style="@style/MaterialEditText"
 
@@ -59,11 +59,11 @@
                         app:met_primaryColor="@color/colorAlternateGreen"/>
 
                     <com.rengwuxian.materialedittext.MaterialEditText
-                        android:id="@+id/et_from_address"
+                        android:id="@+id/et_start_address"
 
                         style="@style/MaterialEditText"
 
-                        android:layout_below="@id/et_from_location"
+                        android:layout_below="@id/et_start_location"
                         android:drawableLeft="@drawable/ic_home_green_500_18dp"
                         android:drawableStart="@drawable/ic_home_green_500_18dp"
                         android:hint="@string/hint_address"
@@ -73,11 +73,11 @@
                         app:met_primaryColor="@color/colorAlternateGreen"/>
 
                     <com.rengwuxian.materialedittext.MaterialEditText
-                        android:id="@+id/et_note_from"
+                        android:id="@+id/et_start_note"
 
                         style="@style/MaterialEditText"
 
-                        android:layout_below="@id/et_from_address"
+                        android:layout_below="@id/et_start_address"
                         android:drawableLeft="@drawable/ic_insert_comment_green_500_18dp"
                         android:drawableStart="@drawable/ic_insert_comment_green_500_18dp"
                         android:hint="@string/hint_info"
@@ -123,7 +123,7 @@
                         android:layout_marginBottom="8dp"/>
 
                     <com.rengwuxian.materialedittext.MaterialEditText
-                        android:id="@+id/et_to_location"
+                        android:id="@+id/et_destination_location"
 
                         style="@style/MaterialEditText"
 
@@ -136,11 +136,11 @@
                         app:met_primaryColor="@color/red_500"/>
 
                     <com.rengwuxian.materialedittext.MaterialEditText
-                        android:id="@+id/et_to_address"
+                        android:id="@+id/et_destination_address"
 
                         style="@style/MaterialEditText"
 
-                        android:layout_below="@id/et_to_location"
+                        android:layout_below="@id/et_destination_location"
                         android:drawableLeft="@drawable/ic_home_red_500_18dp"
                         android:drawableStart="@drawable/ic_home_red_500_18dp"
                         android:hint="@string/hint_address"
@@ -150,11 +150,11 @@
                         app:met_primaryColor="@color/red_500"/>
 
                     <com.rengwuxian.materialedittext.MaterialEditText
-                        android:id="@+id/et_note_to"
+                        android:id="@+id/et_destination_note"
 
                         style="@style/MaterialEditText"
 
-                        android:layout_below="@id/et_to_address"
+                        android:layout_below="@id/et_destination_address"
                         android:drawableLeft="@drawable/ic_insert_comment_red_500_18dp"
                         android:drawableStart="@drawable/ic_insert_comment_red_500_18dp"
                         android:hint="@string/hint_info"

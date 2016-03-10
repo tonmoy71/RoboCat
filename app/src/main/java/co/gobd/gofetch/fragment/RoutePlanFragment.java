@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
-import android.widget.TextView;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -23,6 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.callback.RideFragmentCallback;
+import co.gobd.gofetch.enums.LocationTypeEnum;
 import co.gobd.gofetch.presenter.RoutePlanPresenter;
 import co.gobd.gofetch.view.RoutePlanView;
 
@@ -31,6 +30,25 @@ import static co.gobd.gofetch.utility.Constant.*;
 public class RoutePlanFragment extends Fragment implements RoutePlanView {
 
     private static final String TAG = "RoutePlanFragment";
+
+    /* Initialize view with ButterKnife */
+    @Bind(R.id.et_start_location)
+    MaterialEditText etStartingLocation;
+
+    @Bind(R.id.et_start_address)
+    MaterialEditText etStartAddress;
+
+    @Bind(R.id.et_start_note)
+    MaterialEditText etStartNote;
+
+    @Bind(R.id.et_destination_location)
+    MaterialEditText etDestinationLocation;
+
+    @Bind(R.id.et_destination_address)
+    MaterialEditText etDestinationAddress;
+
+    @Bind(R.id.et_destination_note)
+    MaterialEditText etNoteDestination;
 
     /* Initialize Google Place Picker*/
     private PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
@@ -41,25 +59,6 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     /* Starting point and destination positions */
     private LatLng startingPoint;
     private LatLng destinationPoint;
-
-    /* Initialize view with ButterKnife */
-    @Bind(R.id.cv_from)
-    CardView cvFrom;
-    @Bind(R.id.tv_title_from)
-    TextView tvTitleFrom;
-    @Bind(R.id.et_from_location)
-    MaterialEditText etFromLocation;
-    @Bind(R.id.et_note_from)
-    MaterialEditText etNoteFrom;
-    @Bind(R.id.cv_to)
-    CardView cvTo;
-    @Bind(R.id.tv_title_to)
-    TextView tvTitleTo;
-    @Bind(R.id.et_to_location)
-    MaterialEditText etToLocation;
-    @Bind(R.id.et_note_to)
-    MaterialEditText etNoteTo;
-
 
     /* Callback to update activity */
     private RideFragmentCallback callback;
@@ -133,7 +132,7 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
         }
     }
 
-    @OnClick(R.id.et_from_location)
+    @OnClick(R.id.et_start_location)
     void onFromClick() {
         // Starts Google Place Picker UI control
         try {
@@ -144,7 +143,7 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
         }
     }
 
-    @OnClick(R.id.et_to_location)
+    @OnClick(R.id.et_destination_location)
     void onToClick() {
         // Starts Google Place Picker UI control
         try {
@@ -157,17 +156,17 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
 
     @Override
     public String getStartingPointAddress() {
-        return etFromLocation.getText().toString();
+        return etStartAddress.getText().toString();
     }
 
     @Override
     public String getDestinationAddress() {
-        return etToLocation.getText().toString();
+        return etDestinationAddress.getText().toString();
     }
 
     @Override
-    public void setStartingPoint(LatLng latLng) {
-        startingPoint = latLng;
+    public LatLng getDestinationPoint() {
+        return destinationPoint;
     }
 
     @Override
@@ -176,27 +175,48 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     }
 
     @Override
+    public String getStartingPointNote() {
+        return etStartNote.getText().toString();
+    }
+
+    @Override
+    public String getDestinationPointNote() {
+        return etNoteDestination.getText().toString();
+    }
+
+    @Override
     public void setFromEditTextLocation(String placeName) {
-        etFromLocation.setText(placeName);
+        etStartingLocation.setText(placeName);
     }
 
     @Override
     public void setToEditTextLocation(String placeName) {
-        etToLocation.setText(placeName);
+        etDestinationLocation.setText(placeName);
     }
 
     @Override
-    public void showErrorOnEmptyStartingPointAddress() {
-        //TODO Implement a shake animation on etFromLocation
+    public void showErrorOnEmptyAddress(LocationTypeEnum locationType) {
+        if (locationType == LocationTypeEnum.STARTING_POINT) {
+            //TODO Shake etStartLocation
+        } else if (locationType == LocationTypeEnum.DESTINATION_POINT) {
+            //TODO Shake etDestinationLocation
+        }
     }
 
     @Override
-    public void showErrorOnEmptyDestinationAddress() {
-        //TODO Implement a shake animation on etToLocation
+    public void onReceiveRouteData(Bundle bundle) {
+        callback.loadConfirmationFragment(bundle);
     }
 
     @Override
-    public void loadConfirmationFragment() {
-        callback.loadConfirmationFragment();
+    public LatLng getStartingPoint() {
+        return startingPoint;
     }
+
+    @Override
+    public void setStartingPoint(LatLng latLng) {
+        startingPoint = latLng;
+    }
+
+
 }
