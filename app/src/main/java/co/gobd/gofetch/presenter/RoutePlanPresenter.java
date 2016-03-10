@@ -27,16 +27,14 @@ public class RoutePlanPresenter {
      */
     //FIXME Make requestCode as Enum
     public void onPlaceDataReceived(Place place, int requestCode) {
-        switch (requestCode) {
-            case REQUEST_CODE_STARTING_POINT:
-                routePlanView.setFromEditTextLocation(place.getName().toString());
-                routePlanView.setStartingPoint(place.getLatLng());
-                break;
+        if (requestCode == REQUEST_CODE_STARTING_POINT) {
+            routePlanView.setFromEditTextLocation(place.getName().toString());
+            routePlanView.setStartingPoint(place.getLatLng());
 
-            case REQUEST_CODE_DESTINATION_POINT:
-                routePlanView.setToEditTextLocation(place.getName().toString());
-                routePlanView.setDestinationPoint(place.getLatLng());
-                break;
+        } else if (requestCode == REQUEST_CODE_DESTINATION_POINT) {
+            routePlanView.setToEditTextLocation(place.getName().toString());
+            routePlanView.setDestinationPoint(place.getLatLng());
+
         }
     }
 

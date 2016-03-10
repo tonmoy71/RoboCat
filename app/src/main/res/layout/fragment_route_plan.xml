@@ -30,7 +30,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rectangle_outlined_alternate_green"
+
 
                     android:padding="16dp">
 
@@ -107,7 +107,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rectangle_outlined_red"
+
                     android:padding="16dp">
 
                     <TextView

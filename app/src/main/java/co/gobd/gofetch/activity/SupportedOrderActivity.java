@@ -30,7 +30,6 @@ public class SupportedOrderActivity extends AppCompatActivity {
 
         RecyclerView rvSupportedOrder = (RecyclerView) findViewById(R.id.recycler_view_supported_order);
         rvSupportedOrder.setHasFixedSize(false);
-        View view = findViewById(R.id.toolbar);
 
         // Number of columns in the staggered grid view
         final int SPAN_COUNT = 2;
@@ -51,13 +50,7 @@ public class SupportedOrderActivity extends AppCompatActivity {
         //FIXME Move to proper place
         FakeServiceCall.postOrder();
 
-        //FIXME Move to proper place
-        // TODO Test if fragment works
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        RoutePlanFragment routePlanFragment = new RoutePlanFragment();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, routePlanFragment)
-                .commit();
+
 
 
 

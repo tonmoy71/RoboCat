@@ -1,6 +1,7 @@
 package co.gobd.gofetch.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -21,6 +22,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import co.gobd.gofetch.R;
+import co.gobd.gofetch.callback.RideFragmentCallback;
 import co.gobd.gofetch.presenter.RoutePlanPresenter;
 import co.gobd.gofetch.view.RoutePlanView;
 
@@ -31,14 +33,14 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     private static final String TAG = "RoutePlanFragment";
 
     /* Initialize Google Place Picker*/
-    PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+    private PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
 
     /* Presenter */
-    RoutePlanPresenter routePlanPresenter;
+    private RoutePlanPresenter routePlanPresenter;
 
     /* Starting point and destination positions */
-    LatLng startingPoint;
-    LatLng destinationPoint;
+    private LatLng startingPoint;
+    private LatLng destinationPoint;
 
     /* Initialize view with ButterKnife */
     @Bind(R.id.cv_from)
@@ -57,6 +59,15 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     MaterialEditText etToLocation;
     @Bind(R.id.et_note_to)
     MaterialEditText etNoteTo;
+
+
+    /* Callback to update activity */
+    private RideFragmentCallback callback;
+
+    //Empty constructor for fragment initialization
+    public RoutePlanFragment() {
+
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,6 +89,15 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        // Casting the context into RideFragmentCallback
+        // to update it's attached activity
+        callback = (RideFragmentCallback) context;
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
     }
@@ -93,28 +113,23 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
         routePlanPresenter.onButtonClick();
     }
 
-
     // Google Place Picker returns the result here
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case REQUEST_CODE_STARTING_POINT:
-                switch (resultCode) {
-                    case Activity.RESULT_OK:
-                        Place place = PlacePicker.getPlace(getContext(), data);
-                        routePlanPresenter.onPlaceDataReceived(place, REQUEST_CODE_STARTING_POINT);
-                        break;
-                }
-                break;
+        if (requestCode == REQUEST_CODE_STARTING_POINT) {
+            if (resultCode == Activity.RESULT_OK) {
+                Place place = PlacePicker.getPlace(getContext(), data);
+                routePlanPresenter.onPlaceDataReceived(place, REQUEST_CODE_STARTING_POINT);
 
-            case REQUEST_CODE_DESTINATION_POINT:
-                switch (resultCode) {
-                    case Activity.RESULT_OK:
-                        Place place = PlacePicker.getPlace(getContext(), data);
-                        routePlanPresenter.onPlaceDataReceived(place, REQUEST_CODE_DESTINATION_POINT);
-                        break;
-                }
-                break;
+            }
+
+        } else if (requestCode == REQUEST_CODE_DESTINATION_POINT) {
+            if (resultCode == Activity.RESULT_OK) {
+                Place place = PlacePicker.getPlace(getContext(), data);
+                routePlanPresenter.onPlaceDataReceived(place, REQUEST_CODE_DESTINATION_POINT);
+
+            }
+
         }
     }
 
@@ -160,7 +175,6 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
         destinationPoint = latLng;
     }
 
-
     @Override
     public void setFromEditTextLocation(String placeName) {
         etFromLocation.setText(placeName);
@@ -179,5 +193,10 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     @Override
     public void showErrorOnEmptyDestinationAddress() {
         //TODO Implement a shake animation on etToLocation
+    }
+
+    @Override
+    public void loadConfirmationFragment() {
+        callback.loadConfirmationFragment();
     }
 }
