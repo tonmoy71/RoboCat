@@ -1,20 +1,14 @@
 package co.gobd.gofetch.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.adapter.SupportedOrderAdapter;
-import co.gobd.gofetch.fragment.RoutePlanFragment;
 import co.gobd.gofetch.mock.FakeServiceCall;
-import co.gobd.gofetch.service.ITrackerService;
-import co.gobd.gofetch.service.SignalRService;
 
 
 public class SupportedOrderActivity extends AppCompatActivity {

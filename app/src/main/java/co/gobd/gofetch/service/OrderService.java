@@ -4,7 +4,6 @@ import android.util.Log;
 
 import co.gobd.gofetch.config.Url;
 import co.gobd.gofetch.model.order.BaseOrder;
-import co.gobd.gofetch.model.order.RideOrder;
 import co.gobd.gofetch.network.OrderApi;
 import co.gobd.gofetch.network.RestClient;
 import retrofit2.Call;

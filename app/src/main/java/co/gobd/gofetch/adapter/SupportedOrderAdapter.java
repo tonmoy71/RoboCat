@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.gobd.gofetch.R;
-import co.gobd.gofetch.callback.IDataReceive;
+import co.gobd.gofetch.callback.OnOrderDataReceive;
 import co.gobd.gofetch.model.Order;
 import co.gobd.gofetch.service.SupportedOrderService;
 import co.gobd.gofetch.view.SupportedOrderViewHolder;
@@ -22,7 +22,7 @@ import co.gobd.gofetch.view.SupportedOrderViewHolder;
 /**
  * Created by tonmoy on 20-Jan-16.
  */
-public class SupportedOrderAdapter extends RecyclerView.Adapter<SupportedOrderViewHolder> implements IDataReceive {
+public class SupportedOrderAdapter extends RecyclerView.Adapter<SupportedOrderViewHolder> implements OnOrderDataReceive {
 
     private List<Order> itemList;
     private Context context;

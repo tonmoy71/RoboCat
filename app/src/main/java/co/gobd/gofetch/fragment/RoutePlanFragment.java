@@ -63,9 +63,9 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     /* Callback to update activity */
     private RideFragmentCallback callback;
 
-    //Empty constructor for fragment initialization
-    public RoutePlanFragment() {
 
+    public RoutePlanFragment() {
+        //Empty constructor for fragment initialization
     }
 
     @Override

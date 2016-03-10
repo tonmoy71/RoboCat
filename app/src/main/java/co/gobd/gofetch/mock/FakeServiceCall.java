@@ -5,7 +5,7 @@ import co.gobd.gofetch.model.order.From;
 import co.gobd.gofetch.model.order.Point;
 import co.gobd.gofetch.model.order.RideOrder;
 import co.gobd.gofetch.model.order.To;
-import co.gobd.gofetch.service.ITrackerService;
+import co.gobd.gofetch.service.BaseTrackerService;
 import co.gobd.gofetch.service.OrderService;
 import co.gobd.gofetch.service.SignalRService;
 
@@ -16,7 +16,7 @@ public class FakeServiceCall {
 
     // Start SignalR service
     public static void startSignalR() {
-        ITrackerService trackerService = new SignalRService();
+        BaseTrackerService trackerService = new SignalRService();
         trackerService.setup();
         trackerService.startConnection();
         trackerService.receiveData();
