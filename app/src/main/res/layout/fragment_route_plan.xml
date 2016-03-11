@@ -45,14 +45,18 @@
                         android:layout_marginBottom="8dp"
                         android:layout_marginTop="4dp"
                         android:text="@string/from"
+                        android:textAllCaps="true"
                         android:textColor="@color/colorAlternateGreen"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/et_start_location"
-                        style="@style/MaterialEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_title_from"
                         android:drawableLeft="@drawable/ic_place_green_18dp"
+                        android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_place_green_18dp"
                         android:hint="@string/hint_location"
                         app:met_floatingLabel="highlight"
@@ -61,9 +65,11 @@
 
                     <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/et_start_address"
-                        style="@style/MaterialEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/et_start_location"
                         android:drawableLeft="@drawable/ic_home_green_18dp"
+                        android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_home_green_18dp"
                         android:hint="@string/hint_address"
                         app:met_clearButton="true"
@@ -73,9 +79,11 @@
 
                     <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/et_start_note"
-                        style="@style/MaterialEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/et_start_address"
                         android:drawableLeft="@drawable/ic_insert_comment_green_18dp"
+                        android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_insert_comment_green_18dp"
                         android:hint="@string/hint_info"
                         app:met_clearButton="true"
@@ -114,15 +122,18 @@
                         android:layout_marginBottom="8dp"
                         android:layout_marginTop="4dp"
                         android:text="@string/to"
+                        android:textAllCaps="true"
                         android:textColor="@color/red_500"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/et_destination_location"
-                        style="@style/MaterialEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/tv_title_to"
                         android:drawableLeft="@drawable/ic_place_red_18dp"
+                        android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_place_red_18dp"
                         android:hint="@string/hint_location"
                         app:met_floatingLabel="highlight"
@@ -131,9 +142,11 @@
 
                     <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/et_destination_address"
-                        style="@style/MaterialEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/et_destination_location"
                         android:drawableLeft="@drawable/ic_home_red_18dp"
+                        android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_home_red_18dp"
                         android:hint="@string/hint_address"
                         app:met_clearButton="true"
@@ -143,9 +156,11 @@
 
                     <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/et_destination_note"
-                        style="@style/MaterialEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/et_destination_address"
                         android:drawableLeft="@drawable/ic_insert_comment_red_18dp"
+                        android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_insert_comment_red_18dp"
                         android:hint="@string/hint_info"
                         app:met_clearButton="true"
@@ -167,9 +182,9 @@
 
     <Button
         android:id="@+id/btn_route_next"
-        android:text="@string/button_route_plan_next"
+        style="@style/ButtonFullWidthPrimaryColor"
         android:background="@drawable/selector_button_primary_color"
-        style="@style/ButtonFullWidthPrimaryColor" />
+        android:text="@string/button_route_plan_next" />
 
 </RelativeLayout>
 
