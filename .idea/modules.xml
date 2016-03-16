@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GOFetch.iml" filepath="$PROJECT_DIR$/GOFetch.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/go_fetch_droid.iml" filepath="$PROJECT_DIR$/go_fetch_droid.iml" />
     </modules>
   </component>
 </project>
