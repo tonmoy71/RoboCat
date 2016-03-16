@@ -1,36 +1,85 @@
 package co.gobd.gofetch.presenter;
 
-import android.util.Log;
+import android.os.Bundle;
 
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.maps.model.LatLng;
+
+import co.gobd.gofetch.enums.LocationTypeEnum;
+import co.gobd.gofetch.utility.Constant;
 import co.gobd.gofetch.view.RoutePlanView;
 
+import static co.gobd.gofetch.utility.Constant.REQUEST_CODE_DESTINATION_POINT;
+import static co.gobd.gofetch.utility.Constant.REQUEST_CODE_STARTING_POINT;
+
 /**
- * Created by tonmoy on 13-Jan-16.
+ * Created by tonmoy on 07-Mar-16.
  */
 public class RoutePlanPresenter {
 
-    private static final String LOG_TAG = RoutePlanPresenter.class.getSimpleName();
-    private RoutePlanView view;
+    private RoutePlanView routePlanView;
 
-    public RoutePlanPresenter(RoutePlanView view) {
-        this.view = view;
+    public RoutePlanPresenter(RoutePlanView routePlanView) {
+        this.routePlanView = routePlanView;
     }
 
-    public void onRequestRydeClicked() {
-        String from = view.getFromLocation();
-        String to = view.getToLocation();
+    /**
+     * Updates the EditText with respective place name, also
+     * sets the starting and destination point.
+     *
+     * @param place       Place received from Google Place Picker
+     * @param requestCode Code to determine which EditText is selected
+     */
+    public void onPlaceDataReceived(Place place, int requestCode) {
+        if (place != null) {
+            if (requestCode == REQUEST_CODE_STARTING_POINT) {
+                routePlanView.setFromEditTextLocation(place.getName().toString());
+                routePlanView.setStartingPoint(place.getLatLng());
 
-        Log.i(LOG_TAG, from + ", " + to);
+            } else if (requestCode == REQUEST_CODE_DESTINATION_POINT) {
+                routePlanView.setToEditTextLocation(place.getName().toString());
+                routePlanView.setDestinationPoint(place.getLatLng());
 
-        if (from.isEmpty()) {
-            view.showEmptyFieldError();
-            return;
+            }
+        }
+    }
+
+
+    public void onButtonClick() {
+
+        String startingPointAddress = routePlanView.getStartingPointAddress();
+        if (startingPointAddress.isEmpty()) {
+            routePlanView.showErrorOnEmptyAddress(LocationTypeEnum.STARTING_POINT);
         }
 
-        if (to.isEmpty()) {
-            view.showEmptyFieldError();
-            return;
+        String destinationPointAddress = routePlanView.getDestinationAddress();
+        if (destinationPointAddress.isEmpty()) {
+            routePlanView.showErrorOnEmptyAddress(LocationTypeEnum.DESTINATION_POINT);
         }
+
+        LatLng startingPoint = routePlanView.getStartingPoint();
+        LatLng destinationPoint = routePlanView.getDestinationPoint();
+
+        String startingPointNote = routePlanView.getStartingPointNote();
+        String destinationPointNote = routePlanView.getDestinationPointNote();
+
+
+        if (startingPoint != null && destinationPoint != null) {
+            Bundle bundle = new Bundle();
+
+            bundle.putParcelable(Constant.KEY_START_LATLNG, startingPoint);
+            bundle.putParcelable(Constant.KEY_DESTINATION_LATLNG, destinationPoint);
+
+            bundle.putString(Constant.KEY_START_ADDRESS, startingPointAddress);
+            bundle.putString(Constant.KEY_DESTINATION_ADDRESS, destinationPointAddress);
+
+            bundle.putString(Constant.KEY_START_NOTE, startingPointNote);
+            bundle.putString(Constant.KEY_DESTINATION_NOTE, destinationPointNote);
+
+            routePlanView.onReceiveRouteData(bundle);
+
+        }
+
     }
 
 }

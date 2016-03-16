@@ -9,8 +9,6 @@ import android.support.v7.widget.Toolbar;
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.adapter.SupportedOrderAdapter;
 import co.gobd.gofetch.mock.FakeServiceCall;
-import co.gobd.gofetch.service.ITrackerService;
-import co.gobd.gofetch.service.SignalRService;
 
 
 public class SupportedOrderActivity extends AppCompatActivity {
@@ -43,9 +41,13 @@ public class SupportedOrderActivity extends AppCompatActivity {
         SupportedOrderAdapter supportedOrderAdapter = new SupportedOrderAdapter(SupportedOrderActivity.this);
         rvSupportedOrder.setAdapter(supportedOrderAdapter);
 
-
-
+        //FIXME Move to proper place
         FakeServiceCall.postOrder();
+
+
+
+
+
 
     }
 

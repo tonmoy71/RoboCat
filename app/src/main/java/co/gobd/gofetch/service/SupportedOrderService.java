@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.util.List;
 
-import co.gobd.gofetch.callback.IDataReceive;
+import co.gobd.gofetch.callback.OnOrderDataReceive;
 import co.gobd.gofetch.config.Url;
 import co.gobd.gofetch.model.Order;
 import co.gobd.gofetch.network.OrderApi;
@@ -20,10 +20,10 @@ public class SupportedOrderService {
 
     private static final String TAG = "SupportedOrderService";
 
-    IDataReceive iDataReceive;
+    OnOrderDataReceive onOrderDataReceive;
 
-    public SupportedOrderService(IDataReceive iDataReceive) {
-        this.iDataReceive = iDataReceive;
+    public SupportedOrderService(OnOrderDataReceive onOrderDataReceive) {
+        this.onOrderDataReceive = onOrderDataReceive;
     }
 
     public void loadSupportedOrder() {
@@ -33,14 +33,14 @@ public class SupportedOrderService {
             @Override
             public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
                 if (response.isSuccess()) {
-                    iDataReceive.onReceive(response.body());
+                    onOrderDataReceive.onReceive(response.body());
                     Log.i(TAG, response.body().toString());
                 }
             }
 
             @Override
             public void onFailure(Call<List<Order>> call, Throwable t) {
-
+                //Notify users if data is failed to load
             }
         });
 

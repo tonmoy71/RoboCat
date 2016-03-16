@@ -11,10 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activity.RoutePlanActivity">
-
-        </activity>
-
         <!-- Google Maps for Android -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -22,14 +18,15 @@
 
         <activity
             android:name=".activity.SupportedOrderActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".activity.RideActivity"></activity>
     </application>
 
 </manifest>

@@ -5,7 +5,6 @@ import java.util.List;
 import co.gobd.gofetch.config.Url;
 import co.gobd.gofetch.model.Order;
 import co.gobd.gofetch.model.order.BaseOrder;
-import co.gobd.gofetch.model.order.RideOrder;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;

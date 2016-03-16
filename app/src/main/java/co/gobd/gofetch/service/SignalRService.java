@@ -16,7 +16,7 @@ import microsoft.aspnet.signalr.client.hubs.HubProxy;
 /**
  * Created by tonmoy on 04-Feb-16.
  */
-public class SignalRService implements ITrackerService {
+public class SignalRService implements BaseTrackerService {
 
     private static final String TAG = "SignalRService";
 
