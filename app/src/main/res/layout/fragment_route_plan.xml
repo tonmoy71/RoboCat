@@ -5,7 +5,7 @@
     android:id="@+id/layout_container_route_plan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundDefault"
+    android:background="@color/windowBackground"
     android:clickable="true"
     android:paddingBottom="8dp">
 
@@ -58,6 +58,7 @@
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_place_green_18dp"
                         android:hint="@string/hint_location"
+                        android:textSize="16sp"
                         app:met_floatingLabel="highlight"
                         app:met_hideUnderline="true"
                         app:met_primaryColor="@color/colorAlternateGreen" />
@@ -71,6 +72,7 @@
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_home_green_18dp"
                         android:hint="@string/hint_address"
+                        android:textSize="16sp"
                         app:met_clearButton="true"
                         app:met_floatingLabel="highlight"
                         app:met_hideUnderline="true"
@@ -85,6 +87,7 @@
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_insert_comment_green_18dp"
                         android:hint="@string/hint_info"
+                        android:textSize="16sp"
                         app:met_clearButton="true"
                         app:met_floatingLabel="highlight"
                         app:met_hideUnderline="true"
@@ -134,6 +137,7 @@
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_place_red_18dp"
                         android:hint="@string/hint_location"
+                        android:textSize="16sp"
                         app:met_floatingLabel="highlight"
                         app:met_hideUnderline="true"
                         app:met_primaryColor="@color/red_500" />
@@ -147,6 +151,7 @@
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_home_red_18dp"
                         android:hint="@string/hint_address"
+                        android:textSize="16sp"
                         app:met_clearButton="true"
                         app:met_floatingLabel="highlight"
                         app:met_hideUnderline="true"
@@ -161,6 +166,7 @@
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_insert_comment_red_18dp"
                         android:hint="@string/hint_info"
+                        android:textSize="16sp"
                         app:met_clearButton="true"
                         app:met_floatingLabel="highlight"
                         app:met_hideUnderline="true"
