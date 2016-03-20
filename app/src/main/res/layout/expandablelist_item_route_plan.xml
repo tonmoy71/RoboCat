@@ -6,15 +6,15 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:paddingBottom="4dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="8dp">
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/default_padding_top">
 
     <TextView
         android:id="@+id/tv_title_from"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="@dimen/view_vertical_margin"
         android:layout_marginTop="4dp"
         android:text="@string/hint_address"
         android:textColor="@color/colorAlternateGreen"
@@ -29,7 +29,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="@dimen/layout_horizontal_margin"
             android:adjustViewBounds="false"
             android:src="@drawable/ic_home_green_18dp" />
 

@@ -27,10 +27,10 @@
                 android:id="@+id/cv_from"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                app:cardCornerRadius="2dp">
+                android:layout_marginLeft="@dimen/layout_horizontal_margin"
+                android:layout_marginRight="@dimen/layout_horizontal_margin"
+                android:layout_marginTop="@dimen/layout_vertical_margin"
+                app:cardCornerRadius="@dimen/cardview_default_radius">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                         android:id="@+id/tv_title_from"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="@dimen/layout_vertical_margin"
                         android:layout_marginTop="4dp"
                         android:text="@string/from"
                         android:textAllCaps="true"
@@ -108,7 +108,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/cv_from"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/layout_margin"
                 app:cardCornerRadius="2dp">
 
                 <RelativeLayout
@@ -120,7 +120,7 @@
                         android:id="@+id/tv_title_to"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="@dimen/view_vertical_margin"
                         android:layout_marginTop="4dp"
                         android:text="@string/to"
                         android:textAllCaps="true"
@@ -187,7 +187,7 @@
     <Button
         android:id="@+id/btn_route_next"
         style="@style/ButtonFullWidthPrimaryColor"
-        android:background="@anim/ripple_effect_primary_color_solid"
+        android:background="@drawable/ripple_effect_primary_color_solid"
         android:text="@string/button_route_plan_next" />
 
 </RelativeLayout>
