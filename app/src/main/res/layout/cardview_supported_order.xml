@@ -15,7 +15,6 @@
     <ImageView
         android:id="@+id/iv_order"
         style="@style/TileImage"
-        android:src="@drawable/background_cng_1"
         />
 
     <RelativeLayout
