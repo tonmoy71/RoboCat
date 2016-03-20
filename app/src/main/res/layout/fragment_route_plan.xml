@@ -5,9 +5,9 @@
     android:id="@+id/layout_container_route_plan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundDefault"
+    android:background="@color/windowBackground"
     android:clickable="true"
-    android:paddingBottom="8dp">
+    android:paddingBottom="@dimen/layout_padding">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scrollView"
@@ -27,23 +27,22 @@
                 android:id="@+id/cv_from"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                app:cardCornerRadius="2dp">
+                android:layout_marginLeft="@dimen/layout_horizontal_margin"
+                android:layout_marginRight="@dimen/layout_horizontal_margin"
+                android:layout_marginTop="@dimen/layout_vertical_margin"
+                app:cardCornerRadius="@dimen/cardview_default_radius">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rectangle_alternate_green_outlined"
                     android:padding="16dp">
 
                     <TextView
                         android:id="@+id/tv_title_from"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="@dimen/layout_vertical_margin"
+                        android:layout_marginTop="@dimen/layout_vertical_margin"
                         android:text="@string/from"
                         android:textAllCaps="true"
                         android:textColor="@color/colorAlternateGreen"
@@ -56,9 +55,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_title_from"
                         android:drawableLeft="@drawable/ic_place_green_18dp"
-                        android:drawablePadding="8dp"
+                        android:drawablePadding="@dimen/default_padding_top"
                         android:drawableStart="@drawable/ic_place_green_18dp"
                         android:hint="@string/hint_location"
+                        android:textSize="16sp"
                         app:met_floatingLabel="highlight"
                         app:met_hideUnderline="true"
                         app:met_primaryColor="@color/colorAlternateGreen" />
@@ -72,6 +72,7 @@
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_home_green_18dp"
                         android:hint="@string/hint_address"
+                        android:textSize="16sp"
                         app:met_clearButton="true"
                         app:met_floatingLabel="highlight"
                         app:met_hideUnderline="true"
@@ -86,6 +87,7 @@
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_insert_comment_green_18dp"
                         android:hint="@string/hint_info"
+                        android:textSize="16sp"
                         app:met_clearButton="true"
                         app:met_floatingLabel="highlight"
                         app:met_hideUnderline="true"
@@ -106,20 +108,19 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/cv_from"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/layout_margin"
                 app:cardCornerRadius="2dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rectangle_red_outlined"
                     android:padding="16dp">
 
                     <TextView
                         android:id="@+id/tv_title_to"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="@dimen/layout_vertical_margin"
                         android:layout_marginTop="4dp"
                         android:text="@string/to"
                         android:textAllCaps="true"
@@ -136,6 +137,7 @@
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_place_red_18dp"
                         android:hint="@string/hint_location"
+                        android:textSize="16sp"
                         app:met_floatingLabel="highlight"
                         app:met_hideUnderline="true"
                         app:met_primaryColor="@color/red_500" />
@@ -149,6 +151,7 @@
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_home_red_18dp"
                         android:hint="@string/hint_address"
+                        android:textSize="16sp"
                         app:met_clearButton="true"
                         app:met_floatingLabel="highlight"
                         app:met_hideUnderline="true"
@@ -163,6 +166,7 @@
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_insert_comment_red_18dp"
                         android:hint="@string/hint_info"
+                        android:textSize="16sp"
                         app:met_clearButton="true"
                         app:met_floatingLabel="highlight"
                         app:met_hideUnderline="true"
