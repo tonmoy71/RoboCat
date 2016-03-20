@@ -9,9 +9,10 @@
     <color name="textColorPrimary">#212121</color>
     <color name="textColorSecondary">#727272</color>
     <color name="textColorAlternate">#FFFFFF</color>
-    <color name="backgroundDefault">#E0E0E0</color>
+    <color name="windowBackground">#E0E0E0</color>
     <color name="divider">#B6B6B6</color>
     <color name="icons">#212121</color>
+    <color name="blackTransparent">#30000000</color>
 
     <!-- Material Design - Color Palette -->
     <!-- Date: 1/15/2015 -->

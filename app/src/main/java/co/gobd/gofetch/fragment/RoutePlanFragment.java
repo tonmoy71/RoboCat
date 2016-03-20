@@ -49,20 +49,17 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
 
     @Bind(R.id.et_destination_note)
     MaterialEditText etNoteDestination;
-
+    /* Flag to determine whether GooglePlacePicker is already opened or not */
+    boolean isGooglePlacePickerAlreadyOpen;
     /* Initialize Google Place Picker*/
     private PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
-
     /* Presenter */
     private RoutePlanPresenter routePlanPresenter;
-
     /* Starting point and destination positions */
     private LatLng startingPoint;
     private LatLng destinationPoint;
-
     /* Callback to update activity */
     private RideFragmentCallback callback;
-
 
     public RoutePlanFragment() {
         //Empty constructor for fragment initialization
@@ -116,6 +113,7 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_STARTING_POINT) {
+            isGooglePlacePickerAlreadyOpen = false;
             if (resultCode == Activity.RESULT_OK) {
                 Place place = PlacePicker.getPlace(getContext(), data);
                 routePlanPresenter.onPlaceDataReceived(place, REQUEST_CODE_STARTING_POINT);
@@ -123,6 +121,7 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
             }
 
         } else if (requestCode == REQUEST_CODE_DESTINATION_POINT) {
+            isGooglePlacePickerAlreadyOpen = false;
             if (resultCode == Activity.RESULT_OK) {
                 Place place = PlacePicker.getPlace(getContext(), data);
                 routePlanPresenter.onPlaceDataReceived(place, REQUEST_CODE_DESTINATION_POINT);
@@ -136,8 +135,11 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     void onFromClick() {
         // Starts Google Place Picker UI control
         try {
-            startActivityForResult(builder.build(getActivity()),
-                    REQUEST_CODE_STARTING_POINT);
+            if (!isGooglePlacePickerAlreadyOpen) {
+                isGooglePlacePickerAlreadyOpen = true;
+                startActivityForResult(builder.build(getActivity()),
+                        REQUEST_CODE_STARTING_POINT);
+            }
         } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
             e.printStackTrace();
         }
@@ -147,8 +149,11 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     void onToClick() {
         // Starts Google Place Picker UI control
         try {
-            startActivityForResult(builder.build(getActivity()),
-                    REQUEST_CODE_DESTINATION_POINT);
+            if (!isGooglePlacePickerAlreadyOpen) {
+                isGooglePlacePickerAlreadyOpen = true;
+                startActivityForResult(builder.build(getActivity()),
+                        REQUEST_CODE_DESTINATION_POINT);
+            }
         } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
             e.printStackTrace();
         }
