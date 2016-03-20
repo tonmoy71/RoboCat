@@ -6,7 +6,7 @@ import java.util.List;
 
 import co.gobd.gofetch.callback.OnOrderDataReceive;
 import co.gobd.gofetch.config.Url;
-import co.gobd.gofetch.model.Order;
+import co.gobd.gofetch.model.SupportedOrder;
 import co.gobd.gofetch.network.OrderApi;
 import co.gobd.gofetch.network.RestClient;
 import retrofit2.Call;
@@ -28,10 +28,10 @@ public class SupportedOrderService {
 
     public void loadSupportedOrder() {
         OrderApi api = RestClient.getApi(Url.BASE_URL, OrderApi.class);
-        Call<List<Order>> call = api.getSupportedOrders();
-        call.enqueue(new Callback<List<Order>>() {
+        Call<List<SupportedOrder>> call = api.getSupportedOrders();
+        call.enqueue(new Callback<List<SupportedOrder>>() {
             @Override
-            public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
+            public void onResponse(Call<List<SupportedOrder>> call, Response<List<SupportedOrder>> response) {
                 if (response.isSuccess()) {
                     onOrderDataReceive.onReceive(response.body());
                     Log.i(TAG, response.body().toString());
@@ -39,7 +39,7 @@ public class SupportedOrderService {
             }
 
             @Override
-            public void onFailure(Call<List<Order>> call, Throwable t) {
+            public void onFailure(Call<List<SupportedOrder>> call, Throwable t) {
                 //Notify users if data is failed to load
             }
         });
