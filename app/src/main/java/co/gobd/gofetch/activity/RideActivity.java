@@ -20,6 +20,11 @@ public class RideActivity extends AppCompatActivity implements RideFragmentCallb
         startRoutePlanFragment();
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
     // Fragment callback implementation
     @Override
     public void loadConfirmationFragment(Bundle bundle) {

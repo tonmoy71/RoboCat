@@ -3,11 +3,11 @@ package co.gobd.gofetch.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.view.View;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -25,7 +25,8 @@ import co.gobd.gofetch.enums.LocationTypeEnum;
 import co.gobd.gofetch.presenter.RoutePlanPresenter;
 import co.gobd.gofetch.view.RoutePlanView;
 
-import static co.gobd.gofetch.utility.Constant.*;
+import static co.gobd.gofetch.utility.Constant.REQUEST_CODE_DESTINATION_POINT;
+import static co.gobd.gofetch.utility.Constant.REQUEST_CODE_STARTING_POINT;
 
 public class RoutePlanFragment extends Fragment implements RoutePlanView {
 
@@ -49,20 +50,32 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
 
     @Bind(R.id.et_destination_note)
     MaterialEditText etNoteDestination;
+
     /* Flag to determine whether GooglePlacePicker is already opened or not */
     boolean isGooglePlacePickerAlreadyOpen;
+
     /* Initialize Google Place Picker*/
     private PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+
     /* Presenter */
     private RoutePlanPresenter routePlanPresenter;
+
     /* Starting point and destination positions */
     private LatLng startingPoint;
     private LatLng destinationPoint;
+
+
     /* Callback to update activity */
     private RideFragmentCallback callback;
 
+
     public RoutePlanFragment() {
         //Empty constructor for fragment initialization
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 
     @Override
