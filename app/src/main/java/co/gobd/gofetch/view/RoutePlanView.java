@@ -11,27 +11,27 @@ import co.gobd.gofetch.enums.LocationTypeEnum;
  */
 public interface RoutePlanView {
 
+    /* Starting point information */
+    LatLng getStartingPoint();
+    void setStartingPoint(LatLng latLng);
+    String getStartingLocationText();
+    void setStartingLocationText(String placeName);
     String getStartingPointAddress();
+    String getStartingPointNote();
 
+
+
+    /* Destination information */
+    LatLng getDestinationPoint();
+    void setDestinationPoint(LatLng latLng);
+    String getDestinationLocationText();
+    void setDestinationLocationText(String placeName);
     String getDestinationAddress();
-
-    void setFromEditTextLocation(String placeName);
-
-    void setToEditTextLocation(String placeName);
+    String getDestinationPointNote();
 
     void showErrorOnEmptyAddress(LocationTypeEnum locationType);
 
     void onReceiveRouteData(Bundle bundle);
 
-    LatLng getStartingPoint();
 
-    void setStartingPoint(LatLng latLng);
-
-    LatLng getDestinationPoint();
-
-    void setDestinationPoint(LatLng latLng);
-
-    String getStartingPointNote();
-
-    String getDestinationPointNote();
 }
