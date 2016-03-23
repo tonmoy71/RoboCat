@@ -1,5 +1,6 @@
 package co.gobd.gofetch.activity;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,12 +12,19 @@ import co.gobd.gofetch.fragment.RoutePlanFragment;
 public class RideActivity extends AppCompatActivity implements RideFragmentCallback {
 
     private static final String TAG = "RideActivity";
+    private static final String FRAGMENT_TAG_ROUTE_PLAN = "ROUTE_PLAN_FRAGMENT";
+
+    RoutePlanFragment routePlanFragment;
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ride);
-
         startRoutePlanFragment();
     }
 
@@ -27,10 +35,14 @@ public class RideActivity extends AppCompatActivity implements RideFragmentCallb
     }
 
 
+    /**
+     * Creates a new instance of the RoutePlanFragment and adds it to the activity
+     * Tag is given so that it can be found if fragment already exists
+     */
     private void startRoutePlanFragment() {
-        RoutePlanFragment routePlanFragment = new RoutePlanFragment();
+        routePlanFragment = new RoutePlanFragment();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.layout_ride_activity, routePlanFragment)
+                .replace(R.id.layout_ride_activity, routePlanFragment, FRAGMENT_TAG_ROUTE_PLAN)
                 .commit();
     }
 }

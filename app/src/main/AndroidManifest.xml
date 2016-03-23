@@ -18,6 +18,7 @@
 
         <activity
             android:name=".activity.SupportedOrderActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -26,7 +27,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.RideActivity"></activity>
+        <activity
+            android:name=".activity.RideActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/label_ride_activity"
+            android:windowSoftInputMode="stateHidden">
+
+        </activity>
     </application>
 
 </manifest>

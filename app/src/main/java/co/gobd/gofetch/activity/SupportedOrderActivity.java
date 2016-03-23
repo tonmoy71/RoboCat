@@ -1,5 +1,6 @@
 package co.gobd.gofetch.activity;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -8,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.adapter.SupportedOrderAdapter;
-import co.gobd.gofetch.mock.FakeServiceCall;
 
 
 public class SupportedOrderActivity extends AppCompatActivity {
@@ -41,14 +41,11 @@ public class SupportedOrderActivity extends AppCompatActivity {
         SupportedOrderAdapter supportedOrderAdapter = new SupportedOrderAdapter(SupportedOrderActivity.this);
         rvSupportedOrder.setAdapter(supportedOrderAdapter);
 
-        //FIXME Move to proper place
-        FakeServiceCall.postOrder();
+    }
 
-
-
-
-
-
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 
 

@@ -18,7 +18,7 @@ public class OrderService {
     private static final String TAG = "OrderService";
 
     public void postOrder(BaseOrder order) {
-        OrderApi orderApi = RestClient.getApi(Url.BASE_URL_TASK_CAT, OrderApi.class);
+        OrderApi orderApi = RestClient.getApi(Url.BASE_URL, OrderApi.class);
         Call<Void> call = orderApi.postOrder(order);
 
         Log.i(TAG, order.toString());

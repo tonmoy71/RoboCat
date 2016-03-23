@@ -14,7 +14,7 @@ import java.util.List;
 
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.callback.OnOrderDataReceive;
-import co.gobd.gofetch.model.Order;
+import co.gobd.gofetch.model.SupportedOrder;
 import co.gobd.gofetch.service.SupportedOrderService;
 import co.gobd.gofetch.view.SupportedOrderViewHolder;
 
@@ -24,7 +24,7 @@ import co.gobd.gofetch.view.SupportedOrderViewHolder;
  */
 public class SupportedOrderAdapter extends RecyclerView.Adapter<SupportedOrderViewHolder> implements OnOrderDataReceive {
 
-    private List<Order> itemList;
+    private List<SupportedOrder> itemList;
     private Context context;
 
 
@@ -54,15 +54,14 @@ public class SupportedOrderAdapter extends RecyclerView.Adapter<SupportedOrderVi
     public void onBindViewHolder(SupportedOrderViewHolder holder, int position) {
 
         // Updates the view
-        if (itemList.size() != 0) {
-            holder.tvActionName.setText(itemList.get(position).getTitle());
-            holder.tvItemName.setText(itemList.get(position).getReleaseYear());
-            //holder.ivItemImage.setImageResource(itemList.get(position).getImageUrl());
+        if (!itemList.isEmpty()) {
+            holder.tvActionName.setText(itemList.get(position).getActionName());
+            holder.tvItemName.setText(itemList.get(position).getOrderName());
 
             // Downloads and updates the image view with Picasso
             Picasso
                     .with(context)
-                    .load(itemList.get(position).getImage())
+                    .load(itemList.get(position).getImageUrl())
                     .into(holder.ivItemImage);
 
 
@@ -77,10 +76,10 @@ public class SupportedOrderAdapter extends RecyclerView.Adapter<SupportedOrderVi
 
 
     @Override
-    public void onReceive(List<Order> orders) {
+    public void onReceive(List<SupportedOrder> supportedOrders) {
 
         // Carries the data from OrderService and updates the data set
-        this.itemList = orders;
+        this.itemList = supportedOrders;
         notifyDataSetChanged();
     }
 }
