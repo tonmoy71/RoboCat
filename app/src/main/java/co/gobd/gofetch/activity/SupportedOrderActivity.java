@@ -9,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.adapter.SupportedOrderAdapter;
-import co.gobd.gofetch.mock.FakeServiceCall;
 
 
 public class SupportedOrderActivity extends AppCompatActivity {
