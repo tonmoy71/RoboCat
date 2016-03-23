@@ -14,7 +14,7 @@ public interface RoutePlanView {
     /* Starting point information */
     LatLng getStartingPoint();
     void setStartingPoint(LatLng latLng);
-    String getStartingLocationText();
+
     void setStartingLocationText(String placeName);
     String getStartingPointAddress();
     String getStartingPointNote();
@@ -24,7 +24,7 @@ public interface RoutePlanView {
     /* Destination information */
     LatLng getDestinationPoint();
     void setDestinationPoint(LatLng latLng);
-    String getDestinationLocationText();
+
     void setDestinationLocationText(String placeName);
     String getDestinationAddress();
     String getDestinationPointNote();

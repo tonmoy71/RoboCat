@@ -74,14 +74,6 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
-        outState.putString(Constant.KEY_START_LOCATION, getStartingLocationText());
-        outState.putString(Constant.KEY_START_ADDRESS, getStartingPointAddress());
-        outState.putString(Constant.KEY_START_NOTE, getStartingPointNote());
-
-        outState.putString(Constant.KEY_DESTINATION_LOCATION, getDestinationLocationText());
-        outState.putString(Constant.KEY_DESTINATION_ADDRESS, getDestinationAddress());
-        outState.putString(Constant.KEY_DESTINATION_NOTE, getDestinationPointNote());
     }
 
     @Override
@@ -100,21 +92,7 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-
         routePlanPresenter = new RoutePlanPresenter(this);
-
-        // Check if the view has any data that needs to be saved
-        if (savedInstanceState != null) {
-            // Update starting point information
-            etStartingLocation.setText(savedInstanceState.getString(KEY_START_LOCATION));
-            etStartAddress.setText(savedInstanceState.getString(KEY_START_ADDRESS));
-            etStartNote.setText(savedInstanceState.getString(KEY_START_NOTE));
-
-            // Update destination information
-            etDestinationLocation.setText(savedInstanceState.getString(KEY_DESTINATION_LOCATION));
-            etDestinationAddress.setText(savedInstanceState.getString(KEY_DESTINATION_ADDRESS));
-            etNoteDestination.setText(savedInstanceState.getString(KEY_DESTINATION_NOTE));
-        }
     }
 
     @Override
@@ -213,11 +191,6 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     }
 
     @Override
-    public String getDestinationLocationText() {
-        return etDestinationLocation.getText().toString();
-    }
-
-    @Override
     public void setDestinationLocationText(String placeName) {
         etDestinationLocation.setText(placeName);
     }
@@ -254,11 +227,6 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     @Override
     public void setStartingPoint(LatLng latLng) {
         startingPoint = latLng;
-    }
-
-    @Override
-    public String getStartingLocationText() {
-        return etStartingLocation.getText().toString();
     }
 
     @Override

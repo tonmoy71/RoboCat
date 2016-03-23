@@ -1,5 +1,6 @@
 package co.gobd.gofetch.activity;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,27 +12,20 @@ import co.gobd.gofetch.fragment.RoutePlanFragment;
 public class RideActivity extends AppCompatActivity implements RideFragmentCallback {
 
     private static final String TAG = "RideActivity";
-    private final String FRAGMENT_TAG_ROUTE_PLAN = "ROUTE_PLAN_FRAGMENT";
+    private static final String FRAGMENT_TAG_ROUTE_PLAN = "ROUTE_PLAN_FRAGMENT";
 
     RoutePlanFragment routePlanFragment;
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ride);
-
-        // If savedInstanceState is not null, fragment may exist
-        if (savedInstanceState != null) {
-            // Look up the fragment that already exists by tag
-            routePlanFragment = (RoutePlanFragment) getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG_ROUTE_PLAN);
-        }
-        else if (routePlanFragment == null)
-        {
-            // Only create fragment if they haven't been instantiated already
-            startRoutePlanFragment();
-        }
-
-
+        startRoutePlanFragment();
     }
 
     // Fragment callback implementation
