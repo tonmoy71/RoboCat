@@ -33,11 +33,11 @@ public class RoutePlanPresenter {
     public void onPlaceDataReceived(Place place, int requestCode) {
         if (place != null) {
             if (requestCode == REQUEST_CODE_STARTING_POINT) {
-                routePlanView.setFromEditTextLocation(place.getName().toString());
+                routePlanView.setStartingLocationText(place.getName().toString());
                 routePlanView.setStartingPoint(place.getLatLng());
 
             } else if (requestCode == REQUEST_CODE_DESTINATION_POINT) {
-                routePlanView.setToEditTextLocation(place.getName().toString());
+                routePlanView.setDestinationLocationText(place.getName().toString());
                 routePlanView.setDestinationPoint(place.getLatLng());
 
             }

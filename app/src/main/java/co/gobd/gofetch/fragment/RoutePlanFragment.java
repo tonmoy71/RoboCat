@@ -26,6 +26,7 @@ import co.gobd.gofetch.R;
 import co.gobd.gofetch.callback.RideFragmentCallback;
 import co.gobd.gofetch.enums.LocationTypeEnum;
 import co.gobd.gofetch.presenter.RoutePlanPresenter;
+import co.gobd.gofetch.utility.Constant;
 import co.gobd.gofetch.view.RoutePlanView;
 
 import static co.gobd.gofetch.utility.Constant.*;
@@ -52,20 +53,30 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
 
     @Bind(R.id.et_destination_note)
     MaterialEditText etNoteDestination;
+
     /* Flag to determine whether GooglePlacePicker is already opened or not */
     boolean isGooglePlacePickerAlreadyOpen;
+
     /* Initialize Google Place Picker*/
     private PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+
     /* Presenter */
     private RoutePlanPresenter routePlanPresenter;
+
     /* Starting point and destination positions */
     private LatLng startingPoint;
     private LatLng destinationPoint;
+
     /* Callback to update activity */
     private RideFragmentCallback callback;
 
     public RoutePlanFragment() {
         //Empty constructor for fragment initialization
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -76,14 +87,14 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_route_plan, null);
+        View view = inflater.inflate(R.layout.fragment_route_plan, null);
+        return view;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-
         routePlanPresenter = new RoutePlanPresenter(this);
     }
 
@@ -183,6 +194,11 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     }
 
     @Override
+    public void setDestinationLocationText(String placeName) {
+        etDestinationLocation.setText(placeName);
+    }
+
+    @Override
     public String getStartingPointNote() {
         return etStartNote.getText().toString();
     }
@@ -190,16 +206,6 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     @Override
     public String getDestinationPointNote() {
         return etNoteDestination.getText().toString();
-    }
-
-    @Override
-    public void setFromEditTextLocation(String placeName) {
-        etStartingLocation.setText(placeName);
-    }
-
-    @Override
-    public void setToEditTextLocation(String placeName) {
-        etDestinationLocation.setText(placeName);
     }
 
     @Override
@@ -224,6 +230,11 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     @Override
     public void setStartingPoint(LatLng latLng) {
         startingPoint = latLng;
+    }
+
+    @Override
+    public void setStartingLocationText(String placeName) {
+        etStartingLocation.setText(placeName);
     }
 
 
