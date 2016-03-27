@@ -45,10 +45,6 @@ public class SupportedOrderActivity extends AppCompatActivity {
         FakeServiceCall.postOrder();
 
 
-
-
-
-
     }
 
 

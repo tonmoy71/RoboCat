@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;

@@ -15,12 +15,11 @@ public class RideActivity extends AppCompatActivity implements RideFragmentCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ride);
-        //Override Default Transition
+        //Override default onCreate transition
         overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         startRoutePlanFragment();
 
     }
-
     // Fragment callback implementation
     @Override
     public void loadConfirmationFragment(Bundle bundle) {
@@ -32,7 +31,17 @@ public class RideActivity extends AppCompatActivity implements RideFragmentCallb
         RoutePlanFragment routePlanFragment = new RoutePlanFragment();
         getSupportFragmentManager()
                 .beginTransaction()
+                //.setCustomAnimations(0, R.anim.push_out_right, R.anim.pull_in_right, R.anim.push_out_right)
                 .replace(R.id.layout_ride_activity, routePlanFragment)
+                //.addToBackStack(null)
                 .commit();
     }
+
+    //Override default onBackPressed transition (by Nabil)
+    @Override
+    public void onBackPressed() {
+        this.finish();
+        overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+    }
+
 }
