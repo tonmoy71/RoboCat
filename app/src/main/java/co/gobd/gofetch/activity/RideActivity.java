@@ -50,6 +50,7 @@ public class RideActivity extends AppCompatActivity implements RideFragmentCallb
                 //.setCustomAnimations(0, R.anim.push_out_right, R.anim.pull_in_right, R.anim.push_out_right)
                 .replace(R.id.layout_ride_activity, routePlanFragment, FRAGMENT_TAG_ROUTE_PLAN)
                 //.addToBackStack(null)
+                .commit();
     }
 
     //Override default onBackPressed transition (by Nabil)
