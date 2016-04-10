@@ -5,7 +5,7 @@ package co.gobd.gofetch.config;
  */
 public class Url {
     // Supported order
-    public static final String BASE_URL = "http://taskcatdev.azurewebsites.net/";
+    public static final String BASE_URL = "http://gofetch.cloudapp.net";
     public static final String PATH_SUPPORTED_ORDER = "/api/order/supportedorder";
     public static final String PATH_POST_ORDER = "/api/Order";
     private Url() {
