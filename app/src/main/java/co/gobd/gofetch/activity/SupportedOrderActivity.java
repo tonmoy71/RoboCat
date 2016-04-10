@@ -6,13 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
 
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.adapter.SupportedOrderAdapter;
+import co.gobd.gofetch.listener.OnItemClickListener;
 
 
-public class SupportedOrderActivity extends AppCompatActivity {
+public class SupportedOrderActivity extends AppCompatActivity implements OnItemClickListener {
 
+    private static final String TAG = "SupportedOrderActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,9 @@ public class SupportedOrderActivity extends AppCompatActivity {
         SupportedOrderAdapter supportedOrderAdapter = new SupportedOrderAdapter(SupportedOrderActivity.this);
         rvSupportedOrder.setAdapter(supportedOrderAdapter);
 
+        // Passing the activity reference to the adapter
+        supportedOrderAdapter.setOnItemClickListener(this);
+
     }
 
     @Override
@@ -49,4 +56,8 @@ public class SupportedOrderActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View view, int position) {
+        Log.i(TAG, "Item position: " + position);
+    }
 }
