@@ -26,7 +26,7 @@ public class FakeServiceCall {
     public static void postOrder() {
         OrderService service = new OrderService();
         BaseOrder order =  createFakeOrder();
-        service.postOrder(order);
+
     }
 
     private static BaseOrder createFakeOrder() {
