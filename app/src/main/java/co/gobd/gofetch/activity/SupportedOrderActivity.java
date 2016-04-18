@@ -45,11 +45,12 @@ public class SupportedOrderActivity extends AppCompatActivity implements OnItemC
         SupportedOrderAdapter supportedOrderAdapter = new SupportedOrderAdapter(SupportedOrderActivity.this);
         rvSupportedOrder.setAdapter(supportedOrderAdapter);
 
+
         // Passing the activity reference to the adapter
         supportedOrderAdapter.setOnItemClickListener(this);
-
     }
 
+    
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
