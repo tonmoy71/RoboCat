@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by tonmoy on 29-Feb-16.
  */
-public class RideOrder extends BaseOrder {
+public class RideOrder extends OrderModel {
 
     @SerializedName("From")
     private From from;

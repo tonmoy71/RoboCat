@@ -4,7 +4,7 @@ import java.util.List;
 
 import co.gobd.gofetch.config.ApiEndpoint;
 import co.gobd.gofetch.model.SupportedOrder;
-import co.gobd.gofetch.model.order.BaseOrder;
+import co.gobd.gofetch.model.order.OrderModel;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -20,6 +20,6 @@ public interface OrderApi {
     Call<List<SupportedOrder>> getSupportedOrders();
 
     @POST(ApiEndpoint.TaskCat.POST_ORDER)
-    Call<Void> postOrder(@Body BaseOrder order);
+    Call<Void> postOrder(@Body OrderModel order);
 
 }

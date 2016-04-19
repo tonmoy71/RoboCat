@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -15,28 +16,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.gobd.gofetch.R;
-import co.gobd.gofetch.callback.OnOrderDataReceive;
 import co.gobd.gofetch.listener.OnItemClickListener;
 import co.gobd.gofetch.model.SupportedOrder;
-import co.gobd.gofetch.service.SupportedOrderService;
+import co.gobd.gofetch.service.order.OrderService;
+import co.gobd.gofetch.service.order.SupportedOrderCallback;
 
 
 /**
  * Created by tonmoy on 20-Jan-16.
  */
-public class SupportedOrderAdapter extends RecyclerView.Adapter<SupportedOrderAdapter.SupportedOrderViewHolder> implements OnOrderDataReceive {
+public class SupportedOrderAdapter extends RecyclerView.Adapter<SupportedOrderAdapter.SupportedOrderViewHolder> {
 
-    private List<SupportedOrder> itemList;
+
+    private OrderService orderService;
     private Context context;
+    private List<SupportedOrder> itemList;
     private OnItemClickListener onItemClickListener;
 
-    public SupportedOrderAdapter(Context context) {
+    public SupportedOrderAdapter(final Context context, OrderService service) {
+        this.orderService = service;
         this.context = context;
         this.itemList = new ArrayList<>();
 
-        // Calls the service to download the JSON
-        SupportedOrderService service = new SupportedOrderService(this);
-        service.loadSupportedOrder();
+        // Downloads the supported orders and updates the adapter
+        orderService.getAllSupportedOrder(new SupportedOrderCallback() {
+            @Override
+            public void onReceiveOrderSuccess(List<SupportedOrder> orders) {
+                itemList = orders;
+                notifyDataSetChanged();
+            }
+
+            @Override
+            public void onReceiveOrderFailure() {
+                //FIXME Remove when in production
+                Toast.makeText(context, "Can't download data", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onConnectionError() {
+                //FIXME Remove when in production
+                Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     // Any UI component that needs to know the List item click and position needs to set this listener
@@ -77,14 +98,6 @@ public class SupportedOrderAdapter extends RecyclerView.Adapter<SupportedOrderAd
     @Override
     public int getItemCount() {
         return this.itemList.size();
-    }
-
-
-    @Override
-    public void onReceive(List<SupportedOrder> supportedOrders) {
-        // Carries the data from OrderServiceImpl and updates the data set
-        this.itemList = supportedOrders;
-        notifyDataSetChanged();
     }
 
     public class SupportedOrderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

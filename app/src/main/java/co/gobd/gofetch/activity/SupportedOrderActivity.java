@@ -9,8 +9,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import javax.inject.Inject;
+
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.adapter.SupportedOrderAdapter;
+import co.gobd.gofetch.application.GoFetchApplication;
 import co.gobd.gofetch.listener.OnItemClickListener;
 
 
@@ -18,16 +21,24 @@ public class SupportedOrderActivity extends AppCompatActivity implements OnItemC
 
     private static final String TAG = "SupportedOrderActivity";
 
+    @Inject
+    SupportedOrderAdapter supportedOrderAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supported_order);
 
+        // Injects dependency by Dagger
+        ((GoFetchApplication) getApplication()).getAppComponent().inject(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         RecyclerView rvSupportedOrder = (RecyclerView) findViewById(R.id.recycler_view_supported_order);
-        rvSupportedOrder.setHasFixedSize(false);
+        if (rvSupportedOrder != null) {
+            rvSupportedOrder.setHasFixedSize(false);
+        }
 
         // Number of columns in the staggered grid view
         final int SPAN_COUNT = 2;
@@ -40,17 +51,20 @@ public class SupportedOrderActivity extends AppCompatActivity implements OnItemC
             }
         });
 
-        rvSupportedOrder.setLayoutManager(layoutManager);
+        if (rvSupportedOrder != null) {
+            rvSupportedOrder.setLayoutManager(layoutManager);
+        }
 
-        SupportedOrderAdapter supportedOrderAdapter = new SupportedOrderAdapter(SupportedOrderActivity.this);
-        rvSupportedOrder.setAdapter(supportedOrderAdapter);
+        if (rvSupportedOrder != null) {
+            rvSupportedOrder.setAdapter(supportedOrderAdapter);
+        }
 
 
         // Passing the activity reference to the adapter
         supportedOrderAdapter.setOnItemClickListener(this);
     }
 
-    
+
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);

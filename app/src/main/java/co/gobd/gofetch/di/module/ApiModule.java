@@ -4,6 +4,7 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 
 import co.gobd.gofetch.config.ApiEndpoint;
+import co.gobd.gofetch.network.OrderApi;
 import co.gobd.gofetch.utility.Constant;
 import dagger.Module;
 import dagger.Provides;
@@ -36,6 +37,12 @@ public class ApiModule {
     @Singleton
     public GsonConverterFactory providesGsonConverterFactory() {
         return GsonConverterFactory.create();
+    }
+
+    @Provides
+    @Singleton
+    public OrderApi providesOrderAPi(@Named(Constant.BackendName.TASK_CAT) Retrofit retrofit) {
+        return retrofit.create(OrderApi.class);
     }
 
 

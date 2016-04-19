@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by tonmoy on 29-Feb-16.
  */
-public class BaseOrder {
+public class OrderModel {
 
     @SerializedName("Name")
     String name;
@@ -49,7 +49,7 @@ public class BaseOrder {
         return etaMinutes;
     }
 
-    public BaseOrder(String name, String type) {
+    public OrderModel(String name, String type) {
         this.name = name;
         this.type = type;
     }
