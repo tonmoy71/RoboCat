@@ -5,7 +5,7 @@ import android.util.Log;
 import java.util.List;
 
 import co.gobd.gofetch.callback.OnOrderDataReceive;
-import co.gobd.gofetch.config.Url;
+import co.gobd.gofetch.config.ApiEndpoint;
 import co.gobd.gofetch.model.SupportedOrder;
 import co.gobd.gofetch.network.OrderApi;
 import co.gobd.gofetch.network.RestClient;
@@ -27,7 +27,7 @@ public class SupportedOrderService {
     }
 
     public void loadSupportedOrder() {
-        OrderApi api = RestClient.getApi(Url.BASE_URL, OrderApi.class);
+        OrderApi api = RestClient.getApi(ApiEndpoint.TaskCat.BASE, OrderApi.class);
         Call<List<SupportedOrder>> call = api.getSupportedOrders();
         call.enqueue(new Callback<List<SupportedOrder>>() {
             @Override

@@ -82,7 +82,7 @@ public class SupportedOrderAdapter extends RecyclerView.Adapter<SupportedOrderAd
 
     @Override
     public void onReceive(List<SupportedOrder> supportedOrders) {
-        // Carries the data from OrderService and updates the data set
+        // Carries the data from OrderServiceImpl and updates the data set
         this.itemList = supportedOrders;
         notifyDataSetChanged();
     }

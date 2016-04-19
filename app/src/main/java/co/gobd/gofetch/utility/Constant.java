@@ -24,4 +24,10 @@ public class Constant {
     private Constant() {
 
     }
+
+    public final class BackendName
+    {
+        public static final String TASK_CAT = "TASK_CAT";
+        public static final String SHADOW_CAT = "SHADOW_CAT";
+    }
 }

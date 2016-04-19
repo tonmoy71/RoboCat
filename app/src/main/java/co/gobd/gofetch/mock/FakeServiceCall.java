@@ -6,7 +6,7 @@ import co.gobd.gofetch.model.order.Point;
 import co.gobd.gofetch.model.order.RideOrder;
 import co.gobd.gofetch.model.order.To;
 import co.gobd.gofetch.service.BaseTrackerService;
-import co.gobd.gofetch.service.OrderService;
+import co.gobd.gofetch.service.OrderServiceImpl;
 import co.gobd.gofetch.service.SignalRService;
 
 /**
@@ -24,7 +24,7 @@ public class FakeServiceCall {
 
 
     public static void postOrder() {
-        OrderService service = new OrderService();
+        OrderServiceImpl service = new OrderServiceImpl();
         BaseOrder order =  createFakeOrder();
 
     }

@@ -2,7 +2,7 @@ package co.gobd.gofetch.service;
 
 import android.util.Log;
 
-import co.gobd.gofetch.config.Url;
+import co.gobd.gofetch.config.ApiEndpoint;
 import co.gobd.gofetch.model.order.BaseOrder;
 import co.gobd.gofetch.network.OrderApi;
 import co.gobd.gofetch.network.RestClient;
@@ -13,12 +13,12 @@ import retrofit2.Response;
 /**
  * Created by tonmoy on 29-Feb-16.
  */
-public class OrderService {
+public class OrderServiceImpl {
 
-    private static final String TAG = "OrderService";
+    private static final String TAG = "OrderServiceImpl";
 
     public void postOrder(BaseOrder order) {
-        OrderApi orderApi = RestClient.getApi(Url.BASE_URL, OrderApi.class);
+        OrderApi orderApi = RestClient.getApi(ApiEndpoint.TaskCat.BASE, OrderApi.class);
         Call<Void> call = orderApi.postOrder(order);
 
         Log.i(TAG, order.toString());
