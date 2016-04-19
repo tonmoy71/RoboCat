@@ -1,6 +1,6 @@
 package co.gobd.gofetch.service.order;
 
-import co.gobd.gofetch.callback.ConnectionCallback;
+import co.gobd.gofetch.network.ConnectionCallback;
 
 /**
  * Created by tonmoy on 19-Apr-16.

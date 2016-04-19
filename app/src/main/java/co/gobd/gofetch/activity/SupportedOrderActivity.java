@@ -74,5 +74,7 @@ public class SupportedOrderActivity extends AppCompatActivity implements OnItemC
     @Override
     public void onClick(View view, int position) {
         Log.i(TAG, "Item position: " + position);
+
+
     }
 }

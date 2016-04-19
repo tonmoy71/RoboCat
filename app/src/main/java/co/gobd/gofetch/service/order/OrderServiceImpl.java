@@ -49,6 +49,7 @@ public class OrderServiceImpl implements OrderService {
             @Override
             public void onResponse(Call<List<SupportedOrder>> call, Response<List<SupportedOrder>> response) {
                 if (response.isSuccessful()) {
+                    // Pass the List<SupportedOrder> to this method
                     callback.onReceiveOrderSuccess(response.body());
                 } else {
                     callback.onReceiveOrderFailure();

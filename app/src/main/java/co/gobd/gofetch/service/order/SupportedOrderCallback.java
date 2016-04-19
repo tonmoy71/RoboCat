@@ -2,7 +2,7 @@ package co.gobd.gofetch.service.order;
 
 import java.util.List;
 
-import co.gobd.gofetch.callback.ConnectionCallback;
+import co.gobd.gofetch.network.ConnectionCallback;
 import co.gobd.gofetch.model.SupportedOrder;
 
 /**

@@ -26,7 +26,7 @@ public class FakeServiceCall {
 
     }
 
-    private static OrderModel createFakeOrder() {
+    public static OrderModel createFakeOrder() {
         String name = "Fahim";
         String type = "Ride";
         From from = new From("Banani", new Point("Point", new String[]{"90", "21"}));
