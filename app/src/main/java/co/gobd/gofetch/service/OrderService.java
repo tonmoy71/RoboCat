@@ -26,7 +26,7 @@ public class OrderService {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccess()) {
+                if (response.isSuccessful()) {
                     Log.i(TAG, "POST order successful, status code: " + response.code());
                 } else {
                     Log.i(TAG, "POST order unsuccessful , status code: " + response.code());

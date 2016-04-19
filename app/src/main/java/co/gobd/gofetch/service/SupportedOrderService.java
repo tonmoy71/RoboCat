@@ -32,7 +32,7 @@ public class SupportedOrderService {
         call.enqueue(new Callback<List<SupportedOrder>>() {
             @Override
             public void onResponse(Call<List<SupportedOrder>> call, Response<List<SupportedOrder>> response) {
-                if (response.isSuccess()) {
+                if (response.isSuccessful()) {
                     onOrderDataReceive.onReceive(response.body());
                     Log.i(TAG, response.body().toString());
                 }
