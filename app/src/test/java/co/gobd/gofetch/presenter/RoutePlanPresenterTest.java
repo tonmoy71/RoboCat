@@ -6,8 +6,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import co.gobd.gofetch.enums.LocationTypeEnum;
-import co.gobd.gofetch.view.RoutePlanView;
+import co.gobd.gofetch.utility.LocationType;
+import co.gobd.gofetch.ui.view.RoutePlanView;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -33,7 +33,7 @@ public class RoutePlanPresenterTest {
         when(view.getStartingPointAddress()).thenReturn("");
         presenter.onButtonClick();
 
-        verify(view).showErrorOnEmptyAddress(LocationTypeEnum.STARTING_POINT);
+        verify(view).showErrorOnEmptyAddress(LocationType.STARTING_POINT);
 
     }
 
@@ -43,7 +43,7 @@ public class RoutePlanPresenterTest {
         when(view.getDestinationAddress()).thenReturn("");
         presenter.onButtonClick();
 
-        verify(view).showErrorOnEmptyAddress(LocationTypeEnum.DESTINATION_POINT);
+        verify(view).showErrorOnEmptyAddress(LocationType.DESTINATION_POINT);
 
     }
 }

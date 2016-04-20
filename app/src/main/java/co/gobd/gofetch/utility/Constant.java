@@ -21,7 +21,13 @@ public class Constant {
     public static final String KEY_DESTINATION_ADDRESS = "DESTINATION_ADDRESS";
     public static final String KEY_START_NOTE = "START_NOTE";
     public static final String KEY_DESTINATION_NOTE = "DESTINATION_NOTE";
+
     private Constant() {
 
+    }
+
+    public final class BackendName {
+        public static final String TASK_CAT = "TASK_CAT";
+        public static final String SHADOW_CAT = "SHADOW_CAT";
     }
 }

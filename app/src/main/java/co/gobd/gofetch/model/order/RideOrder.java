@@ -1,28 +1,45 @@
 package co.gobd.gofetch.model.order;
 
-import com.google.gson.annotations.SerializedName;
+import co.gobd.gofetch.model.Location;
 
 /**
  * Created by tonmoy on 29-Feb-16.
  */
-public class RideOrder extends BaseOrder {
+public class RideOrder extends OrderModel {
+    private Location From;
+    private Location To;
+    private String[] VehiclePreference;
 
-    @SerializedName("From")
-    private From from;
-
-    @SerializedName("To")
-    private To to;
-
-    @SerializedName("VehiclePreference")
-    private String[] vehiclePreference;
-
-    public RideOrder(String name, String type, From from, To to, String[] vehiclePreference) {
+    public RideOrder(String name, String type, Location from, Location to, String[] vehiclePreference) {
         super(name, type);
+        this.From = from;
+        this.To = to;
+        this.VehiclePreference = vehiclePreference;
 
-        this.from = from;
-        this.to = to;
-        this.vehiclePreference = vehiclePreference;
+    }
 
+    public Location getFrom() {
+        return From;
+    }
+
+    public void setFrom(Location from) {
+        From = from;
+    }
+
+    public Location getTo() {
+        return To;
+    }
+
+    public void setTo(Location to) {
+        To = to;
+    }
+
+    public String[] getVehiclePreference() {
+        return VehiclePreference;
+    }
+
+    public void setVehiclePreference(String[] vehiclePreference) {
+        VehiclePreference = vehiclePreference;
     }
 
 

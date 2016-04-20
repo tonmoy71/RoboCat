@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_margin="4dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity.SupportedOrderActivity"
+    tools:context=".ui.activity.SupportedOrderActivity"
     tools:showIn="@layout/activity_supported_order">
 
     <android.support.v7.widget.RecyclerView
