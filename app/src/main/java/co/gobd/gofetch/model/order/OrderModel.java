@@ -1,57 +1,44 @@
 package co.gobd.gofetch.model.order;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Created by tonmoy on 29-Feb-16.
  */
 public class OrderModel {
 
-    @SerializedName("Name")
-    String name;
+    String Name;
+    String Type;
+    String PayloadType;
+    String User;
+    String ETA;
+    double ETAMinutes;
 
-    @SerializedName("Type")
-    String type;
-
-    @SerializedName("PayloadType")
-    String payloadType;
-
-    @SerializedName("User")
-    String user;
-
-    @SerializedName("ETA")
-    String eta;
-
-    @SerializedName("ETAMinutes")
-    double etaMinutes;
+    public OrderModel(String name, String type) {
+        this.Name = name;
+        this.Type = type;
+    }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public String getType() {
-        return type;
+        return Type;
     }
 
     public String getPayloadType() {
-        return payloadType;
+        return PayloadType;
     }
 
     public String getUser() {
-        return user;
+        return User;
     }
 
-    public String getEta() {
-        return eta;
+    public String getETA() {
+        return ETA;
     }
 
-    public double getEtaMinutes() {
-        return etaMinutes;
-    }
-
-    public OrderModel(String name, String type) {
-        this.name = name;
-        this.type = type;
+    public double getETAMinutes() {
+        return ETAMinutes;
     }
 
 

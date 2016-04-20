@@ -17,7 +17,7 @@ import java.util.List;
 
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.ui.view.OnItemClickListener;
-import co.gobd.gofetch.model.SupportedOrder;
+import co.gobd.gofetch.model.order.SupportedOrder;
 import co.gobd.gofetch.service.order.OrderService;
 import co.gobd.gofetch.service.order.SupportedOrderCallback;
 

@@ -1,17 +1,13 @@
-package co.gobd.gofetch.model;
+package co.gobd.gofetch.model.order;
 
 /**
  * Created by tonmoy on 01-Feb-16.
  */
 public class SupportedOrder {
     private String ActionName;
-
     private String _id;
-
     private String OrderCode;
-
     private String ImageUrl;
-
     private String OrderName;
 
     public String getActionName() {

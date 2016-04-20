@@ -2,7 +2,7 @@ package co.gobd.gofetch.service.order;
 
 import java.util.List;
 
-import co.gobd.gofetch.model.SupportedOrder;
+import co.gobd.gofetch.model.order.SupportedOrder;
 import co.gobd.gofetch.model.order.OrderModel;
 import co.gobd.gofetch.network.OrderApi;
 import retrofit2.Call;

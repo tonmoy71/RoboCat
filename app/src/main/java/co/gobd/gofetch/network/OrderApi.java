@@ -3,7 +3,7 @@ package co.gobd.gofetch.network;
 import java.util.List;
 
 import co.gobd.gofetch.config.ApiEndpoint;
-import co.gobd.gofetch.model.SupportedOrder;
+import co.gobd.gofetch.model.order.SupportedOrder;
 import co.gobd.gofetch.model.order.OrderModel;
 import retrofit2.Call;
 import retrofit2.http.Body;
