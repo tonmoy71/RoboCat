@@ -5,8 +5,8 @@ import co.gobd.gofetch.model.order.OrderModel;
 import co.gobd.gofetch.model.order.Point;
 import co.gobd.gofetch.model.order.RideOrder;
 import co.gobd.gofetch.model.order.To;
-import co.gobd.gofetch.service.BaseTrackerService;
-import co.gobd.gofetch.service.SignalRService;
+import co.gobd.gofetch.service.tracker.BaseTrackerService;
+import co.gobd.gofetch.service.tracker.SignalRService;
 
 /**
  * Created by tonmoy on 29-Feb-16.

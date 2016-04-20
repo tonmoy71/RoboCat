@@ -1,4 +1,4 @@
-package co.gobd.gofetch.service;
+package co.gobd.gofetch.service.tracker;
 
 /**
  * Created by tonmoy on 04-Feb-16.

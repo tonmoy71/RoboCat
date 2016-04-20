@@ -18,7 +18,7 @@
             android:value="AIzaSyB9tsJXqB9ho_Wq9Ye6nXSrZWXDzmDTL3s" />
 
         <activity
-            android:name=".activity.SupportedOrderActivity"
+            android:name=".ui.activity.SupportedOrderActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.RideActivity"
+            android:name=".ui.activity.RideActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/label_ride_activity"
             android:windowSoftInputMode="stateHidden">

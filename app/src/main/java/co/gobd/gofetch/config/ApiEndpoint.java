@@ -14,5 +14,11 @@ public class ApiEndpoint {
         public static final String POST_ORDER = "/api/Order";
     }
 
+    public static final class SignalR {
+
+        public final static String URL = "http://gobdodin.cloudapp.net:1337/realtime/hubs";
+        public final static String HUB_NAME = "GoTransitBroadcastHub";
+    }
+
 
 }

@@ -1,16 +1,13 @@
-package co.gobd.gofetch.fragment;
+package co.gobd.gofetch.ui.fragment;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.os.Bundle;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -23,11 +20,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import co.gobd.gofetch.R;
-import co.gobd.gofetch.callback.RideFragmentCallback;
-import co.gobd.gofetch.enums.LocationTypeEnum;
+import co.gobd.gofetch.utility.LocationType;
 import co.gobd.gofetch.presenter.RoutePlanPresenter;
-import co.gobd.gofetch.utility.Constant;
-import co.gobd.gofetch.view.RoutePlanView;
+import co.gobd.gofetch.ui.view.RoutePlanView;
 
 import static co.gobd.gofetch.utility.Constant.*;
 
@@ -209,10 +204,10 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     }
 
     @Override
-    public void showErrorOnEmptyAddress(LocationTypeEnum locationType) {
-        if (locationType == LocationTypeEnum.STARTING_POINT) {
+    public void showErrorOnEmptyAddress(LocationType locationType) {
+        if (locationType == LocationType.STARTING_POINT) {
             //TODO Shake etStartLocation
-        } else if (locationType == LocationTypeEnum.DESTINATION_POINT) {
+        } else if (locationType == LocationType.DESTINATION_POINT) {
             //TODO Shake etDestinationLocation
         }
     }

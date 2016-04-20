@@ -1,4 +1,4 @@
-package co.gobd.gofetch.callback;
+package co.gobd.gofetch.ui.fragment;
 
 import android.os.Bundle;
 

@@ -1,10 +1,10 @@
-package co.gobd.gofetch.view;
+package co.gobd.gofetch.ui.view;
 
 import android.os.Bundle;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import co.gobd.gofetch.enums.LocationTypeEnum;
+import co.gobd.gofetch.utility.LocationType;
 
 /**
  * Created by tonmoy on 07-Mar-16.
@@ -29,7 +29,7 @@ public interface RoutePlanView {
     String getDestinationAddress();
     String getDestinationPointNote();
 
-    void showErrorOnEmptyAddress(LocationTypeEnum locationType);
+    void showErrorOnEmptyAddress(LocationType locationType);
 
     void onReceiveRouteData(Bundle bundle);
 

@@ -1,4 +1,4 @@
-package co.gobd.gofetch.activity;
+package co.gobd.gofetch.ui.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import javax.inject.Inject;
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.adapter.SupportedOrderAdapter;
 import co.gobd.gofetch.application.GoFetchApplication;
-import co.gobd.gofetch.listener.OnItemClickListener;
+import co.gobd.gofetch.ui.view.OnItemClickListener;
 
 
 public class SupportedOrderActivity extends AppCompatActivity implements OnItemClickListener {

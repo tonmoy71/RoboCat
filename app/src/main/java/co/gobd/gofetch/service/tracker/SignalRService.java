@@ -1,10 +1,10 @@
-package co.gobd.gofetch.service;
+package co.gobd.gofetch.service.tracker;
 
 import android.util.Log;
 
 import com.google.gson.JsonElement;
 
-import co.gobd.gofetch.config.SignalRConfig;
+import co.gobd.gofetch.config.ApiEndpoint;
 import microsoft.aspnet.signalr.client.Action;
 import microsoft.aspnet.signalr.client.ErrorCallback;
 import microsoft.aspnet.signalr.client.MessageReceivedHandler;
@@ -27,8 +27,8 @@ public class SignalRService implements BaseTrackerService {
     public void setup() {
 
         Platform.loadPlatformComponent(new AndroidPlatformComponent());
-        hubConnection = new HubConnection(SignalRConfig.URL);
-        hubProxy = hubConnection.createHubProxy(SignalRConfig.HUB_NAME);
+        hubConnection = new HubConnection(ApiEndpoint.SignalR.URL);
+        hubProxy = hubConnection.createHubProxy(ApiEndpoint.SignalR.HUB_NAME);
     }
 
     @Override

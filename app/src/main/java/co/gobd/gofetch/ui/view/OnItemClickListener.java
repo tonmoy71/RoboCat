@@ -1,4 +1,4 @@
-package co.gobd.gofetch.listener;
+package co.gobd.gofetch.ui.view;
 
 import android.view.View;
 
