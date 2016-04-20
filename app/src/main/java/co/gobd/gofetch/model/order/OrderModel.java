@@ -3,7 +3,7 @@ package co.gobd.gofetch.model.order;
 /**
  * Created by tonmoy on 29-Feb-16.
  */
-public class OrderModel {
+public abstract class OrderModel {
 
     String Name;
     String Type;

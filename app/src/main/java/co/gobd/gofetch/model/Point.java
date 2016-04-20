@@ -1,15 +1,11 @@
-package co.gobd.gofetch.model.order;
-
-import com.google.gson.annotations.SerializedName;
+package co.gobd.gofetch.model;
 
 /**
  * Created by tonmoy on 29-Feb-16.
  */
 public class Point {
-    @SerializedName("type")
-    private String type;
 
-    @SerializedName("coordinates")
+    private String type;
     private String[] coordinates;
 
     public Point(String type, String[] coordinates) {
