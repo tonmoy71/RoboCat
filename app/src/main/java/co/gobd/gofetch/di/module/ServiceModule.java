@@ -1,0 +1,22 @@
+package co.gobd.gofetch.di.module;
+
+import javax.inject.Singleton;
+
+import co.gobd.gofetch.network.OrderApi;
+import co.gobd.gofetch.service.order.OrderService;
+import co.gobd.gofetch.service.order.OrderServiceImpl;
+import dagger.Module;
+import dagger.Provides;
+
+/**
+ * Created by tonmoy on 19-Apr-16.
+ */
+@Module
+public class ServiceModule {
+
+    @Provides
+    @Singleton
+    public OrderService providesOrderService(OrderApi api) {
+        return new OrderServiceImpl(api);
+    }
+}

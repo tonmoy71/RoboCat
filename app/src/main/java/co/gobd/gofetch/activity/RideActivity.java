@@ -5,8 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import co.gobd.gofetch.R;
-import co.gobd.gofetch.callback.RideFragmentCallback;
-import co.gobd.gofetch.fragment.RoutePlanFragment;
+import co.gobd.gofetch.ui.fragment.RideFragmentCallback;
+import co.gobd.gofetch.ui.fragment.RoutePlanFragment;
+
 
 public class RideActivity extends AppCompatActivity implements RideFragmentCallback {
 

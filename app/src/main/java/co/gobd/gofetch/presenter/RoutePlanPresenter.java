@@ -5,9 +5,9 @@ import android.os.Bundle;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.maps.model.LatLng;
 
-import co.gobd.gofetch.enums.LocationTypeEnum;
+import co.gobd.gofetch.utility.LocationType;
 import co.gobd.gofetch.utility.Constant;
-import co.gobd.gofetch.view.RoutePlanView;
+import co.gobd.gofetch.ui.view.RoutePlanView;
 
 import static co.gobd.gofetch.utility.Constant.REQUEST_CODE_DESTINATION_POINT;
 import static co.gobd.gofetch.utility.Constant.REQUEST_CODE_STARTING_POINT;
@@ -33,11 +33,11 @@ public class RoutePlanPresenter {
     public void onPlaceDataReceived(Place place, int requestCode) {
         if (place != null) {
             if (requestCode == REQUEST_CODE_STARTING_POINT) {
-                routePlanView.setFromEditTextLocation(place.getName().toString());
+                routePlanView.setStartingLocationText(place.getName().toString());
                 routePlanView.setStartingPoint(place.getLatLng());
 
             } else if (requestCode == REQUEST_CODE_DESTINATION_POINT) {
-                routePlanView.setToEditTextLocation(place.getName().toString());
+                routePlanView.setDestinationLocationText(place.getName().toString());
                 routePlanView.setDestinationPoint(place.getLatLng());
 
             }
@@ -49,12 +49,12 @@ public class RoutePlanPresenter {
 
         String startingPointAddress = routePlanView.getStartingPointAddress();
         if (startingPointAddress.isEmpty()) {
-            routePlanView.showErrorOnEmptyAddress(LocationTypeEnum.STARTING_POINT);
+            routePlanView.showErrorOnEmptyAddress(LocationType.STARTING_POINT);
         }
 
         String destinationPointAddress = routePlanView.getDestinationAddress();
         if (destinationPointAddress.isEmpty()) {
-            routePlanView.showErrorOnEmptyAddress(LocationTypeEnum.DESTINATION_POINT);
+            routePlanView.showErrorOnEmptyAddress(LocationType.DESTINATION_POINT);
         }
 
         LatLng startingPoint = routePlanView.getStartingPoint();
