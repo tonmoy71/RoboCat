@@ -31,6 +31,7 @@ public class RoutePlanPresenterTest {
     @Test
     public void showErrorWhenStartingPointEmpty() throws Exception {
         when(view.getStartingPointAddress()).thenReturn("");
+        when(view.getDestinationAddress()).thenReturn("Shyamoli");
         presenter.onButtonClick();
 
         verify(view).showErrorOnEmptyAddress(LocationType.STARTING_POINT);

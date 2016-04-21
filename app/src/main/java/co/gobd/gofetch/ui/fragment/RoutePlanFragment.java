@@ -3,11 +3,11 @@ package co.gobd.gofetch.ui.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.view.View;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -24,7 +24,8 @@ import co.gobd.gofetch.utility.LocationType;
 import co.gobd.gofetch.presenter.RoutePlanPresenter;
 import co.gobd.gofetch.ui.view.RoutePlanView;
 
-import static co.gobd.gofetch.utility.Constant.*;
+import static co.gobd.gofetch.utility.Constant.REQUEST_CODE_DESTINATION_POINT;
+import static co.gobd.gofetch.utility.Constant.REQUEST_CODE_STARTING_POINT;
 
 public class RoutePlanFragment extends Fragment implements RoutePlanView {
 
@@ -64,6 +65,7 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
 
     /* Callback to update activity */
     private RideFragmentCallback callback;
+
 
     public RoutePlanFragment() {
         //Empty constructor for fragment initialization
