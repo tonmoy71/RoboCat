@@ -25,7 +25,7 @@ android:
 
 deploy:
   - provider: releases
-    api_key: cD78mTqsvxYKqPexgKAk
+    api_key: d2fef7290112d71fe416ca00fc8c25f28a70a2bf
     file: app/build/outputs/apk/app-debug.apk
     skip_cleanup: true
     on:
