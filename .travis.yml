@@ -43,4 +43,4 @@ before_install:
 script:
   - echo $ADB_INSTALL_TIMEOUT
   - android list target
-  - ./gradlew build connectedCheck
+  - ./gradlew build assembleDebug
