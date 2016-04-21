@@ -23,6 +23,15 @@ android:
     # - sys-img-armeabi-v7a-android-21
     - sys-img-armeabi-v7a-android-23
 
+deploy:
+  - provider: releases
+    api_key: cD78mTqsvxYKqPexgKAk
+    file: app/build/outputs/apk/app-debug.apk
+    skip_cleanup: true
+    on:
+      repo: NerdCats/RoboCat
+      tags: true
+
 env:
   global:
     # install timeout in minutes (2 minutes by default)
