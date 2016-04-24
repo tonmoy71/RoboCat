@@ -25,7 +25,7 @@ public class JobServiceImpl implements JobService {
             @Override
             public void onResponse(Call<JobModel> call, Response<JobModel> response) {
                 if (response.isSuccessful()) {
-                    // Pass List<JobTask> into this method
+                    // Pass JobModel into this method
                     callback.onLoadTasksSuccess(response.body());
                 } else {
                     callback.onLoadTasksFailure();
