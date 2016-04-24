@@ -8,7 +8,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
+import co.gobd.gofetch.model.JobModel;
 import co.gobd.gofetch.model.task.DeliveryTask;
 import co.gobd.gofetch.model.task.FetchDeliveryManTask;
 import co.gobd.gofetch.model.task.JobTask;
@@ -18,12 +21,14 @@ import co.gobd.gofetch.model.task.PackagePickupTask;
 /**
  * Created by tonmoy on 24-Apr-16.
  */
-public class JobTaskDeserializer implements JsonDeserializer<JobTask> {
+public class JobModelDeserializer implements JsonDeserializer<JobModel> {
 
-    private JobTask jobTask;
+    private JobModel jobModel;
 
     @Override
-    public JobTask deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+    public JobModel deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+
+        List<JobTask> jobTaskList = new ArrayList<>();
 
         final JsonObject jsonObject = json.getAsJsonObject();
         final JsonArray tasks = jsonObject.getAsJsonArray("Tasks");
@@ -38,24 +43,34 @@ public class JobTaskDeserializer implements JsonDeserializer<JobTask> {
                 case JobTaskTypes.FETCH_DELIVERYMAN:
                     jobTaskStateString = task.get("JobTaskStateString").getAsString();
                     state = task.get("State").getAsString();
-                    jobTask = new FetchDeliveryManTask(jobTaskStateString, state);
+                    jobTaskList.add(new FetchDeliveryManTask(jobTaskStateString, state));
                     break;
 
                 case JobTaskTypes.PACKAGE_PICKUP:
                     jobTaskStateString = task.get("JobTaskStateString").getAsString();
                     state = task.get("State").getAsString();
-                    jobTask = new PackagePickupTask(jobTaskStateString, state);
+                    jobTaskList.add(new PackagePickupTask(jobTaskStateString, state));
                     break;
 
                 case JobTaskTypes.DELIVERY:
                     jobTaskStateString = task.get("JobTaskStateString").getAsString();
                     state = task.get("State").getAsString();
-                    jobTask = new DeliveryTask(jobTaskStateString, state);
+                    jobTaskList.add(new DeliveryTask(jobTaskStateString, state));
+                    break;
+
+                default:
+
                     break;
             }
 
         }
-        return jobTask;
+
+        String Name = jsonObject.get("Name").getAsString();
+        String State = jsonObject.get("State").getAsString();
+
+        jobModel = new JobModel(Name, State, jobTaskList);
+
+        return jobModel;
 
     }
 }

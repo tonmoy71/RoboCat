@@ -1,6 +1,6 @@
 package co.gobd.gofetch.service.job;
 
-import co.gobd.gofetch.model.task.JobTask;
+import co.gobd.gofetch.model.JobModel;
 import co.gobd.gofetch.network.Api;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,10 +20,10 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void getTasksForAJob(String jobId, final JobCallback callback) {
-        Call<JobTask> call = api.getTasksForAJob(jobId);
-        call.enqueue(new Callback<JobTask>() {
+        Call<JobModel> call = api.getTasksForAJob(jobId);
+        call.enqueue(new Callback<JobModel>() {
             @Override
-            public void onResponse(Call<JobTask> call, Response<JobTask> response) {
+            public void onResponse(Call<JobModel> call, Response<JobModel> response) {
                 if (response.isSuccessful()) {
                     // Pass List<JobTask> into this method
                     callback.onLoadTasksSuccess(response.body());
@@ -33,7 +33,7 @@ public class JobServiceImpl implements JobService {
             }
 
             @Override
-            public void onFailure(Call<JobTask> call, Throwable t) {
+            public void onFailure(Call<JobModel> call, Throwable t) {
                 callback.onConnectionError();
             }
         });

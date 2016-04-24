@@ -14,7 +14,7 @@ import javax.inject.Inject;
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.adapter.SupportedOrderAdapter;
 import co.gobd.gofetch.application.GoFetchApplication;
-import co.gobd.gofetch.model.task.JobTask;
+import co.gobd.gofetch.model.JobModel;
 import co.gobd.gofetch.service.job.JobCallback;
 import co.gobd.gofetch.service.job.JobService;
 import co.gobd.gofetch.ui.view.OnItemClickListener;
@@ -82,7 +82,7 @@ public class SupportedOrderActivity extends AppCompatActivity implements OnItemC
 
         jobService.getTasksForAJob("Job-PHBDXVFS", new JobCallback() {
             @Override
-            public void onLoadTasksSuccess(JobTask taskList) {
+            public void onLoadTasksSuccess(JobModel taskList) {
                 Log.i(TAG, "Loading tasks successful");
                 Log.i(TAG, taskList.toString());
             }

@@ -7,10 +7,10 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 
 import co.gobd.gofetch.config.ApiEndpoint;
-import co.gobd.gofetch.model.task.JobTask;
+import co.gobd.gofetch.model.JobModel;
 import co.gobd.gofetch.network.Api;
 import co.gobd.gofetch.utility.Constant;
-import co.gobd.gofetch.utility.deserializer.JobTaskDeserializer;
+import co.gobd.gofetch.utility.deserializer.JobModelDeserializer;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -43,7 +43,7 @@ public class ApiModule {
     public Gson providesGson()
     {
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(JobTask.class, new JobTaskDeserializer());
+        gsonBuilder.registerTypeAdapter(JobModel.class, new JobModelDeserializer());
         return gsonBuilder.create();
     }
 

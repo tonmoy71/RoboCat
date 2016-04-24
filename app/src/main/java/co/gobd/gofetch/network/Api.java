@@ -3,9 +3,9 @@ package co.gobd.gofetch.network;
 import java.util.List;
 
 import co.gobd.gofetch.config.ApiEndpoint;
+import co.gobd.gofetch.model.JobModel;
 import co.gobd.gofetch.model.order.OrderModel;
 import co.gobd.gofetch.model.order.SupportedOrder;
-import co.gobd.gofetch.model.task.JobTask;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -25,6 +25,6 @@ public interface Api {
     Call<Void> postOrder(@Body OrderModel order);
 
     @GET(ApiEndpoint.TaskCat.GET_TASKS_FOR_A_JOB)
-    Call<JobTask> getTasksForAJob(@Path("jobId") String jobId);
+    Call<JobModel> getTasksForAJob(@Path("jobId") String jobId);
 
 }
