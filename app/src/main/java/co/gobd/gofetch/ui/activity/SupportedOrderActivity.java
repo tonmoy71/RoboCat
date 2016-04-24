@@ -14,6 +14,9 @@ import javax.inject.Inject;
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.adapter.SupportedOrderAdapter;
 import co.gobd.gofetch.application.GoFetchApplication;
+import co.gobd.gofetch.model.task.JobTask;
+import co.gobd.gofetch.service.job.JobCallback;
+import co.gobd.gofetch.service.job.JobService;
 import co.gobd.gofetch.ui.view.OnItemClickListener;
 
 
@@ -70,11 +73,30 @@ public class SupportedOrderActivity extends AppCompatActivity implements OnItemC
         super.onConfigurationChanged(newConfig);
     }
 
+    @Inject
+    JobService jobService;
 
     @Override
     public void onClick(View view, int position) {
         Log.i(TAG, "Item position: " + position);
 
+        jobService.getTasksForAJob("Job-PHBDXVFS", new JobCallback() {
+            @Override
+            public void onLoadTasksSuccess(JobTask taskList) {
+                Log.i(TAG, "Loading tasks successful");
+                Log.i(TAG, taskList.toString());
+            }
+
+            @Override
+            public void onLoadTasksFailure() {
+                Log.i(TAG, "Loading tasks failed");
+            }
+
+            @Override
+            public void onConnectionError() {
+                Log.i(TAG, "Connection error");
+            }
+        });
 
     }
 }

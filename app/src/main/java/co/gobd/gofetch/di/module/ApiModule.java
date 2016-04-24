@@ -1,11 +1,16 @@
 package co.gobd.gofetch.di.module;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import javax.inject.Named;
 import javax.inject.Singleton;
 
 import co.gobd.gofetch.config.ApiEndpoint;
-import co.gobd.gofetch.network.OrderApi;
+import co.gobd.gofetch.model.task.JobTask;
+import co.gobd.gofetch.network.Api;
 import co.gobd.gofetch.utility.Constant;
+import co.gobd.gofetch.utility.deserializer.JobTaskDeserializer;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -35,14 +40,24 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    public GsonConverterFactory providesGsonConverterFactory() {
-        return GsonConverterFactory.create();
+    public Gson providesGson()
+    {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(JobTask.class, new JobTaskDeserializer());
+        return gsonBuilder.create();
+    }
+
+
+    @Provides
+    @Singleton
+    public GsonConverterFactory providesGsonConverterFactory(Gson gson) {
+        return GsonConverterFactory.create(gson);
     }
 
     @Provides
     @Singleton
-    public OrderApi providesOrderAPi(@Named(Constant.BackendName.TASK_CAT) Retrofit retrofit) {
-        return retrofit.create(OrderApi.class);
+    public Api providesOrderAPi(@Named(Constant.BackendName.TASK_CAT) Retrofit retrofit) {
+        return retrofit.create(Api.class);
     }
 
 

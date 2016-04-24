@@ -9,9 +9,10 @@ public class ApiEndpoint {
     }
 
     public static final class TaskCat {
-        public static final String BASE = "http://gofetch.cloudapp.net";
+        public static final String BASE = "http://taskcatdev.azurewebsites.net";
         public static final String GET_SUPPORTED_ORDER = "/api/order/supportedorder";
         public static final String POST_ORDER = "/api/Order";
+        public static final String GET_TASKS_FOR_A_JOB = "/api/job/{jobId}";
     }
 
     public static final class SignalR {

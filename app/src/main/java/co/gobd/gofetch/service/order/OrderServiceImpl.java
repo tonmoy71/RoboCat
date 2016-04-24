@@ -4,7 +4,7 @@ import java.util.List;
 
 import co.gobd.gofetch.model.order.SupportedOrder;
 import co.gobd.gofetch.model.order.OrderModel;
-import co.gobd.gofetch.network.OrderApi;
+import co.gobd.gofetch.network.Api;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -14,16 +14,16 @@ import retrofit2.Response;
  */
 public class OrderServiceImpl implements OrderService {
 
-    OrderApi orderApi;
+    Api api;
 
     // Constructed by dagger
-    public OrderServiceImpl(OrderApi api) {
-        this.orderApi = api;
+    public OrderServiceImpl(Api api) {
+        this.api = api;
     }
 
     @Override
     public void postOrder(OrderModel order, final PostOrderCallback callback) {
-        Call<Void> call = orderApi.postOrder(order);
+        Call<Void> call = api.postOrder(order);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -44,7 +44,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void getAllSupportedOrder(final SupportedOrderCallback callback) {
-        Call<List<SupportedOrder>> call = orderApi.getSupportedOrders();
+        Call<List<SupportedOrder>> call = api.getSupportedOrders();
         call.enqueue(new Callback<List<SupportedOrder>>() {
             @Override
             public void onResponse(Call<List<SupportedOrder>> call, Response<List<SupportedOrder>> response) {
