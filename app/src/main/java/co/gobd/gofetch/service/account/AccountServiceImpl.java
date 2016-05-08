@@ -39,7 +39,7 @@ public class AccountServiceImpl implements AccountService {
                 if (response.isSuccessful()) {
                     // TODO Save the token somewhere
                     String accessToken = response.body().getAccessToken();
-                    callback.onLoginSuccess();
+                    callback.onLoginSuccess(accessToken);
                 } else {
                     callback.onLoginFailure();
                 }

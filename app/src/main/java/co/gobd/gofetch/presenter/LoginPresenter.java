@@ -46,7 +46,7 @@ public class LoginPresenter {
 
             service.login(userName, password, new LoginCallback() {
                 @Override
-                public void onLoginSuccess() {
+                public void onLoginSuccess(String accessToken) {
                     loginView.stopProgress();
                     loginView.startSupportedOrderActivity();
                 }
