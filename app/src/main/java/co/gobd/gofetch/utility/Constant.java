@@ -30,4 +30,10 @@ public class Constant {
         public static final String TASK_CAT = "TASK_CAT";
         public static final String SHADOW_CAT = "SHADOW_CAT";
     }
+
+    public final class Login {
+        public static final String GRANT_TYPE = "password";
+        public static final String CLIENT_ID = "GoFetchDevDroidAssetApp";
+        public static final String CLIENT_SECRET = "GoFetchDevDroidAssetApp@gobd";
+    }
 }
