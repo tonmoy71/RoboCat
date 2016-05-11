@@ -21,7 +21,7 @@ public class ApiEndpoint {
         public static final String GET_PROFILE = "api/Account/Profile";
 
         // Register
-        public static final String GET_REGISTER = "api/Account/Register";
+        public static final String REGISTER = "api/Account/Register";
         public static final String GET_ASSIGNED_JOBS = "api/Account/{userId}/jobs";
     }
 

@@ -1,6 +1,7 @@
 package co.gobd.gofetch.service.account;
 
 import co.gobd.gofetch.model.account.AccessToken;
+import co.gobd.gofetch.model.account.UserModel;
 import co.gobd.gofetch.network.AccountApi;
 import co.gobd.gofetch.utility.Constant;
 import retrofit2.Call;
@@ -20,10 +21,24 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void register(String userName, String password, String confirmPassword,
-                         String email, String phoneNumber, RegistrationCallback callback) {
+    public void register(UserModel userModel, final RegistrationCallback callback) {
+        Call<Void> call = accountApi.register(userModel);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    callback.onRegistrationSuccess();
+                } else {
+                    callback.onRegistrationFailure();
+                }
+            }
 
-        // TODO Retrofit implementation
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                callback.onConnectionError();
+            }
+        });
+
     }
 
     @Override
