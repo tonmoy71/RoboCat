@@ -13,8 +13,9 @@ import co.gobd.gofetch.ui.view.LoginView;
  */
 public class LoginPresenter {
 
-    private WeakReference<LoginView> view;
+    private WeakReference<LoginView> weakLoginView;
     private AccountService service;
+    private LoginView loginView;
 
     @Inject
     public LoginPresenter(AccountService service) {
@@ -22,65 +23,80 @@ public class LoginPresenter {
     }
 
     public void initialise(LoginView view) {
-        this.view = new WeakReference<>(view);
+        this.weakLoginView = new WeakReference<>(view);
+
+        // Gets the actual loginView from its WeakReference
+        loginView = this.weakLoginView.get();
     }
 
-    public void validateCredentials() {
-        if (view != null) {
-            // Gets the actual loginView from its WeakReference
-            final LoginView loginView = view.get();
+    public boolean isValidCredentials() {
+        if (weakLoginView != null) {
 
             String userName = loginView.getUserName();
             if (userName == null || userName.isEmpty()) {
-                loginView.showUserNameError();
-                return;
+                loginView.showUserNameEmptyError();
+                return false;
             }
 
             String password = loginView.getPassword();
             if (password == null || password.isEmpty()) {
-                loginView.showPasswordError();
-                return;
+                loginView.showPasswordEmptyError();
+                return false;
             }
 
-            loginView.startProgress();
+            if (password.length() < 6) {
+                loginView.showPasswordLengthError();
+                return false;
+            }
 
-            service.login(userName, password, new LoginCallback() {
-                @Override
-                public void onLoginSuccess(String accessToken) {
-                    loginView.stopProgress();
-                    loginView.startSupportedOrderActivity();
-                }
-
-                @Override
-                public void onLoginFailure() {
-                    loginView.stopProgress();
-                    loginView.showLoginError();
-                }
-
-                @Override
-                public void onUserNameError() {
-                    loginView.stopProgress();
-                    loginView.showUserNameError();
-                }
-
-                @Override
-                public void onPasswordError() {
-                    loginView.stopProgress();
-                    loginView.showPasswordError();
-                }
-
-                @Override
-                public void onConnectionError() {
-                    loginView.stopProgress();
-                    loginView.showConnectionError();
-                }
-            });
         }
+
+        return true;
 
     }
 
+    public void login() {
+
+        String userName = loginView.getUserName();
+        String password = loginView.getPassword();
+
+        loginView.startProgress();
+
+        service.login(userName, password, new LoginCallback() {
+            @Override
+            public void onLoginSuccess(String accessToken) {
+                loginView.stopProgress();
+                loginView.startSupportedOrderActivity();
+            }
+
+            @Override
+            public void onLoginFailure() {
+                loginView.stopProgress();
+                loginView.showLoginError();
+            }
+
+            @Override
+            public void onUserNameError() {
+                loginView.stopProgress();
+                loginView.showUserNameError();
+            }
+
+            @Override
+            public void onPasswordError() {
+                loginView.stopProgress();
+                loginView.showPasswordError();
+            }
+
+            @Override
+            public void onConnectionError() {
+                loginView.stopProgress();
+                loginView.showConnectionError();
+            }
+        });
+    }
+
     public void onDestroy() {
-        view = null;
+        weakLoginView = null;
     }
 
 }

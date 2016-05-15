@@ -23,4 +23,10 @@ public interface LoginView {
     void showConnectionError();
 
     void showLoginError();
+
+    void showPasswordLengthError();
+
+    void showUserNameEmptyError();
+
+    void showPasswordEmptyError();
 }

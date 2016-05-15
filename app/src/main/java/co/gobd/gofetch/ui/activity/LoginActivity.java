@@ -80,7 +80,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_signin:
-                presenter.validateCredentials();
+                if (presenter.isValidCredentials()) {
+                    presenter.login();
+                }
                 break;
             case R.id.btn_signup:
                 break;
@@ -144,7 +146,21 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void showLoginError() {
-        // Show toast or dialog
         Toast.makeText(context, R.string.msg_error_login, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showPasswordLengthError() {
+        Toast.makeText(context, R.string.msg_error_minimum_length_password, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showUserNameEmptyError() {
+        etUserName.setError(getString(R.string.msg_error_userName_empty));
+    }
+
+    @Override
+    public void showPasswordEmptyError() {
+        etPassword.setError(getString(R.string.msg_error_password_empty));
     }
 }
