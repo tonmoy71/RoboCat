@@ -12,4 +12,9 @@
     <string name="to">To</string>
     <string name="button_route_plan_next">Next</string>
     <string name="label_ride_activity">Plan your route</string>
+    <string name="hint_userName">User name</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_text_signin">SIGN IN</string>
+    <string name="tv_text_no_account">Don\'t have account?</string>
+    <string name="btn_sign_up">SIGN UP</string>
 </resources>
