@@ -2,20 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusableInTouchMode="true"
-    >
+    android:focusableInTouchMode="true">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/input_layout_userName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/input_layout_password"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/et_userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:hint="@string/hint_userName" />
+
+
+            android:hint="@string/hint_userName"
+            android:singleLine="true" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -23,35 +27,39 @@
         android:id="@+id/input_layout_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_signin"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/input_layout_userName">
+        android:layout_alignParentStart="true">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
+
             android:hint="@string/hint_password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:singleLine="true" />
 
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/btn_signin"
+        style="@style/ButtonFullWidthPrimaryColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/input_layout_password"
+        android:layout_above="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/selector_button_primary_color"
         android:text="@string/btn_text_signin" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/btn_signin"
-        android:layout_marginTop="32dp"
+        android:layout_alignLeft="@+id/btn_signup"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/btn_signup"
+        android:layout_marginBottom="53dp"
         android:text="@string/tv_text_no_account" />
 
     <Button
@@ -59,9 +67,9 @@
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
         android:text="@string/btn_sign_up" />
 
     <ProgressBar
