@@ -2,6 +2,7 @@ package co.gobd.gofetch.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -108,12 +109,21 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void startProgress() {
-        progressBar.setVisibility(View.VISIBLE);
+        if (progressBar != null) {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 
     @Override
     public void stopProgress() {
-        progressBar.setVisibility(View.INVISIBLE);
+        if (progressBar != null) {
+            progressBar.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
