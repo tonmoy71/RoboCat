@@ -31,13 +31,13 @@ public class LoginPresenter {
             final LoginView loginView = view.get();
 
             String userName = loginView.getUserName();
-            if (userName == null || userName == "") {
+            if (userName == null || userName.isEmpty()) {
                 loginView.showUserNameError();
                 return;
             }
 
             String password = loginView.getPassword();
-            if (password == null || password == "") {
+            if (password == null || password.isEmpty()) {
                 loginView.showPasswordError();
                 return;
             }

@@ -33,7 +33,7 @@ public class Constant {
 
     public final class Login {
         public static final String GRANT_TYPE = "password";
-        public static final String CLIENT_ID = "GoFetchDevDroidAssetApp";
-        public static final String CLIENT_SECRET = "GoFetchDevDroidAssetApp@gobd";
+        public static final String CLIENT_ID = "GoFetchDevDroidApp";
+        public static final String CLIENT_SECRET = "GoFetchDevDroidApp@gobd";
     }
 }

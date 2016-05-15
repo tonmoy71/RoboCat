@@ -17,4 +17,8 @@
     <string name="btn_text_signin">SIGN IN</string>
     <string name="tv_text_no_account">Don\'t have account?</string>
     <string name="btn_sign_up">SIGN UP</string>
+    <string name="msg_error_userName">Username didn\'t match</string>
+    <string name="msg_error_password">Password didn\'t match</string>
+    <string name="msg_error_login">Can\'t log in, try again?</string>
+    <string name="msg_error_connection">Can\'t connect to internet</string>
 </resources>

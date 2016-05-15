@@ -18,6 +18,8 @@ public interface LoginView {
 
     void startSupportedOrderActivity();
 
+    void startSignupActivity();
+
     void showConnectionError();
 
     void showLoginError();
