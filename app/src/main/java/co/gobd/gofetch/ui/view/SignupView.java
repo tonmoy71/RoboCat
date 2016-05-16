@@ -7,4 +7,8 @@ public interface SignUpView {
     String getUserName();
 
     void showUserNameEmptyError();
+
+    String getPassword();
+
+    void showPasswordEmptyError();
 }

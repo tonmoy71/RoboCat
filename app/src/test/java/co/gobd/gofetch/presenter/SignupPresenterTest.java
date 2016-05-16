@@ -33,11 +33,19 @@ public class SignUpPresenterTest {
     }
 
     @Test
-    public void shouldShowUserNameEmptyError()
-    {
+    public void shouldShowUserNameEmptyError() {
         when(view.getUserName()).thenReturn("");
         presenter.isValidCredentials();
         verify(view).showUserNameEmptyError();
-
     }
+
+    @Test
+    public void shouldShowPasswordEmptyError()
+    {
+        when(view.getUserName()).thenReturn("abcde");
+        when(view.getPassword()).thenReturn("");
+        presenter.isValidCredentials();
+        verify(view).showPasswordEmptyError();
+    }
+
 }

@@ -35,6 +35,12 @@ public class SignUpPresenter {
             return false;
         }
 
+        String password = signUpView.getPassword();
+        if (password == null || password == "") {
+            signUpView.showPasswordEmptyError();
+            return false;
+        }
+
         return true;
     }
 }

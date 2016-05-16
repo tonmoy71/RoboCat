@@ -46,7 +46,7 @@ public class LoginPresenterTest {
     @Test
     public void shouldShowPasswordEmptyError(){
 
-        when(view.getUserName()).thenReturn("fahim");
+        when(view.getUserName()).thenReturn("abcde");
         when(view.getPassword()).thenReturn("");
         presenter.isValidCredentials();
         verify(view).showPasswordEmptyError();
@@ -56,7 +56,7 @@ public class LoginPresenterTest {
     @Test
     public void shouldShowPasswordLengthError(){
 
-        when(view.getUserName()).thenReturn("fahim");
+        when(view.getUserName()).thenReturn("abcde");
         when(view.getPassword()).thenReturn("123");
         presenter.isValidCredentials();
         verify(view).showPasswordLengthError();
