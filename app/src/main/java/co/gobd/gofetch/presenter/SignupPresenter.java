@@ -46,6 +46,13 @@ public class SignUpPresenter {
             return false;
         }
 
+        String confirmPassword = signUpView.getConfirmPassword();
+
+        if (!password.equals(confirmPassword)) {
+            signUpView.showPasswordMatchError();
+            return false;
+        }
+
 
         return true;
     }

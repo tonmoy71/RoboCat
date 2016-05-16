@@ -73,4 +73,17 @@ public class SignUpPresenterTest {
         verify(view).showPasswordLengthError();
     }
 
+    @Test
+    public void shouldShowErrorWhenPasswordAndConfirmPasswordDoNotMatch()
+    {
+        when(view.getUserName()).thenReturn("user");
+
+        // Must be at least 6 char length to pass length test
+        when(view.getPassword()).thenReturn("abcdef");
+        when(view.getConfirmPassword()).thenReturn("123456");
+        presenter.isValidCredentials();
+
+        verify(view).showPasswordMatchError();
+    }
+
 }

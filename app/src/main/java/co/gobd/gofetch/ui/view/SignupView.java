@@ -13,4 +13,8 @@ public interface SignUpView {
     void showPasswordEmptyError();
 
     void showPasswordLengthError();
+
+    String getConfirmPassword();
+
+    void showPasswordMatchError();
 }
