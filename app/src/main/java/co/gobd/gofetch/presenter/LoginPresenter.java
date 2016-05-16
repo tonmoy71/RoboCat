@@ -30,7 +30,7 @@ public class LoginPresenter {
     }
 
     public boolean isValidCredentials() {
-        if (weakLoginView != null) {
+        if (loginView != null) {
 
             String userName = loginView.getUserName();
             if (userName == null || userName.isEmpty()) {
@@ -48,10 +48,10 @@ public class LoginPresenter {
                 loginView.showPasswordLengthError();
                 return false;
             }
-
+            return true;
         }
 
-        return true;
+        return false;
 
     }
 
