@@ -9,6 +9,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import co.gobd.gofetch.service.account.AccountService;
 import co.gobd.gofetch.ui.view.SignUpView;
 
+import static junit.framework.TestCase.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -95,6 +96,18 @@ public class SignUpPresenterTest {
 
         verify(view).showInvalidEmailPatterError();
 
+    }
+
+    @Test
+    public void shouldPassWhenCredentialsAreValid()
+    {
+        when(view.getUserName()).thenReturn("user");
+        when(view.getPassword()).thenReturn("abcdef");
+        when(view.getConfirmPassword()).thenReturn("abcdef");
+        when(view.isEmailPatternValid()).thenReturn(true);
+        when(view.getType()).thenReturn("USER");
+
+        assertEquals(presenter.isValidCredentials(), true);
     }
 
 }

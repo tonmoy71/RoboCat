@@ -23,4 +23,6 @@ public interface SignUpView {
     void showInvalidEmailPatterError();
 
     boolean isEmailPatternValid();
+
+    String getType();
 }

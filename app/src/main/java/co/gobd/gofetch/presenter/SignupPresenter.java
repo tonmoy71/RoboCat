@@ -58,6 +58,12 @@ public class SignUpPresenter {
             return false;
         }
 
+        String type = signUpView.getType();
+        if (type != "USER") {
+            return false;
+        }
+
+
         return true;
     }
 
