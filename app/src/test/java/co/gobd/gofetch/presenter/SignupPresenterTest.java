@@ -33,17 +33,33 @@ public class SignUpPresenterTest {
     }
 
     @Test
-    public void shouldShowUserNameEmptyError() {
+    public void shouldShowUserNameEmptyErrorWhenUserNameIsBlank() {
         when(view.getUserName()).thenReturn("");
         presenter.isValidCredentials();
         verify(view).showUserNameEmptyError();
     }
 
     @Test
-    public void shouldShowPasswordEmptyError()
+    public void shouldShowUserNameEmptyErrorWhenUserNameIsNull() {
+        when(view.getUserName()).thenReturn(null);
+        presenter.isValidCredentials();
+        verify(view).showUserNameEmptyError();
+    }
+
+    @Test
+    public void shouldShowPasswordEmptyErrorWhenPasswordIsBlank()
     {
         when(view.getUserName()).thenReturn("abcde");
         when(view.getPassword()).thenReturn("");
+        presenter.isValidCredentials();
+        verify(view).showPasswordEmptyError();
+    }
+
+    @Test
+    public void shouldShowPasswordEmptyErrorWhenPasswordIsNull()
+    {
+        when(view.getUserName()).thenReturn("abcde");
+        when(view.getPassword()).thenReturn(null);
         presenter.isValidCredentials();
         verify(view).showPasswordEmptyError();
     }

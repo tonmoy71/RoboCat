@@ -30,13 +30,13 @@ public class SignUpPresenter {
 
     public boolean isValidCredentials() {
         String userName = signUpView.getUserName();
-        if (userName == null || userName == "") {
+        if (userName == null || userName.isEmpty()) {
             signUpView.showUserNameEmptyError();
             return false;
         }
 
         String password = signUpView.getPassword();
-        if (password == null || password == "") {
+        if (password == null || password.isEmpty()) {
             signUpView.showPasswordEmptyError();
             return false;
         }
