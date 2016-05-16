@@ -64,4 +64,13 @@ public class SignUpPresenterTest {
         verify(view).showPasswordEmptyError();
     }
 
+    @Test
+    public void shouldShowPasswordLengthError()
+    {
+        when(view.getUserName()).thenReturn("abcds");
+        when(view.getPassword()).thenReturn("12345");
+        presenter.isValidCredentials();
+        verify(view).showPasswordLengthError();
+    }
+
 }

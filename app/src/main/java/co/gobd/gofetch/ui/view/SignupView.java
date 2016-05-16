@@ -11,4 +11,6 @@ public interface SignUpView {
     String getPassword();
 
     void showPasswordEmptyError();
+
+    void showPasswordLengthError();
 }

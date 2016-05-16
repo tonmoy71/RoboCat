@@ -41,6 +41,12 @@ public class SignUpPresenter {
             return false;
         }
 
+        if (password.length() < 6) {
+            signUpView.showPasswordLengthError();
+            return false;
+        }
+
+
         return true;
     }
 }
