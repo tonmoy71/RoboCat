@@ -24,6 +24,7 @@ public class SignUpPresenterTest {
     @Mock
     AccountService service;
 
+
     private SignUpPresenter presenter;
 
     @Before
@@ -37,6 +38,8 @@ public class SignUpPresenterTest {
         when(view.getUserName()).thenReturn("");
         presenter.isValidCredentials();
         verify(view).showUserNameEmptyError();
+
+
     }
 
     @Test
@@ -47,8 +50,7 @@ public class SignUpPresenterTest {
     }
 
     @Test
-    public void shouldShowPasswordEmptyErrorWhenPasswordIsBlank()
-    {
+    public void shouldShowPasswordEmptyErrorWhenPasswordIsBlank() {
         when(view.getUserName()).thenReturn("abcde");
         when(view.getPassword()).thenReturn("");
         presenter.isValidCredentials();
@@ -56,8 +58,7 @@ public class SignUpPresenterTest {
     }
 
     @Test
-    public void shouldShowPasswordEmptyErrorWhenPasswordIsNull()
-    {
+    public void shouldShowPasswordEmptyErrorWhenPasswordIsNull() {
         when(view.getUserName()).thenReturn("abcde");
         when(view.getPassword()).thenReturn(null);
         presenter.isValidCredentials();
@@ -65,8 +66,7 @@ public class SignUpPresenterTest {
     }
 
     @Test
-    public void shouldShowPasswordLengthError()
-    {
+    public void shouldShowPasswordLengthError() {
         when(view.getUserName()).thenReturn("abcds");
         when(view.getPassword()).thenReturn("12345");
         presenter.isValidCredentials();
@@ -74,8 +74,7 @@ public class SignUpPresenterTest {
     }
 
     @Test
-    public void shouldShowErrorWhenPasswordAndConfirmPasswordDoNotMatch()
-    {
+    public void shouldShowErrorWhenPasswordAndConfirmPasswordDoNotMatch() {
         when(view.getUserName()).thenReturn("user");
 
         // Must be at least 6 char length to pass length test
@@ -84,6 +83,18 @@ public class SignUpPresenterTest {
         presenter.isValidCredentials();
 
         verify(view).showPasswordMatchError();
+    }
+
+    @Test
+    public void shouldShowErrorOnInvalidEmailPattern() {
+        when(view.getUserName()).thenReturn("user");
+        when(view.getPassword()).thenReturn("abcdef");
+        when(view.getConfirmPassword()).thenReturn("abcdef");
+        when(view.isEmailPatternValid()).thenReturn(false);
+        presenter.isValidCredentials();
+
+        verify(view).showInvalidEmailPatterError();
+
     }
 
 }

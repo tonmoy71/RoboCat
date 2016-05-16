@@ -17,4 +17,10 @@ public interface SignUpView {
     String getConfirmPassword();
 
     void showPasswordMatchError();
+
+    String getEmail();
+
+    void showInvalidEmailPatterError();
+
+    boolean isEmailPatternValid();
 }
