@@ -100,6 +100,7 @@ public class SignUpPresenterTest {
         when(view.getUserName()).thenReturn("user");
         when(view.getPassword()).thenReturn("abcdef");
         when(view.getConfirmPassword()).thenReturn("abcdef");
+        when(view.isPhoneNumberValid()).thenReturn(true);
         when(view.isEmailPatternValid()).thenReturn(false);
         presenter.isValidCredentials();
 

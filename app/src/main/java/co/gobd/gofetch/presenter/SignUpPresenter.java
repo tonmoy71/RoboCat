@@ -36,6 +36,7 @@ public class SignUpPresenter {
             signUpView.showUserNameEmptyError();
             return false;
         }
+        //FIXME Add check so that user name can't contain blank space
 
         String password = signUpView.getPassword();
         if (password == null || password.isEmpty()) {
@@ -54,16 +55,18 @@ public class SignUpPresenter {
             return false;
         }
 
+        if (!signUpView.isPhoneNumberValid()) {
+            signUpView.showInvalidPhoneNumberError();
+            return false;
+        }
+
 
         if (!signUpView.isEmailPatternValid()) {
             signUpView.showInvalidEmailPatterError();
             return false;
         }
 
-        if (!signUpView.isPhoneNumberValid()) {
-            signUpView.showInvalidPhoneNumberError();
-            return false;
-        }
+
 
         String type = signUpView.getType();
         if (type != "USER") {

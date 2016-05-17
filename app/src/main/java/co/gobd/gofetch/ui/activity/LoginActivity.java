@@ -85,6 +85,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 }
                 break;
             case R.id.btn_signup:
+                startSignUpActivity();
                 break;
         }
     }
