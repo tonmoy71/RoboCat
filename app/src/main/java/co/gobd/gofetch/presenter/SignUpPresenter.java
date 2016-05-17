@@ -54,7 +54,7 @@ public class SignUpPresenter {
             return false;
         }
 
-        String email = signUpView.getEmail();
+
         if (!signUpView.isEmailPatternValid()) {
             signUpView.showInvalidEmailPatterError();
             return false;
@@ -89,8 +89,8 @@ public class SignUpPresenter {
 
             @Override
             public void onConnectionError() {
-
-
+                signUpView.stopProgress();
+                signUpView.showConnectionError();
             }
         });
 

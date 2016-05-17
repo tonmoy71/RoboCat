@@ -143,4 +143,16 @@ public class SignUpPresenterTest {
 
     }
 
+    @Test
+    public void shouldShowErrorWhenNoConnectivity()
+    {
+        presenter.register();
+        verify(view).startProgress();
+        verify(service).register(any(UserModel.class), registrationCallbackArgumentCaptor.capture());
+        registrationCallbackArgumentCaptor.getValue().onConnectionError();
+        verify(view).stopProgress();
+        verify(view).showConnectionError();
+
+    }
+
 }

@@ -33,4 +33,6 @@ public interface SignUpView {
     void startProgress();
 
     void showRegistrationError();
+
+    void showConnectionError();
 }
