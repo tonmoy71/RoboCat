@@ -3,13 +3,19 @@ package co.gobd.gofetch.presenter;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import co.gobd.gofetch.model.account.UserModel;
 import co.gobd.gofetch.service.account.AccountService;
+import co.gobd.gofetch.service.account.RegistrationCallback;
 import co.gobd.gofetch.ui.view.SignUpView;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -25,11 +31,14 @@ public class SignUpPresenterTest {
     @Mock
     AccountService service;
 
-
     private SignUpPresenter presenter;
+
+    @Captor
+    private ArgumentCaptor<RegistrationCallback> registrationCallbackArgumentCaptor;
 
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
         presenter = new SignUpPresenter(service);
         presenter.initialise(view);
     }
@@ -108,6 +117,18 @@ public class SignUpPresenterTest {
         when(view.getType()).thenReturn("USER");
 
         assertEquals(presenter.isValidCredentials(), true);
+    }
+
+    @Test
+    public void shouldStartLoginActivityWhenSignUpSuccessful()
+    {
+        presenter.register();
+        verify(view).startProgress();
+        verify(service).register(any(UserModel.class), registrationCallbackArgumentCaptor.capture());
+        registrationCallbackArgumentCaptor.getValue().onRegistrationSuccess();
+        verify(view).stopProgress();
+        verify(view).startLoginActivity();
+
     }
 
 }

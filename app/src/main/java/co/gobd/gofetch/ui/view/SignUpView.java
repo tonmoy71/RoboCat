@@ -25,4 +25,10 @@ public interface SignUpView {
     boolean isEmailPatternValid();
 
     String getType();
+
+    void stopProgress();
+
+    void startLoginActivity();
+
+    void startProgress();
 }

@@ -4,7 +4,9 @@ import java.lang.ref.WeakReference;
 
 import javax.inject.Inject;
 
+import co.gobd.gofetch.model.account.UserModel;
 import co.gobd.gofetch.service.account.AccountService;
+import co.gobd.gofetch.service.account.RegistrationCallback;
 import co.gobd.gofetch.ui.view.SignUpView;
 
 /**
@@ -63,8 +65,36 @@ public class SignUpPresenter {
             return false;
         }
 
-
         return true;
     }
 
+    public void register() {
+
+        signUpView.startProgress();
+
+        UserModel userModel = getUserModel();
+
+        service.register(userModel, new RegistrationCallback() {
+            @Override
+            public void onRegistrationSuccess() {
+                signUpView.stopProgress();
+                signUpView.startLoginActivity();
+            }
+
+            @Override
+            public void onRegistrationFailure() {
+
+            }
+
+            @Override
+            public void onConnectionError() {
+
+            }
+        });
+
+    }
+
+    private UserModel getUserModel() {
+        return null;
+    }
 }

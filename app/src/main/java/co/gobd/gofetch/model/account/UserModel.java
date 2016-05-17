@@ -6,20 +6,31 @@ import android.support.annotation.Nullable;
  * Created by tonmoy on 11-May-16.
  */
 public class UserModel {
+    private String UserName;
+
+    private String Password;
+
     private String ConfirmPassword;
 
     private String Email;
 
-    private String Type;
-
-    private String Password;
-
     private String PhoneNumber;
-
-    private String UserName;
 
     @Nullable
     private String PicUri;
+
+    private String Type;
+
+    public UserModel(String userName, String password, String confirmPassword, String email, String phoneNumber, String picUri, String type) {
+        UserName = userName;
+        Password = password;
+        ConfirmPassword = confirmPassword;
+        Email = email;
+        PhoneNumber = phoneNumber;
+        PicUri = picUri;
+        Type = type;
+    }
+
 
     public String getConfirmPassword() {
         return ConfirmPassword;
