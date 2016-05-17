@@ -2,10 +2,16 @@ package co.gobd.gofetch.ui.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.application.GoFetchApplication;
 import co.gobd.gofetch.presenter.SignUpPresenter;
@@ -16,19 +22,48 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
     @Inject
     SignUpPresenter presenter;
 
+    @Inject
+    Context context;
+
+    // To remove ButterKnife instance on onDestroy()
+    private Unbinder unbinder;
+
+    @BindView(R.id.et_userName)
+    TextInputEditText etUserName;
+
+    @BindView(R.id.et_password)
+    TextInputEditText etPassword;
+
+    @BindView(R.id.et_confirm_password)
+    TextInputEditText etConfirmPassword;
+
+    @BindView(R.id.et_phone_number)
+    TextInputEditText etPhoneNumber;
+
+    @BindView(R.id.et_email)
+    TextInputEditText etEmail;
+
+    @BindView(R.id.btn_signup)
+    Button btnSignup;
+
+    @OnClick(R.id.btn_signup)
+    public void onClick() {
+
+    }
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         presenter.onDestroy();
+        unbinder.unbind();
     }
-
-    @Inject
-    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        unbinder = ButterKnife.bind(this);
 
         // Dagger injection
         ((GoFetchApplication) getApplication()).getAppComponent().inject(this);
@@ -130,4 +165,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
     public void showInvalidPhoneNumberError() {
 
     }
+
+
 }

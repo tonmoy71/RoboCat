@@ -24,4 +24,9 @@
     <string name="msg_error_minimum_length_password">Password must be at least 6 char long</string>
     <string name="msg_error_userName_empty">Username can\'t be empty</string>
     <string name="msg_error_password_empty">Password can\'t be empty</string>
+    <string name="hint_user_name">User name</string>
+    <string name="hint_confirm_password">Confirm password</string>
+    <string name="hint_phone_number">Phone number</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_sign_up">SIGN UP</string>
 </resources>
