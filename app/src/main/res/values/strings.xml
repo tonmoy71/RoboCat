@@ -20,8 +20,8 @@
     <string name="msg_error_userName">Username didn\'t match</string>
     <string name="msg_error_password">Password didn\'t match</string>
     <string name="msg_error_login">Can\'t log in, try again?</string>
-    <string name="msg_error_connection">Can\'t connect to internet</string>
-    <string name="msg_error_minimum_length_password">Password must be at least 6 char long</string>
+    <string name="msg_error_connection">Can\'t connect to server</string>
+    <string name="msg_error_minimum_length_password">Password must be at least 6 characters long</string>
     <string name="msg_error_userName_empty">Username can\'t be empty</string>
     <string name="msg_error_password_empty">Password can\'t be empty</string>
     <string name="hint_user_name">User name</string>
@@ -29,4 +29,8 @@
     <string name="hint_phone_number">Phone number</string>
     <string name="hint_email">Email</string>
     <string name="hint_sign_up">SIGN UP</string>
+    <string name="msg_error_password_match">Password and confirm password didn\'t match</string>
+    <string name="msg_error_email_pattern">Invalid email</string>
+    <string name="msg_error_register">Can\'t register, try again?</string>
+    <string name="msg_error_invalid_phone_number">Invalid phone number</string>
 </resources>

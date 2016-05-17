@@ -1,10 +1,14 @@
 package co.gobd.gofetch.ui.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -25,29 +29,44 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
     @Inject
     Context context;
 
-    // To remove ButterKnife instance on onDestroy()
-    private Unbinder unbinder;
 
     @BindView(R.id.et_userName)
     TextInputEditText etUserName;
 
+
     @BindView(R.id.et_password)
     TextInputEditText etPassword;
+
 
     @BindView(R.id.et_confirm_password)
     TextInputEditText etConfirmPassword;
 
+
     @BindView(R.id.et_phone_number)
     TextInputEditText etPhoneNumber;
+
 
     @BindView(R.id.et_email)
     TextInputEditText etEmail;
 
+
     @BindView(R.id.btn_signup)
-    Button btnSignup;
+    Button btnSignUp;
+
+
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+
+
+    // To remove ButterKnife instance on onDestroy()
+    private Unbinder unbinder;
+
 
     @OnClick(R.id.btn_signup)
     public void onClick() {
+        if (presenter.isValidCredentials()) {
+            presenter.register();
+        }
 
     }
 
@@ -73,97 +92,105 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     @Override
     public String getUserName() {
-        return null;
+        return etUserName.getText().toString();
     }
 
     @Override
     public void showUserNameEmptyError() {
-
+        etUserName.setError(getString(R.string.msg_error_userName_empty));
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return etPassword.getText().toString();
     }
 
     @Override
     public void showPasswordEmptyError() {
-
+        etPassword.setError(getString(R.string.msg_error_password_empty));
     }
 
     @Override
     public void showPasswordLengthError() {
-
+        etPassword.setError(getString(R.string.msg_error_minimum_length_password));
     }
 
     @Override
     public String getConfirmPassword() {
-        return null;
+        return etConfirmPassword.getText().toString();
     }
 
     @Override
     public void showPasswordMatchError() {
-
+        Toast.makeText(context, R.string.msg_error_password_match, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public String getEmail() {
-        return null;
+        return etEmail.getText().toString();
     }
 
     @Override
     public void showInvalidEmailPatterError() {
-
+        etEmail.setError(getString(R.string.msg_error_email_pattern));
     }
 
     @Override
     public boolean isEmailPatternValid() {
+        //TODO
         return false;
     }
 
     @Override
     public String getPhoneNumber() {
-        return null;
+        return etPhoneNumber.getText().toString();
     }
 
     @Override
     public String getType() {
-        return null;
+        // In future, it may be a dropdown of Asset/User, for now it works.
+        return "USER";
     }
 
     @Override
     public void stopProgress() {
-
+        if (progressBar != null) {
+            progressBar.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
     public void startLoginActivity() {
-
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     @Override
     public void startProgress() {
-
+        if (progressBar != null) {
+            progressBar.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void showRegistrationError() {
-
+        Toast.makeText(context, R.string.msg_error_register, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showConnectionError() {
-
+        Toast.makeText(context, R.string.msg_error_connection, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public boolean isPhoneNumberValid() {
+        //TODO
         return false;
     }
 
     @Override
     public void showInvalidPhoneNumberError() {
-
+        etPhoneNumber.setError(getString(R.string.msg_error_invalid_phone_number));
     }
 
 
