@@ -3,6 +3,7 @@ package co.gobd.gofetch.di.component;
 import javax.inject.Singleton;
 
 import co.gobd.gofetch.ui.activity.LoginActivity;
+import co.gobd.gofetch.ui.activity.SignUpActivity;
 import co.gobd.gofetch.ui.activity.SupportedOrderActivity;
 import co.gobd.gofetch.di.module.ApiModule;
 import co.gobd.gofetch.di.module.AppModule;
@@ -18,4 +19,5 @@ import dagger.Component;
 public interface AppComponent {
     void inject(SupportedOrderActivity target);
     void inject(LoginActivity target);
+    void inject(SignUpActivity target);
 }

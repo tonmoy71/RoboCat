@@ -24,6 +24,8 @@ public interface SignUpView {
 
     boolean isEmailPatternValid();
 
+    String getPhoneNumber();
+
     String getType();
 
     void stopProgress();
@@ -35,4 +37,8 @@ public interface SignUpView {
     void showRegistrationError();
 
     void showConnectionError();
+
+    boolean isPhoneNumberValid();
+
+    void showInvalidPhoneNumberError();
 }

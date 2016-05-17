@@ -60,6 +60,11 @@ public class SignUpPresenter {
             return false;
         }
 
+        if (!signUpView.isPhoneNumberValid()) {
+            signUpView.showInvalidPhoneNumberError();
+            return false;
+        }
+
         String type = signUpView.getType();
         if (type != "USER") {
             return false;
@@ -98,5 +103,9 @@ public class SignUpPresenter {
 
     private UserModel getUserModel() {
         return null;
+    }
+
+    public void onDestroy() {
+        weakSignUpView = null;
     }
 }

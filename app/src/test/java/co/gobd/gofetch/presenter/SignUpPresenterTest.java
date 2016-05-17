@@ -108,12 +108,26 @@ public class SignUpPresenterTest {
     }
 
     @Test
+    public void shouldShowErrorOnInvalidPhoneNumber() {
+        when(view.getUserName()).thenReturn("user");
+        when(view.getPassword()).thenReturn("abcdef");
+        when(view.getConfirmPassword()).thenReturn("abcdef");
+        when(view.isEmailPatternValid()).thenReturn(true);
+        when(view.isPhoneNumberValid()).thenReturn(false);
+        presenter.isValidCredentials();
+
+        verify(view).showInvalidPhoneNumberError();
+
+    }
+
+    @Test
     public void shouldPassWhenCredentialsAreValid()
     {
         when(view.getUserName()).thenReturn("user");
         when(view.getPassword()).thenReturn("abcdef");
         when(view.getConfirmPassword()).thenReturn("abcdef");
         when(view.isEmailPatternValid()).thenReturn(true);
+        when(view.isPhoneNumberValid()).thenReturn(true);
         when(view.getType()).thenReturn("USER");
 
         assertEquals(presenter.isValidCredentials(), true);
