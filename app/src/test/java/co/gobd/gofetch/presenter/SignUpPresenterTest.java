@@ -131,4 +131,16 @@ public class SignUpPresenterTest {
 
     }
 
+    @Test
+    public void shouldShowErrorWhenSignUpFails()
+    {
+        presenter.register();
+        verify(view).startProgress();
+        verify(service).register(any(UserModel.class), registrationCallbackArgumentCaptor.capture());
+        registrationCallbackArgumentCaptor.getValue().onRegistrationFailure();
+        verify(view).stopProgress();
+        verify(view).showRegistrationError();
+
+    }
+
 }

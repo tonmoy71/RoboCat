@@ -31,4 +31,6 @@ public interface SignUpView {
     void startLoginActivity();
 
     void startProgress();
+
+    void showRegistrationError();
 }

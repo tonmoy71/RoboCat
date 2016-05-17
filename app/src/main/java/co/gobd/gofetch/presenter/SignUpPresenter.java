@@ -83,11 +83,13 @@ public class SignUpPresenter {
 
             @Override
             public void onRegistrationFailure() {
-
+                signUpView.stopProgress();
+                signUpView.showRegistrationError();
             }
 
             @Override
             public void onConnectionError() {
+
 
             }
         });
