@@ -8,18 +8,14 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.mockito.stubbing.Answer;
 
 import co.gobd.gofetch.service.account.AccountService;
 import co.gobd.gofetch.service.account.LoginCallback;
 import co.gobd.gofetch.ui.view.LoginView;
 
 import static junit.framework.TestCase.assertEquals;
-import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -100,21 +96,17 @@ public class LoginPresenterTest {
     @Test
     public void shouldStartActivityWhenSuccessfulLogin()
     {
-        final String accessToken = "access_token";
-        // Let's do a synchronous answer for the callback
-        doAnswer(new Answer() {
-            @Override
-            public Object answer(InvocationOnMock invocation) throws Throwable {
-                ((LoginCallback)invocation.getArguments()[2]).onLoginSuccess(accessToken);
-                return null;
-            }
-        }).when(service).login(anyString(), anyString(), any(LoginCallback.class));
+        String accessToken = "access_token";
 
         when(view.getUserName()).thenReturn("abcde");
         when(view.getPassword()).thenReturn("123456");
 
-        // Let's call the method under test
         presenter.login();
+
+        // Let's call the callback. ArgumentCaptor.capture() works like a matcher.
+        verify(service).login(anyString(), anyString(), loginCallbackArgumentCaptor.capture());
+
+        loginCallbackArgumentCaptor.getValue().onLoginSuccess(accessToken);
 
         verify(view).stopProgress();
         verify(view).startSupportedOrderActivity();
