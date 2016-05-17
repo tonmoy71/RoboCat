@@ -76,18 +76,6 @@ public class LoginPresenter {
             }
 
             @Override
-            public void onUserNameError() {
-                loginView.stopProgress();
-                loginView.showUserNameError();
-            }
-
-            @Override
-            public void onPasswordError() {
-                loginView.stopProgress();
-                loginView.showPasswordError();
-            }
-
-            @Override
             public void onConnectionError() {
                 loginView.stopProgress();
                 loginView.showConnectionError();

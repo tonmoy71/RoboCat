@@ -1,6 +1,5 @@
 package co.gobd.gofetch.presenter;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -112,10 +111,29 @@ public class LoginPresenterTest {
         verify(view).startSupportedOrderActivity();
     }
 
-
-
-    @After
-    public void tearDown() throws Exception {
-
+    @Test
+    public void shouldShowErrorWhenLoginFail()
+    {
+        when(view.getUserName()).thenReturn("abcde");
+        when(view.getPassword()).thenReturn("123456");
+        presenter.login();
+        verify(service).login(anyString(), anyString(), loginCallbackArgumentCaptor.capture());
+        loginCallbackArgumentCaptor.getValue().onLoginFailure();
+        verify(view).stopProgress();
+        verify(view).showLoginError();
     }
+
+    @Test
+    public void shouldShowErrorWhenNoConnectivity()
+    {
+        when(view.getUserName()).thenReturn("abcde");
+        when(view.getPassword()).thenReturn("123456");
+        presenter.login();
+        verify(service).login(anyString(), anyString(), loginCallbackArgumentCaptor.capture());
+        loginCallbackArgumentCaptor.getValue().onConnectionError();
+
+        verify(view).stopProgress();
+        verify(view).showConnectionError();
+    }
+
 }
