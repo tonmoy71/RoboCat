@@ -88,6 +88,7 @@ public class SignUpPresenter {
 
             @Override
             public void onRegistrationFailure() {
+                //FIXME Should notify the user about the error type, need to parse the error description
                 signUpView.stopProgress();
                 signUpView.showRegistrationError();
             }
@@ -102,7 +103,16 @@ public class SignUpPresenter {
     }
 
     private UserModel getUserModel() {
-        return null;
+
+        return new UserModel(
+                signUpView.getUserName(),
+                signUpView.getPassword(),
+                signUpView.getConfirmPassword(),
+                signUpView.getEmail(),
+                signUpView.getPhoneNumber(),
+                signUpView.getPicUri(),             //TODO PicUri is empty currently, might need to put image upload mechanism someday
+                signUpView.getType()
+        );
     }
 
     public void onDestroy() {

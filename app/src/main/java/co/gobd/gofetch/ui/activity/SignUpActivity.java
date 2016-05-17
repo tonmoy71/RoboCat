@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -137,8 +138,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     @Override
     public boolean isEmailPatternValid() {
-        //TODO
-        return false;
+        return Patterns.EMAIL_ADDRESS.matcher(getEmail()).matches();
     }
 
     @Override
@@ -184,13 +184,17 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     @Override
     public boolean isPhoneNumberValid() {
-        //TODO
-        return false;
+        return Patterns.PHONE.matcher(getPhoneNumber()).matches();
     }
 
     @Override
     public void showInvalidPhoneNumberError() {
         etPhoneNumber.setError(getString(R.string.msg_error_invalid_phone_number));
+    }
+
+    @Override
+    public String getPicUri() {
+        return null;
     }
 
 

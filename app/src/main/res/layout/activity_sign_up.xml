@@ -40,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_password"
+            android:inputType="textPassword"
             android:singleLine="true" />
 
     </android.support.design.widget.TextInputLayout>
@@ -58,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_confirm_password"
+            android:inputType="textPassword"
             android:singleLine="true" />
 
     </android.support.design.widget.TextInputLayout>
@@ -76,6 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_phone_number"
+            android:inputType="phone"
             android:singleLine="true" />
 
     </android.support.design.widget.TextInputLayout>
@@ -94,6 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_email"
+            android:inputType="textEmailAddress"
             android:singleLine="true" />
 
     </android.support.design.widget.TextInputLayout>

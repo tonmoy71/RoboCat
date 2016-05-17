@@ -41,4 +41,6 @@ public interface SignUpView {
     boolean isPhoneNumberValid();
 
     void showInvalidPhoneNumberError();
+
+    String getPicUri();
 }
