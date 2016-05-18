@@ -33,4 +33,5 @@
     <string name="msg_error_email_pattern">Invalid email</string>
     <string name="msg_error_register">Can\'t register, try again?</string>
     <string name="msg_error_invalid_phone_number">Invalid phone number</string>
+    <string name="msg_error_userName_has_space">User name can\'t have blank space</string>
 </resources>

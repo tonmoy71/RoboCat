@@ -93,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     @Override
     public String getUserName() {
-        return etUserName.getText().toString();
+        return etUserName.getText().toString().trim();
     }
 
     @Override
@@ -123,7 +123,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     @Override
     public void showPasswordMatchError() {
-        Toast.makeText(context, R.string.msg_error_password_match, Toast.LENGTH_SHORT).show();
+        etPassword.setError(getString(R.string.msg_error_password_match));
     }
 
     @Override
@@ -195,6 +195,11 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
     @Override
     public String getPicUri() {
         return null;
+    }
+
+    @Override
+    public void showUserNameHasSpaceError() {
+        etUserName.setError(getString(R.string.msg_error_userName_has_space));
     }
 
 

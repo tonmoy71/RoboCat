@@ -60,6 +60,13 @@ public class SignUpPresenterTest {
     }
 
     @Test
+    public void shouldShowErrorWhenUserNameHasBlankSpace() {
+        when(view.getUserName()).thenReturn("hello world");
+        presenter.isValidCredentials();
+        verify(view).showUserNameHasSpaceError();
+    }
+
+    @Test
     public void shouldShowPasswordEmptyErrorWhenPasswordIsBlank() {
         when(view.getUserName()).thenReturn("abcde");
         when(view.getPassword()).thenReturn("");

@@ -37,6 +37,11 @@ public class SignUpPresenter {
             return false;
         }
         //FIXME Add check so that user name can't contain blank space
+        if (userName.contains(" ")) {
+            signUpView.showUserNameHasSpaceError();
+            return false;
+        }
+
 
         String password = signUpView.getPassword();
         if (password == null || password.isEmpty()) {

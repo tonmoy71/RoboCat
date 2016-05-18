@@ -43,4 +43,6 @@ public interface SignUpView {
     void showInvalidPhoneNumberError();
 
     String getPicUri();
+
+    void showUserNameHasSpaceError();
 }
