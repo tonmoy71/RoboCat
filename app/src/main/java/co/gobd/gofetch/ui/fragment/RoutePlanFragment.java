@@ -16,13 +16,14 @@ import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.model.LatLng;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import co.gobd.gofetch.R;
-import co.gobd.gofetch.utility.LocationType;
 import co.gobd.gofetch.presenter.RoutePlanPresenter;
 import co.gobd.gofetch.ui.view.RoutePlanView;
+import co.gobd.gofetch.utility.LocationType;
 
 import static co.gobd.gofetch.utility.Constant.REQUEST_CODE_DESTINATION_POINT;
 import static co.gobd.gofetch.utility.Constant.REQUEST_CODE_STARTING_POINT;
@@ -32,22 +33,24 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     private static final String TAG = "RoutePlanFragment";
 
     /* Initialize view with ButterKnife */
-    @Bind(R.id.et_start_location)
+    private Unbinder unbinder;
+
+    @BindView(R.id.et_start_location)
     MaterialEditText etStartingLocation;
 
-    @Bind(R.id.et_start_address)
+    @BindView(R.id.et_start_address)
     MaterialEditText etStartAddress;
 
-    @Bind(R.id.et_start_note)
+    @BindView(R.id.et_start_note)
     MaterialEditText etStartNote;
 
-    @Bind(R.id.et_destination_location)
+    @BindView(R.id.et_destination_location)
     MaterialEditText etDestinationLocation;
 
-    @Bind(R.id.et_destination_address)
+    @BindView(R.id.et_destination_address)
     MaterialEditText etDestinationAddress;
 
-    @Bind(R.id.et_destination_note)
+    @BindView(R.id.et_destination_note)
     MaterialEditText etNoteDestination;
 
     /* Flag to determine whether GooglePlacePicker is already opened or not */
@@ -91,7 +94,7 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
         routePlanPresenter = new RoutePlanPresenter(this);
     }
 
@@ -112,7 +115,8 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        unbinder.unbind();
+
     }
 
     @OnClick(R.id.btn_route_next)

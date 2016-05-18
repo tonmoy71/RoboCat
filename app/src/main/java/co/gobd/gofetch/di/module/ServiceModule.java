@@ -2,7 +2,10 @@ package co.gobd.gofetch.di.module;
 
 import javax.inject.Singleton;
 
+import co.gobd.gofetch.network.AccountApi;
 import co.gobd.gofetch.network.OrderApi;
+import co.gobd.gofetch.service.account.AccountService;
+import co.gobd.gofetch.service.account.AccountServiceImpl;
 import co.gobd.gofetch.service.order.OrderService;
 import co.gobd.gofetch.service.order.OrderServiceImpl;
 import dagger.Module;
@@ -18,5 +21,11 @@ public class ServiceModule {
     @Singleton
     public OrderService providesOrderService(OrderApi api) {
         return new OrderServiceImpl(api);
+    }
+
+    @Provides
+    @Singleton
+    public AccountService providesAccountService(AccountApi api) {
+        return new AccountServiceImpl(api);
     }
 }

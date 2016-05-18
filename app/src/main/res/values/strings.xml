@@ -12,4 +12,26 @@
     <string name="to">To</string>
     <string name="button_route_plan_next">Next</string>
     <string name="label_ride_activity">Plan your route</string>
+    <string name="hint_userName">User name</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_text_signin">SIGN IN</string>
+    <string name="tv_text_no_account">Don\'t have account?</string>
+    <string name="btn_sign_up">SIGN UP</string>
+    <string name="msg_error_userName">Username didn\'t match</string>
+    <string name="msg_error_password">Password didn\'t match</string>
+    <string name="msg_error_login">Can\'t log in, try again?</string>
+    <string name="msg_error_connection">Can\'t connect to server</string>
+    <string name="msg_error_minimum_length_password">Password must be at least 6 characters long</string>
+    <string name="msg_error_userName_empty">Username can\'t be empty</string>
+    <string name="msg_error_password_empty">Password can\'t be empty</string>
+    <string name="hint_user_name">User name</string>
+    <string name="hint_confirm_password">Confirm password</string>
+    <string name="hint_phone_number">Phone number</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_sign_up">SIGN UP</string>
+    <string name="msg_error_password_match">Password and confirm password didn\'t match</string>
+    <string name="msg_error_email_pattern">Invalid email</string>
+    <string name="msg_error_register">Can\'t register, try again?</string>
+    <string name="msg_error_invalid_phone_number">Invalid phone number</string>
+    <string name="msg_error_userName_has_space">User name can\'t have blank space</string>
 </resources>

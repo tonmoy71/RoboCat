@@ -196,6 +196,8 @@
     <Button
         android:id="@+id/btn_route_next"
         style="@style/ButtonFullWidthPrimaryColor"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/selector_button_primary_color"
         android:text="@string/button_route_plan_next" />
 
