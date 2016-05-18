@@ -12,7 +12,9 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="co.gobd.gofetch.ui.activity.SignUpActivity">
+        tools:context="co.gobd.gofetch.ui.activity.SignUpActivity"
+        android:focusableInTouchMode="true"
+        >
 
         <android.support.design.widget.TextInputLayout
 
