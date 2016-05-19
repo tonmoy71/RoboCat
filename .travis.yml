@@ -34,4 +34,5 @@ before_install:
 - chmod +x gradlew
 
 script:
+- "./gradlew clean check"
 - "./gradlew assemble"
