@@ -212,9 +212,9 @@ public class RoutePlanFragment extends Fragment implements RoutePlanView {
     @Override
     public void showErrorOnEmptyAddress(LocationType locationType) {
         if (locationType == LocationType.STARTING_POINT) {
-            //TODO Shake etStartLocation
+
         } else if (locationType == LocationType.DESTINATION_POINT) {
-            //TODO Shake etDestinationLocation
+
         }
     }
 

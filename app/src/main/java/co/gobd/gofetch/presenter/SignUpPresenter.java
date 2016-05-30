@@ -36,7 +36,7 @@ public class SignUpPresenter {
             signUpView.showUserNameEmptyError();
             return false;
         }
-        //FIXME Add check so that user name can't contain blank space
+
         if (userName.contains(" ")) {
             signUpView.showUserNameHasSpaceError();
             return false;
