@@ -59,7 +59,8 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
     ProgressBar progressBar;
 
 
-    // To remove ButterKnife instance on onDestroy()
+    // Keeps an instance of ButterKnife,
+    // so that it can be unregistered when the activity is destroyed
     private Unbinder unbinder;
 
 

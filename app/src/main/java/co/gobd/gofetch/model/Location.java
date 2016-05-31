@@ -3,29 +3,61 @@ package co.gobd.gofetch.model;
 /**
  * Created by tonmoy on 20-Apr-16.
  */
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import javax.annotation.Generated;
+
+@Generated("org.jsonschema2pojo")
 public class Location {
 
-    private Point Point;
-    private String Address;
+    @SerializedName("Address")
+    @Expose
+    public String address;
 
-    public Location(co.gobd.gofetch.model.Point point, String address) {
-        Point = point;
-        Address = address;
-    }
+    @SerializedName("PostalCode")
+    @Expose
+    public String postalCode;
 
-    public co.gobd.gofetch.model.Point getPoint() {
-        return Point;
-    }
+    @SerializedName("Floor")
+    @Expose
+    public String floor;
 
-    public void setPoint(co.gobd.gofetch.model.Point point) {
-        Point = point;
-    }
+    @SerializedName("HouseNumber")
+    @Expose
+    public String houseNumber;
 
-    public String getAddress() {
-        return Address;
-    }
+    @SerializedName("AddressLine1")
+    @Expose
+    public String addressLine1;
 
-    public void setAddress(String address) {
-        Address = address;
+    @SerializedName("AddressLine2")
+    @Expose
+    public String addressLine2;
+
+    @SerializedName("Country")
+    @Expose
+    public String country;
+
+    @SerializedName("City")
+    @Expose
+    public String city;
+
+    @SerializedName("State")
+    @Expose
+    public String state;
+
+    @SerializedName("Locality")
+    @Expose
+    public String locality;
+
+    @SerializedName("Point")
+    @Expose
+    public Point point;
+
+    public Location(Point point, String addressLine1) {
+        this.addressLine1 = addressLine1;
+        this.point = point;
     }
 }
