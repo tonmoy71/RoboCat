@@ -1,8 +1,8 @@
 package co.gobd.gofetch.mock;
 
 import co.gobd.gofetch.model.Location;
-import co.gobd.gofetch.model.order.OrderModel;
 import co.gobd.gofetch.model.Point;
+import co.gobd.gofetch.model.order.OrderModel;
 import co.gobd.gofetch.model.order.RideOrder;
 import co.gobd.gofetch.service.tracker.BaseTrackerService;
 import co.gobd.gofetch.service.tracker.SignalRService;
