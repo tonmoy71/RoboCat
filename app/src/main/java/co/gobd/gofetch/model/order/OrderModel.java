@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 import javax.annotation.Generated;
 
+import co.gobd.gofetch.model.Location;
+
 @Generated("org.jsonschema2pojo")
 public abstract class OrderModel {
 
@@ -14,11 +16,11 @@ public abstract class OrderModel {
 
     @SerializedName("From")
     @Expose
-    public OrderLocation from;
+    public Location from;
 
     @SerializedName("To")
     @Expose
-    public OrderLocation to;
+    public Location to;
 
     @SerializedName("Type")
     @Expose
@@ -34,7 +36,7 @@ public abstract class OrderModel {
 
     @SerializedName("OrderLocation")
     @Expose
-    public OrderLocation orderLocation;
+    public Location orderLocation;
 
     @SerializedName("ETA")
     @Expose
