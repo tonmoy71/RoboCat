@@ -1,5 +1,7 @@
 package co.gobd.gofetch.model.order;
 
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -8,17 +10,19 @@ import javax.annotation.Generated;
 @Generated("org.jsonschema2pojo")
 public class PackageList {
 
+    @NonNull
     @SerializedName("Item")
     @Expose
     public String item;
 
-    @SerializedName("PicUrl")
-    @Expose
-    public String picUrl;
-
+    @NonNull
     @SerializedName("Quantity")
     @Expose
     public int quantity;
+
+    @SerializedName("PicUrl")
+    @Expose
+    public String picUrl;
 
     @SerializedName("TotalPlusVAT")
     @Expose
@@ -44,4 +48,9 @@ public class PackageList {
     @Expose
     public int weight;
 
+
+    public PackageList(@NonNull String item, @NonNull int quantity) {
+        this.item = item;
+        this.quantity = quantity;
+    }
 }
