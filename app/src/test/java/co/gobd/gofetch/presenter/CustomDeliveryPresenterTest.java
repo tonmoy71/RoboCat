@@ -20,20 +20,27 @@ public class CustomDeliveryPresenterTest {
 
     List<PackageList> packageLists;
 
+    private CustomDeliveryPresenter presenter;
+
     @Before
     public void setUp() throws Exception {
 
+        presenter = new CustomDeliveryPresenter();
+
+        String item1 = "Baklava from At-teen restaurant";
+        String item2 = "2kg Rice from Agora";
+        int quantity = 5;
+
+        packageLists = new ArrayList<>();
+        packageLists.add(new PackageList(item1, quantity));
+        packageLists.add(new PackageList(item2, quantity));
     }
 
     @Test
     public void shouldPopulatePackageList() {
-
-        packageLists = new ArrayList<>();
-        packageLists.add(new PackageList("Baklava from At-teen restaurant", 6));
-        packageLists.add(new PackageList("2kg Rice from Agora", 6));
-
-        assertEquals(2, packageLists.size());
-
-
+        packageLists.add(new PackageList("Laptop charger from my house", 1));
+        assertEquals(3, packageLists.size());
     }
+
+
 }
