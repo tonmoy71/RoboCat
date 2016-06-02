@@ -1,6 +1,5 @@
 sudo: false
 language: android
-
 android:
   components:
   - tools
@@ -11,19 +10,18 @@ android:
   - extra-android-m2repository
   - extra-google-m2repository
   - extra-android-support
-
 env:
   global:
   - GRADLE_OPTS="-Xmx512m -XX:MaxPermSize=512m"
-  - secure: "wJfZzD8JmtnmodRgi3AKEVvwND4qbpwfdMeK0E/uRAEeGRw2QsFcOGTDor0km3e8Y4lWt0z+ON1IwerHUK1EsqhyvJO5mdrfyFhA7Brc2Hr5/Pw+RMez+LL+aYMJGY6af34GywPpEY4fXWYuRM5QIeKpizM45Z0lMh8SU3ZZcB9VBwkZmDWNGzlbqZsWt7KQvhwz4MrHhUVhpoC3uZzWIN7IHBn+TMDGXQsmGFRQmbN5TvVvjrhWf+cf1G/dZzG/cEsEcWly8HJekNIlB0VuF+d0nngGXBt9kZhu0r/HDSmThAC8/5z58l0poi9pEbr//bx9czoziippWT/gRyHWkEo9PaxmOPjhjbmhMZD+G/1fYBNUXHNZRuISQNfOvicvCSNRnnPjXzxaF2BluyA139hxZefcxvj07ab9coqqZ8O22qt7UhY8mqih886T8oasQqov+ykeHg96swPdpVUeQ66CMh87mW4KVaB5JvjKgpLuoUpCDSOBffiU4A3HIJZcPew+iEczGDA9w5ZpwvWluDJajFMpt++QesmN007VpKRxaj2Kxr8XfP8/hvfK1rqv6HAtKWweIkjXNeMhKwkUKhRG09Ojc4JpaZehrBQgkxYQuD1hWYoc+U7QJC9wguSxYOLTO93YjRq2i47fRozyQO1Cjsu3o1HQAQQHieInlUI="
-
+  - secure: wJfZzD8JmtnmodRgi3AKEVvwND4qbpwfdMeK0E/uRAEeGRw2QsFcOGTDor0km3e8Y4lWt0z+ON1IwerHUK1EsqhyvJO5mdrfyFhA7Brc2Hr5/Pw+RMez+LL+aYMJGY6af34GywPpEY4fXWYuRM5QIeKpizM45Z0lMh8SU3ZZcB9VBwkZmDWNGzlbqZsWt7KQvhwz4MrHhUVhpoC3uZzWIN7IHBn+TMDGXQsmGFRQmbN5TvVvjrhWf+cf1G/dZzG/cEsEcWly8HJekNIlB0VuF+d0nngGXBt9kZhu0r/HDSmThAC8/5z58l0poi9pEbr//bx9czoziippWT/gRyHWkEo9PaxmOPjhjbmhMZD+G/1fYBNUXHNZRuISQNfOvicvCSNRnnPjXzxaF2BluyA139hxZefcxvj07ab9coqqZ8O22qt7UhY8mqih886T8oasQqov+ykeHg96swPdpVUeQ66CMh87mW4KVaB5JvjKgpLuoUpCDSOBffiU4A3HIJZcPew+iEczGDA9w5ZpwvWluDJajFMpt++QesmN007VpKRxaj2Kxr8XfP8/hvfK1rqv6HAtKWweIkjXNeMhKwkUKhRG09Ojc4JpaZehrBQgkxYQuD1hWYoc+U7QJC9wguSxYOLTO93YjRq2i47fRozyQO1Cjsu3o1HQAQQHieInlUI=
 branches:
   only:
   - master
-
 before_install:
 - chmod +x gradlew
-
 script:
 - "./gradlew clean check"
 - "./gradlew assemble"
+notifications:
+  slack:
+    secure: eC58qHixnxbitHDVh3mXz7QS0NnR6/gxV69KiPlytCJ030ijzG9sD0Ii9Sk1JwjjkmngaoqayAxucIX7TqvwzONwnb6Z04WKvnHItdH/+ueGIgbIj1BtDV5w6X5+01bIxB83K4SFTrUQqNdOdrIAke/+p0TUyDK/fE0PhacOrUUpUitpL6GTaDxTPA4kdwglTVE7e7by6XmGOWlaOoJS/NaCEZnNn4gwtww6BGoQn1+lsdZyeVgidZ1MexdFljygRZUZ+BQ1m99yNsdru8mJeoKe3oSADb4cfj1JR6NVi355Eg7QTz4pgebYPNbffTBXHWve5CGxXIhU3Qpb+MfzF2mOd+4I4sVv+0z6EPt+fUSAaSLO5J+lPFNXJcT3KX5GOUElacxUFcJFoitviBEImqFAsdhFTTrxzKWO4FNHo9OTIydjVlnx/SHKjfvJmc1VqO5Ut7dFK9cSA5rZv07ZsS4JVTIYiWodbmk16mA1w+3WvNk0a/rQHD0JUKBqbeTcOx3u5JeaD0pWcSE21yTJBphrURCu7luBGhu1msPkgPpdJeGyCeLl76urXYfkh2NpMrislZTmm94QKFmoqi59Nn3xsDTEHSIjeaYRJ4sd4NrZ7QP4Sj3BcdpR61P30ktT7TfCdYAG+MSL0VRuLFpFM9lLrBtOmbOzYUp8CKrGN7c=
