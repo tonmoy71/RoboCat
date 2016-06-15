@@ -1,9 +1,10 @@
 package co.gobd.gofetch.ui.fragment;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +12,9 @@ import android.view.ViewGroup;
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.ui.view.ItemDetailsView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ItemDetailsFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- */
 public class ItemDetailsFragment extends Fragment implements ItemDetailsView{
 
-    private OnFragmentInteractionListener mListener;
+    private OnItemDetailsFragmentListener mListener;
 
     public ItemDetailsFragment() {
         // Required empty public constructor
@@ -30,45 +25,37 @@ public class ItemDetailsFragment extends Fragment implements ItemDetailsView{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item_details2, container, false);
+        View view = inflater.inflate(R.layout.fragment_item_details, container, false);
+
+        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar_no_menu);
+        if (toolbar != null) {
+            ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnItemDetailsFragmentListener) {
+            mListener = (OnItemDetailsFragmentListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnItemDetailsFragmentListener");
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
-    }
+        mListener = null;    }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
+
+    public interface OnItemDetailsFragmentListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction();
     }
 }
