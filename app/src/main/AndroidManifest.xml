@@ -35,7 +35,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.SignUpActivity" />
-        <activity android:name=".ui.activity.CustomOrderActivity"></activity>
+
+        <activity
+            android:name=".ui.activity.CustomOrderActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
