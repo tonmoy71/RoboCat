@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.NumberPicker;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -36,7 +36,15 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         PackageList packageList = packageLists.get(position);
-        holder.etPackageList.setText(packageList.item);
+        holder.tvItemName.setText(packageList.item);
+        holder.tvQuantity.setText(packageList.quantity);
+
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "To be implemented", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -45,15 +53,15 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
         return this.packageLists.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.et_package_list)
-        EditText etPackageList;
+        @BindView(R.id.tv_item_name)
+        TextView tvItemName;
 
-        @BindView(R.id.numberPicker_quantity)
-        NumberPicker numberPicker;
+        @BindView(R.id.tv_quantity)
+        TextView tvQuantity;
 
-        @BindView(R.id.btn_item_delete)
+        @BindView(R.id.btn_delete_item)
         Button btnDelete;
 
         public ViewHolder(View itemView) {
