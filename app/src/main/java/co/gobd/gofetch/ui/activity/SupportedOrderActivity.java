@@ -1,5 +1,6 @@
 package co.gobd.gofetch.ui.activity;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -75,6 +76,8 @@ public class SupportedOrderActivity extends AppCompatActivity implements OnItemC
     public void onClick(View view, int position) {
         Log.i(TAG, "Item position: " + position);
 
+        //FIXME: Remove when properly implemented
+        startActivity(new Intent(this, CustomOrderActivity.class));
 
     }
 }

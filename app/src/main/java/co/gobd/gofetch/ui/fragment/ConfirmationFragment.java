@@ -14,12 +14,12 @@ import co.gobd.gofetch.ui.view.ConfirmationView;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ConfirmationFragment.OnFragmentInteractionListener} interface
+ * {@link OnConfirmationFragmentListener} interface
  * to handle interaction events.
  */
 public class ConfirmationFragment extends Fragment implements ConfirmationView {
 
-    private OnFragmentInteractionListener mListener;
+    private OnConfirmationFragmentListener mListener;
 
     public ConfirmationFragment() {
         // Required empty public constructor
@@ -36,18 +36,18 @@ public class ConfirmationFragment extends Fragment implements ConfirmationView {
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onFragmentInteraction();
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnConfirmationFragmentListener) {
+            mListener = (OnConfirmationFragmentListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnConfirmationFragmentListener");
         }
     }
 
@@ -67,8 +67,8 @@ public class ConfirmationFragment extends Fragment implements ConfirmationView {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnConfirmationFragmentListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction();
     }
 }

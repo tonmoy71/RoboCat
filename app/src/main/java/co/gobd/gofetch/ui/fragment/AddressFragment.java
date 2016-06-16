@@ -14,12 +14,12 @@ import co.gobd.gofetch.ui.view.AddressView;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AddressFragment.OnFragmentInteractionListener} interface
+ * {@link OnAddressFragmentListener} interface
  * to handle interaction events.
  */
 public class AddressFragment extends Fragment implements AddressView {
 
-    private OnFragmentInteractionListener mListener;
+    private OnAddressFragmentListener mListener;
 
     public AddressFragment() {
         // Required empty public constructor
@@ -36,18 +36,18 @@ public class AddressFragment extends Fragment implements AddressView {
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onFragmentInteraction();
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnAddressFragmentListener) {
+            mListener = (OnAddressFragmentListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnAddressFragmentListener");
         }
     }
 
@@ -67,8 +67,8 @@ public class AddressFragment extends Fragment implements AddressView {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnAddressFragmentListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction();
     }
 }
