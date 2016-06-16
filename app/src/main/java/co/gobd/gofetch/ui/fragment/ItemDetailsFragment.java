@@ -2,17 +2,20 @@ package co.gobd.gofetch.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.ui.view.ItemDetailsView;
 
-public class ItemDetailsFragment extends Fragment implements ItemDetailsView{
+public class ItemDetailsFragment extends Fragment implements ItemDetailsView {
 
     private OnItemDetailsFragmentListener mListener;
 
@@ -20,20 +23,38 @@ public class ItemDetailsFragment extends Fragment implements ItemDetailsView{
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // Needs to call to show menu in the app bar
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_item_continue:
+                // FIXME
+                Toast.makeText(getContext(), "Continue", Toast.LENGTH_SHORT).show();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.fragment_item_details, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_item_details, container, false);
-
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar_no_menu);
-        if (toolbar != null) {
-            ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-
-        return view;
+        return inflater.inflate(R.layout.fragment_item_details, container, false);
     }
 
 
@@ -51,7 +72,8 @@ public class ItemDetailsFragment extends Fragment implements ItemDetailsView{
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;    }
+        mListener = null;
+    }
 
 
     public interface OnItemDetailsFragmentListener {
