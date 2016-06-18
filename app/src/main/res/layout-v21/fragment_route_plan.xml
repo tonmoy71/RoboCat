@@ -197,6 +197,8 @@
         android:id="@+id/btn_route_next"
         style="@style/ButtonFullWidthPrimaryColor"
         android:background="@drawable/ripple_effect_primary_color_solid"
-        android:text="@string/button_route_plan_next" />
+        android:text="@string/button_route_plan_next"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
