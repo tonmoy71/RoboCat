@@ -58,7 +58,7 @@ public class ItemDetailsFragment extends Fragment implements ItemDetailsView {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.fragment_item_details, menu);
-        super.onCreateOptionsMenu(menu, inflater);
+
     }
 
     @Override

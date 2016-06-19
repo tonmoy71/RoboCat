@@ -4,14 +4,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import co.gobd.gofetch.R;
 import co.gobd.gofetch.model.order.PackageList;
 
@@ -36,8 +34,11 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         PackageList packageList = packageLists.get(position);
-        holder.tvItemName.setText(packageList.item);
-        holder.tvQuantity.setText(packageList.quantity);
+
+        // setText() expects an int or String object. If int is passed, it tries to match the int
+        // with the R.string file. So, it should be converted to String before.
+        holder.tvItemName.setText(String.valueOf(packageList.item));
+        holder.tvQuantity.setText(String.valueOf(packageList.quantity));
 
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,18 +56,17 @@ public class PackageListAdapter extends RecyclerView.Adapter<PackageListAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.tv_item_name)
         TextView tvItemName;
-
-        @BindView(R.id.tv_quantity)
         TextView tvQuantity;
-
-        @BindView(R.id.btn_delete_item)
-        Button btnDelete;
+        ImageButton btnDelete;
 
         public ViewHolder(View itemView) {
+
             super(itemView);
-            ButterKnife.bind(this, itemView);
+
+            tvItemName = (TextView) itemView.findViewById(R.id.tv_item_name);
+            tvQuantity = (TextView) itemView.findViewById(R.id.tv_quantity);
+            btnDelete = (ImageButton) itemView.findViewById(R.id.btn_delete_item);
         }
     }
 }
