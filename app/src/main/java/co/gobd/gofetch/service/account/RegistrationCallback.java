@@ -1,6 +1,5 @@
 package co.gobd.gofetch.service.account;
 
-
 import co.gobd.gofetch.network.ConnectionCallback;
 
 /**
@@ -8,6 +7,7 @@ import co.gobd.gofetch.network.ConnectionCallback;
  */
 public interface RegistrationCallback extends ConnectionCallback {
 
-    void onRegistrationSuccess();
-    void onRegistrationFailure();
+  void onRegistrationSuccess();
+
+  void onRegistrationFailure();
 }

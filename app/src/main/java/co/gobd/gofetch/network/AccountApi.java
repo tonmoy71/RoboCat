@@ -17,15 +17,13 @@ import retrofit2.http.POST;
  */
 public interface AccountApi {
 
-    @FormUrlEncoded
-    @POST(ApiEndpoint.TaskCat.LOGIN)
-    Call<AccessToken> login(@Field("userName") String userName, @Field("password") String password,
-                            @Field("grant_type") String grantType, @Field("client_Id") String clientId,
-                            @Field("client_secret") String clientSecret);
+  @FormUrlEncoded @POST(ApiEndpoint.TaskCat.LOGIN) Call<AccessToken> login(
+      @Field("userName") String userName, @Field("password") String password,
+      @Field("grant_type") String grantType, @Field("client_Id") String clientId,
+      @Field("client_secret") String clientSecret);
 
-    @POST(ApiEndpoint.TaskCat.REGISTER)
-    Call<Void> register(@Body UserModel userModel);
+  @POST(ApiEndpoint.TaskCat.REGISTER) Call<Void> register(@Body UserModel userModel);
 
-    @GET(ApiEndpoint.TaskCat.GET_PROFILE)
-    Call<User> getUserProfile(@Header("Authorization") String token);
+  @GET(ApiEndpoint.TaskCat.GET_PROFILE) Call<User> getUserProfile(
+      @Header("Authorization") String token);
 }

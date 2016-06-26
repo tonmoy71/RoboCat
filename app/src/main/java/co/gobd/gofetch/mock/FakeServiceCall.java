@@ -12,27 +12,25 @@ import co.gobd.gofetch.service.tracker.SignalRService;
  */
 public class FakeServiceCall {
 
-    // Start SignalR service
-    public static void startSignalR() {
-        BaseTrackerService trackerService = new SignalRService();
-        trackerService.setup();
-        trackerService.startConnection();
-        trackerService.receiveData();
-    }
+  // Start SignalR service
+  public static void startSignalR() {
+    BaseTrackerService trackerService = new SignalRService();
+    trackerService.setup();
+    trackerService.startConnection();
+    trackerService.receiveData();
+  }
 
+  public static void postOrder() {
 
-    public static void postOrder() {
+  }
 
-    }
+  public static OrderModel createFakeOrder() {
+    String name = "Fahim";
+    String type = "Ride";
+    Location from = new Location(new Point("Point", new String[] { "90", "21" }), "Banani");
+    Location to = new Location(new Point("Point", new String[] { "90", "21" }), "Mohammadpur");
+    String[] vehiclePreference = new String[] { "Rickshaw", "CNG" };
 
-    public static OrderModel createFakeOrder() {
-        String name = "Fahim";
-        String type = "Ride";
-        Location from = new Location(new Point("Point", new String[]{"90", "21"}), "Banani");
-        Location to = new Location(new Point("Point", new String[]{"90", "21"}), "Mohammadpur");
-        String[] vehiclePreference = new String[]{"Rickshaw", "CNG"};
-
-        return new RideOrder(name, type, from, to, vehiclePreference);
-
-    }
+    return new RideOrder(name, type, from, to, vehiclePreference);
+  }
 }
