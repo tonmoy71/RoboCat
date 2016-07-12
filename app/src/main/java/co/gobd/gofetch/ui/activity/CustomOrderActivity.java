@@ -39,7 +39,9 @@ public class CustomOrderActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         // FIXME: Remove when testing completes
-        loadItemDetailsFragment();
+        if (savedInstanceState == null) {
+            loadItemDetailsFragment();
+        }
     }
 
     @Override

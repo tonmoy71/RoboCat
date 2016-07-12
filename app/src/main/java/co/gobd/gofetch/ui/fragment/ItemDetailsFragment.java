@@ -77,10 +77,12 @@ public class ItemDetailsFragment extends Fragment implements ItemDetailsView {
         recyclerView.setAdapter(adapter);
 
         List<PackageList> items = new ArrayList<>();
-        items.add(new PackageList("Shahi Mama Haleem 1kg", 1));
-        items.add(new PackageList("Jilapi 1kg", 1));
-        items.add(new PackageList("Chicken Tikka Masala", 1));
-        items.add(new PackageList("Chicken Chaap ", 1));
+        for (int i = 0; i < 5000; i++) {
+            items.add(new PackageList("Shahi Mama Haleem 1kg ", i));
+            items.add(new PackageList("Jilapi 1kg", i+2));
+            items.add(new PackageList("Chicken Tikka Masala", i+1));
+            items.add(new PackageList("Chicken Chaap ", i+3));
+        }
 
         adapter.setPackageLists(items);
 
