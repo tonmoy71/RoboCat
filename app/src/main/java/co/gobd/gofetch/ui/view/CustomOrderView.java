@@ -5,5 +5,5 @@ package co.gobd.gofetch.ui.view;
  */
 public interface CustomOrderView {
 
-  void loadItemDetailsFragment();
+    void loadItemDetailsFragment();
 }

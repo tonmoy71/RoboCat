@@ -7,7 +7,7 @@ import co.gobd.gofetch.network.ConnectionCallback;
  */
 public interface RegistrationCallback extends ConnectionCallback {
 
-  void onRegistrationSuccess();
+    void onRegistrationSuccess();
 
-  void onRegistrationFailure();
+    void onRegistrationFailure();
 }

@@ -4,29 +4,29 @@ package co.gobd.gofetch.ui.view;
  * Created by tonmoy on 08-May-16.
  */
 public interface LoginView {
-  String getUserName();
+    String getUserName();
 
-  String getPassword();
+    String getPassword();
 
-  void showUserNameError();
+    void showUserNameError();
 
-  void showPasswordError();
+    void showPasswordError();
 
-  void startProgress();
+    void startProgress();
 
-  void stopProgress();
+    void stopProgress();
 
-  void startSupportedOrderActivity();
+    void startSupportedOrderActivity();
 
-  void startSignUpActivity();
+    void startSignUpActivity();
 
-  void showConnectionError();
+    void showConnectionError();
 
-  void showLoginError();
+    void showLoginError();
 
-  void showPasswordLengthError();
+    void showPasswordLengthError();
 
-  void showUserNameEmptyError();
+    void showUserNameEmptyError();
 
-  void showPasswordEmptyError();
+    void showPasswordEmptyError();
 }

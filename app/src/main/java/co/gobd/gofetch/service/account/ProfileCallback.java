@@ -7,7 +7,7 @@ import co.gobd.gofetch.network.ConnectionCallback;
  */
 public interface ProfileCallback extends ConnectionCallback {
 
-  void onLoadProfileSuccess(String assetId);
+    void onLoadProfileSuccess(String assetId);
 
-  void onLoadProfileFailure();
+    void onLoadProfileFailure();
 }

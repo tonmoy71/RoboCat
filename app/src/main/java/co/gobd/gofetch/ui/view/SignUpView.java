@@ -4,45 +4,45 @@ package co.gobd.gofetch.ui.view;
  * Created by tonmoy on 16-May-16.
  */
 public interface SignUpView {
-  String getUserName();
+    String getUserName();
 
-  void showUserNameEmptyError();
+    void showUserNameEmptyError();
 
-  String getPassword();
+    String getPassword();
 
-  void showPasswordEmptyError();
+    void showPasswordEmptyError();
 
-  void showPasswordLengthError();
+    void showPasswordLengthError();
 
-  String getConfirmPassword();
+    String getConfirmPassword();
 
-  void showPasswordMatchError();
+    void showPasswordMatchError();
 
-  String getEmail();
+    String getEmail();
 
-  void showInvalidEmailPatterError();
+    void showInvalidEmailPatterError();
 
-  boolean isEmailPatternValid();
+    boolean isEmailPatternValid();
 
-  String getPhoneNumber();
+    String getPhoneNumber();
 
-  String getType();
+    String getType();
 
-  void stopProgress();
+    void stopProgress();
 
-  void startLoginActivity();
+    void startLoginActivity();
 
-  void startProgress();
+    void startProgress();
 
-  void showRegistrationError();
+    void showRegistrationError();
 
-  void showConnectionError();
+    void showConnectionError();
 
-  boolean isPhoneNumberValid();
+    boolean isPhoneNumberValid();
 
-  void showInvalidPhoneNumberError();
+    void showInvalidPhoneNumberError();
 
-  String getPicUri();
+    String getPicUri();
 
-  void showUserNameHasSpaceError();
+    void showUserNameHasSpaceError();
 }

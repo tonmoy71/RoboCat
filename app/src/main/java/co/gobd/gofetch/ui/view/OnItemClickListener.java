@@ -7,5 +7,5 @@ import android.view.View;
  * Handles click events on RecyclerView
  */
 public interface OnItemClickListener {
-  void onClick(View view, int position);
+    void onClick(View view, int position);
 }

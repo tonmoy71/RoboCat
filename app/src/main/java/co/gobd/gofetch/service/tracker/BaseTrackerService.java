@@ -5,11 +5,11 @@ package co.gobd.gofetch.service.tracker;
  */
 public interface BaseTrackerService {
 
-  void setup();
+    void setup();
 
-  void startConnection();
+    void startConnection();
 
-  void stopConnection();
+    void stopConnection();
 
-  void receiveData();
+    void receiveData();
 }

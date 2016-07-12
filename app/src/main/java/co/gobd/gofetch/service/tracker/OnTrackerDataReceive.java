@@ -5,6 +5,6 @@ package co.gobd.gofetch.service.tracker;
  */
 public interface OnTrackerDataReceive {
 
-  //TODO Add proper data type and collection based on BaseTrackerService provided data
-  void onReceive();
+    //TODO Add proper data type and collection based on BaseTrackerService provided data
+    void onReceive();
 }

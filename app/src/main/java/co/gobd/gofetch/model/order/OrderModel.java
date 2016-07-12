@@ -1,38 +1,65 @@
 package co.gobd.gofetch.model.order;
 
-import co.gobd.gofetch.model.Location;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
 import javax.annotation.Generated;
 
-@Generated("org.jsonschema2pojo") public abstract class OrderModel {
+import co.gobd.gofetch.model.Location;
 
-  @SerializedName("Name") @Expose public String name;
+@Generated("org.jsonschema2pojo")
+public abstract class OrderModel {
 
-  @SerializedName("From") @Expose public Location from;
+    @SerializedName("Name")
+    @Expose
+    public String name;
 
-  @SerializedName("To") @Expose public Location to;
+    @SerializedName("From")
+    @Expose
+    public Location from;
 
-  @SerializedName("Type") @Expose public String type;
+    @SerializedName("To")
+    @Expose
+    public Location to;
 
-  @SerializedName("PayloadType") @Expose public String payloadType;
+    @SerializedName("Type")
+    @Expose
+    public String type;
 
-  @SerializedName("UserId") @Expose public String userId;
+    @SerializedName("PayloadType")
+    @Expose
+    public String payloadType;
 
-  @SerializedName("OrderLocation") @Expose public Location orderLocation;
+    @SerializedName("UserId")
+    @Expose
+    public String userId;
 
-  @SerializedName("ETA") @Expose public String eTA;
+    @SerializedName("OrderLocation")
+    @Expose
+    public Location orderLocation;
 
-  @SerializedName("ETAMinutes") @Expose public int eTAMinutes;
+    @SerializedName("ETA")
+    @Expose
+    public String eTA;
 
-  @SerializedName("PaymentMethod") @Expose public String paymentMethod;
+    @SerializedName("ETAMinutes")
+    @Expose
+    public int eTAMinutes;
 
-  @SerializedName("Description") @Expose public String description;
+    @SerializedName("PaymentMethod")
+    @Expose
+    public String paymentMethod;
 
-  @SerializedName("OrderCart") @Expose public OrderCart orderCart;
+    @SerializedName("Description")
+    @Expose
+    public String description;
 
-  public OrderModel(String name, String type) {
-    this.name = name;
-    this.type = type;
-  }
+    @SerializedName("OrderCart")
+    @Expose
+    public OrderCart orderCart;
+
+    public OrderModel(String name, String type) {
+        this.name = name;
+        this.type = type;
+    }
 }
